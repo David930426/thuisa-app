@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="Gallery 2">
+  <defs>
+    <linearGradient id="gw2w1ou" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1C1917"/>
+      <stop offset="55%" stop-color="#3B2B29"/>
+      <stop offset="100%" stop-color="#5A4340"/>
+    </linearGradient>
+    <pattern id="pw2w1ou" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="56" height="56" fill="none"/>
+      <path d="M0 28h56M28 0v56" stroke="#ffffff" stroke-opacity="0.07" stroke-width="2"/>
+      <circle cx="28" cy="28" r="6" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="600" fill="url(#gw2w1ou)"/>
+  <rect width="900" height="600" fill="url(#pw2w1ou)"/>
+  <g fill="#ffffff" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="450" y="259.5" font-size="78" font-weight="800" fill-opacity="0.22" letter-spacing="4.68">THUISA</text>
+    <text x="450" y="315.75" font-size="45" font-weight="700">Gallery 2</text>
+    <text x="450" y="358.95" font-size="24" font-weight="500" fill-opacity="0.75">Landscape photo</text>
+    <text x="450" y="571.2" font-size="20.4" font-weight="500" fill-opacity="0.55">900 x 600 &#183; replace me</text>
+  </g>
+</svg>

@@ -1,74 +1,76 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
+/* ---------------------------------------------------------------------------
+   THUISA design tokens
+   brand  = Indonesian flag red, the primary identity colour
+   accent = warm gold, used sparingly for highlights and eyebrows
+   ink    = warm neutral scale for text and surfaces
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe0e2;
+  --color-brand-200: #ffc6ca;
+  --color-brand-300: #ff9da1;
+  --color-brand-400: #f96a72;
+  --color-brand-500: #e63946;
+  --color-brand-600: #ce1126;
+  --color-brand-700: #ab0d1f;
+  --color-brand-800: #8a0f1d;
+  --color-brand-900: #74131d;
+  --color-brand-950: #40060c;
+
+  --color-accent-50: #fffaeb;
+  --color-accent-100: #fff1c6;
+  --color-accent-200: #ffe088;
+  --color-accent-300: #ffc94a;
+  --color-accent-400: #f4b942;
+  --color-accent-500: #e9a227;
+  --color-accent-600: #c9831a;
+  --color-accent-700: #a06318;
+  --color-accent-800: #834e1a;
+  --color-accent-900: #6f4119;
+
+  --color-ink-50: #faf9f8;
+  --color-ink-100: #f3f1ef;
+  --color-ink-200: #e7e3e0;
+  --color-ink-300: #d3cdc8;
+  --color-ink-400: #a9a19b;
+  --color-ink-500: #7d756f;
+  --color-ink-600: #5f5854;
+  --color-ink-700: #4a4441;
+  --color-ink-800: #332e2c;
+  --color-ink-900: #1c1917;
+  --color-ink-950: #0f0d0c;
+}
+
+/* shadcn/radix primitives (accordion, dialog, dropdown, tabs) read these */
 :root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-body {
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
-}
-
-footer {
-  background: black;
-  color: white;
-}
-
-.swiper-pagination-bullet {
-  background-color: #919191 !important;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #CCCCCC !important;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #636262 !important;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  color: #CCCCCC !important;
-  cursor: pointer;
+  --radius: 0.75rem;
+  --background: #ffffff;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  --primary: #ce1126;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f1ef;
+  --secondary-foreground: #332e2c;
+  --muted: #f3f1ef;
+  --muted-foreground: #5f5854;
+  --accent: #f3f1ef;
+  --accent-foreground: #332e2c;
+  --destructive: #ce1126;
+  --border: #e7e3e0;
+  --input: #e7e3e0;
+  --ring: #ce1126;
 }
 
 @theme inline {
@@ -94,60 +96,126 @@ footer {
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/40;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-ink-800 antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* Anchor targets clear the fixed 80px header */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer components {
+  /* Small uppercase kicker above a section heading */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+
+  /* Thin gold rule used under eyebrows in dark sections */
+  .eyebrow-light {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-300;
+  }
+}
+
+/* Swiper chrome, themed to match the brand */
+.swiper-pagination-bullet {
+  background-color: #ffffff !important;
+  opacity: 0.45 !important;
+  width: 10px !important;
+  height: 10px !important;
+  transition: opacity 0.2s ease, width 0.2s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 28px !important;
+  border-radius: 9999px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 9999px !important;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: 700;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(206, 17, 38, 0.85);
+  cursor: pointer;
+}
+
+/* On the hero the arrows would sit on top of the headline, so move them into
+   the bottom-right corner and drop them entirely on small screens where the
+   pagination dots and swiping are enough. */
+.hero-swiper .swiper-button-prev,
+.hero-swiper .swiper-button-next {
+  top: auto;
+  bottom: 2rem;
+  margin-top: 0;
+}
+
+.hero-swiper .swiper-button-prev {
+  left: auto;
+  right: 5rem;
+}
+
+.hero-swiper .swiper-button-next {
+  right: 2rem;
+}
+
+.hero-swiper .swiper-pagination {
+  bottom: 2.75rem !important;
+  text-align: left;
+  padding-left: max(1.25rem, calc((100% - 80rem) / 2 + 2rem));
+}
+
+@media (max-width: 1023px) {
+  .hero-swiper .swiper-button-prev,
+  .hero-swiper .swiper-button-next {
+    display: none;
+  }
+
+  .hero-swiper .swiper-pagination {
+    bottom: 1.5rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

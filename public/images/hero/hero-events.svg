@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="Hero - Events">
+  <defs>
+    <linearGradient id="gjewj3y" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1C1917"/>
+      <stop offset="55%" stop-color="#3B2B29"/>
+      <stop offset="100%" stop-color="#5A4340"/>
+    </linearGradient>
+    <pattern id="pjewj3y" width="72" height="72" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="72" height="72" fill="none"/>
+      <path d="M0 36h72M36 0v72" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/>
+      <circle cx="36" cy="36" r="8" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#gjewj3y)"/>
+  <rect width="1920" height="1080" fill="url(#pjewj3y)"/>
+  <g fill="#ffffff" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="end">
+    <text x="1840" y="950" font-size="58" font-weight="800" fill-opacity="0.9">Hero - Events</text>
+    <text x="1840" y="996" font-size="30" font-weight="500" fill-opacity="0.7">Wide photo from a THUISA event night</text>
+    <text x="1840" y="1042" font-size="24" font-weight="500" fill-opacity="0.45">1920 x 1080 &#183; replace me</text>
+  </g>
+</svg>

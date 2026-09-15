@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Graduation">
+  <defs>
+    <linearGradient id="gfjreq7" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7A0D18"/>
+      <stop offset="55%" stop-color="#CE1126"/>
+      <stop offset="100%" stop-color="#E8505F"/>
+    </linearGradient>
+    <pattern id="pfjreq7" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="56" height="56" fill="none"/>
+      <path d="M0 28h56M28 0v56" stroke="#ffffff" stroke-opacity="0.07" stroke-width="2"/>
+      <circle cx="28" cy="28" r="6" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#gfjreq7)"/>
+  <rect width="1200" height="800" fill="url(#pfjreq7)"/>
+  <g fill="#ffffff" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="346" font-size="104" font-weight="800" fill-opacity="0.22" letter-spacing="6.24">THUISA</text>
+    <text x="600" y="421" font-size="60" font-weight="700">Graduation</text>
+    <text x="600" y="478.6" font-size="32" font-weight="500" fill-opacity="0.75">Farewell for graduating seniors</text>
+    <text x="600" y="761.6" font-size="27.2" font-weight="500" fill-opacity="0.55">1200 x 800 &#183; replace me</text>
+  </g>
+</svg>

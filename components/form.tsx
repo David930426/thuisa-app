@@ -1,9 +1,29 @@
 "use client";
-import { ComplainState, sendSuggest } from "@/actions/supportAction";
-import { ButtonSecondary } from "@/components/ui/button";
-import Spinner from "@/components/ui/spinner";
-import { useActionState, useEffect } from "react";
+
+import { useActionState, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { Send } from "lucide-react";
+import { sendSuggest, type ComplainState } from "@/actions/supportAction";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import Spinner from "@/components/ui/spinner";
+
+const subjects = [
+  { value: "general", label: "General question" },
+  { value: "concern", label: "A concern" },
+  { value: "suggestion", label: "A suggestion" },
+  { value: "support", label: "I need help with something" },
+  { value: "other", label: "Something else" },
+];
 
 export function ContactForm() {
   const initialState: ComplainState = { ok: false, message: "" };
@@ -11,73 +31,106 @@ export function ContactForm() {
     sendSuggest,
     initialState
   );
-  useEffect(()=> {
-    if(!state.message) return;
-    if (state.ok) toast.success(state.message);
-    else toast.error(state.message);
-  }, [state.ok, state.message])
+  const formRef = useRef<HTMLFormElement>(null);
+  // Radix Select is controlled, so the reset below has to clear it explicitly.
+  const [subject, setSubject] = useState("general");
+
+  useEffect(() => {
+    if (!state.message) return;
+    if (state.ok) {
+      toast.success(state.message);
+      formRef.current?.reset();
+      setSubject("general");
+    } else {
+      toast.error(state.message);
+    }
+  }, [state.ok, state.message]);
+
   return (
-    <div className="bg-red-600 text-white md:py-30 py-20">
-      <div className="md:max-w-5xl md:mx-auto mx-10">
-        <h1 className="md:text-5xl text-3xl font-bold mb-5">
-          Need Help or Want to Reach Out?
-        </h1>
-        <p className="md:text-xl text-md mb-10">
-          If you&apos;re facing any issues, have concerns, or just want to
-          suggest improvements, this is the place. Fill out the form below and
-          our team will get back to you as soon as possible.
-        </p>
+    <form ref={formRef} action={formAction} className="space-y-6">
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-2">
+          <Label htmlFor="name">Your name</Label>
+          <Input
+            id="name"
+            name="name"
+            required
+            autoComplete="name"
+            placeholder="Budi Santoso"
+          />
+        </div>
+
+        <div className="grid gap-2">
+          <Label htmlFor="email">Your email</Label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="you@example.com"
+          />
+        </div>
       </div>
-      <form
-        action={formAction}
-        className="md:max-w-5xl md:mx-auto mx-10 flex flex-col md:text-xl text-md"
-      >
-        <label htmlFor="name">Your Name</label>
-        <input
-          name="name"
-          placeholder="Chris Thompson"
-          type="text"
-          required
-          className="border rounded-2xl px-3 py-2 text-black bg-white mb-5"
-        />
 
-        <label htmlFor="email">Your Email</label>
-        <input
-          type="email"
-          placeholder="youremail@example.com"
-          name="email"
-          required
-          className="border rounded-2xl px-3 py-2 text-black bg-white mb-5"
-        />
-
-        <label htmlFor="subject">What is this about?</label>
-        <select
+      <div className="grid gap-2">
+        <Label htmlFor="subject">What is this about?</Label>
+        <Select
           name="subject"
-          className="border rounded-2xl px-3 py-2 text-black bg-white mb-5"
+          value={subject}
+          onValueChange={setSubject}
           required
         >
-          <option value="general">General Question</option>
-          <option value="concern">Concern</option>
-          <option value="suggestion">Suggestion</option>
-          <option value="support">Support Request</option>
-          <option value="other">Other</option>
-        </select>
+          <SelectTrigger id="subject" className="w-full">
+            <SelectValue placeholder="Choose a topic" />
+          </SelectTrigger>
+          <SelectContent>
+            {subjects.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
 
-        <label htmlFor="message">Your Message</label>
-        <textarea
+      <div className="grid gap-2">
+        <Label htmlFor="message">Your message</Label>
+        <Textarea
+          id="message"
           name="message"
-          placeholder="Write your message here..."
           required
-          className="border rounded-2xl px-3 py-2 md:min-h-50 min-h-30 text-black bg-white md:mb-20 mb-10"
+          rows={6}
+          placeholder="Tell us what is going on. The more detail you give, the better we can help."
+          className="min-h-40 resize-y"
         />
-        <ButtonSecondary className={`text-black`} disabled={isPending}>
+      </div>
+
+      <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs leading-relaxed text-ink-500">
+          Your message goes to the THUISA committee inbox. We usually reply
+          within a few days.
+        </p>
+        <Button
+          type="submit"
+          disabled={isPending}
+          variant="brand"
+          size="lg"
+          className="shrink-0"
+        >
           {isPending ? (
-            <Spinner className="size-7 text-red-600 mx-auto" />
+            <>
+              <Spinner className="size-5" />
+              Sending
+            </>
           ) : (
-            "Submit"
+            <>
+              <Send aria-hidden />
+              Send message
+            </>
           )}
-        </ButtonSecondary>
-      </form>
-    </div>
+        </Button>
+      </div>
+    </form>
   );
 }

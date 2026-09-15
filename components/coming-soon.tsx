@@ -1,12 +1,29 @@
-import { WrenchScrewdriverIcon } from "@heroicons/react/24/solid";
+import { Wrench } from "lucide-react";
+import { Container, Section } from "@/components/ui/section";
 
-export default function ComingSoon() {
+/**
+ * Placeholder for a page that is not built yet. Nothing uses it right now —
+ * Report and Resources both have real content — but it is here for the next
+ * section that needs a holding page.
+ */
+export default function ComingSoon({
+  title = "Coming soon",
+  body = "We are still putting this page together. Check back soon.",
+}: {
+  title?: string;
+  body?: string;
+}) {
   return (
-    <div className="w-full items-center flex flex-col justify-center">
-      <WrenchScrewdriverIcon className="size-40 text-gray-400 mt-20 md:mb-5 mb-3 md:size-80" />
-      <h1 className="text-3xl md:text-7xl font-bold mb-4 md:mb-8 text-gray-400 text-center">
-        Coming Soon
-      </h1>
-    </div>
+    <Section spacing="loose">
+      <Container size="narrow" className="text-center">
+        <span className="mx-auto grid size-20 place-items-center rounded-2xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
+          <Wrench className="size-10" aria-hidden />
+        </span>
+        <h1 className="mt-8 font-display text-3xl font-bold text-ink-900 md:text-5xl">
+          {title}
+        </h1>
+        <p className="mt-4 text-base text-ink-600 md:text-lg">{body}</p>
+      </Container>
+    </Section>
   );
 }

@@ -1,91 +1,141 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Mail, MapPin } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Container } from "@/components/ui/section";
+import { images, navigation, partners, site, socials } from "@/lib/site";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-900 text-gray-400 py-6">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col xl:flex-row items-center justify-between gap-4">
-        <div className="flex gap-10 md:gap-8 text-sm">
-          <div className="flex flex-col xl:flex-row gap-3 xl:gap-8 mb-2">
-            <Link href="/" className="hover:text-gray-700 transition">
-              Home
-            </Link>
-            <Link href="/about" className="hover:text-gray-700 transition">
-              About
-            </Link>
-            <Link href="/events" className="hover:text-gray-700 transition">
-              Events
-            </Link>
-          </div>
-          <div className="flex flex-col xl:flex-row xl:gap-8 gap-3">
-            <Link
-              href="/report"
-              className="hover:text-gray-700 transition"
-            >
-              Report
-            </Link>
-            <Link href="/resources" className="hover:text-gray-700 transition">
-              Resources
-            </Link>
-            <Link href="/contact" className="hover:text-gray-700 transition">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-        <div>
-          <div className="flex flex-warp gap-4 mb-7 max-xl:justify-center max-xl:items-center">
-            <Image
-              src="./android-chrome-192x192.png"
-              alt="thuisaLogo"
-              width={60}
-              height={60}
-            />
-            <Image src="./oirLogo.png" alt="oirLogo" width={60} height={60} />
-            <div className="w-px bg-gray-300" />
-            <div>
-              <h3 className="text-white font-semibold text-sm xl:text-base mb-2">
-                Follow Our Social Media
-              </h3>
-              <div className="flex">
-                <Link href={"https://www.instagram.com/thuisa_official"} className="hover:cursor-pointer" target="__blank">
-                  <Image
-                    src={"./instagram.png"}
-                    alt="instagramLogo"
-                    width={30}
-                    height={30}
-                  />
-                </Link>
-                <Link href={"https://www.tiktok.com/@thuisa_official"} className="hover:cursor-pointer" target="__blank">
-                  <Image
-                    src={"./tiktok.png"}
-                    alt="tiktokLogo"
-                    width={30}
-                    height={30}
-                    className="mx-3 border-1 border-white rounded-md p-1"
-                  />
-                </Link>
-                <Link href={""} className="hover:cursor-pointer" target="__blank">
-                  <Image
-                    src={"./line.png"}
-                    alt="lineLogo"
-                    width={30}
-                    height={30}
-                    className="rounded-sm"
-                  />
-                </Link>
+    <footer className="bg-ink-950 text-ink-300">
+      <Container size="wide" className="py-14 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          {/* Identity */}
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3">
+              <span className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-white">
+                <Image
+                  src={images.logo}
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="size-14 object-contain"
+                />
+              </span>
+              <div>
+                <p className="font-display text-xl font-extrabold text-white">
+                  {site.name}
+                </p>
+                <p className="text-sm text-ink-400">{site.fullName}</p>
               </div>
             </div>
+
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-ink-400">
+              A home away from home for Indonesian students at Tunghai
+              University since {site.foundedYear}. Come for the events, stay for
+              the people.
+            </p>
+
+            <div className="mt-6 space-y-2 text-sm">
+              <a
+                href={`mailto:${site.email}`}
+                className="flex items-center gap-2.5 text-ink-300 transition-colors hover:text-white"
+              >
+                <Mail className="size-4 shrink-0 text-brand-400" aria-hidden />
+                {site.email}
+              </a>
+              <p className="flex items-center gap-2.5 text-ink-400">
+                <MapPin className="size-4 shrink-0 text-brand-400" aria-hidden />
+                {site.university}, {site.city}
+              </p>
+            </div>
           </div>
-          <p className="text-sm mb-2 max-xl:text-center">
-            © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-white">THUISA</span>. All rights
-            reserved.
-          </p>
-          <p className="text-sm max-xl:text-center">
-            Made by the Double U Team
-          </p>
+
+          {/* Navigation */}
+          <nav className="lg:col-span-3" aria-label="Footer">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-white">
+              Explore
+            </h2>
+            <ul className="mt-5 space-y-3 text-sm">
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-ink-400 transition-colors hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Partners */}
+          <div className="lg:col-span-2">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-white">
+              In partnership with
+            </h2>
+            <ul className="mt-5 space-y-3 text-sm">
+              {partners.map((partner) => (
+                <li key={partner.name}>
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink-400 transition-colors hover:text-white"
+                  >
+                    {partner.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div className="lg:col-span-2">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-white">
+              Follow us
+            </h2>
+            <ul className="mt-5 space-y-3">
+              {socials.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 text-sm text-ink-400 transition-colors hover:text-white"
+                  >
+                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 transition-colors group-hover:bg-brand-600">
+                      <Image
+                        src={social.icon}
+                        alt=""
+                        width={18}
+                        height={18}
+                        className="size-[18px] object-contain"
+                      />
+                    </span>
+                    <span>
+                      <span className="block text-white">{social.label}</span>
+                      <span className="block text-xs">{social.handle}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+
+        <Separator className="mt-14 bg-white/10" />
+        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-ink-500 sm:flex-row">
+          <p>
+            © {year} <span className="font-semibold text-ink-300">{site.name}</span>.
+            All rights reserved.
+          </p>
+          <p>Made by the Double U Team</p>
+        </div>
+      </Container>
     </footer>
   );
 }
