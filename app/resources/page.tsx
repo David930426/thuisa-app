@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { Icon } from "@/components/icon";
-import { StayConnected } from "@/components/sections/stay-connected";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -209,7 +208,6 @@ export default function Page() {
         </Container>
       </Section>
 
-      <StayConnected />
     </>
   );
 }

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Ticket } from "lucide-react";
 import { ContactForm } from "@/components/form";
-import { StayConnected } from "@/components/sections/stay-connected";
+import { shelfCardClass } from "@/components/shelf-card";
+import { TextLink } from "@/components/text-link";
 import {
   Accordion,
   AccordionContent,
@@ -11,13 +11,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
-import {
-  Container,
-  PageHeader,
-  Section,
-  SectionHeading,
-} from "@/components/ui/section";
+import { Container, PageHeader } from "@/components/ui/section";
 import { site, socials } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -63,172 +59,243 @@ const faqs = [
   },
 ];
 
+/** What each channel is actually for, so people pick the right one. */
+const channelNotes: Record<string, string> = {
+  Instagram: "Event announcements, and DMs for quick questions.",
+  TikTok: "Clips from events. Not the best place to ask things.",
+  LINE: "The fastest way to reach someone on the committee.",
+};
+
+const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
+
+/** Two-tone Apple-style section headline. */
+function Headline({ title, subtitle }: { title: string; subtitle: string }) {
+  return (
+    <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+      <span className="text-ink-900">{title}</span>{" "}
+      <span className="text-ink-400">{subtitle}</span>
+    </h2>
+  );
+}
+
 export default function Page() {
   return (
     <>
       <PageHeader
         eyebrow="Contact Us"
         title="Talk to us"
-        lede="Questions about joining, an event, or something you are struggling with in Taichung — there is no question too small. We have almost certainly been asked it before."
+        lede="Questions about joining, an event, or something you are struggling with in Taichung — there is no question too small."
       />
 
       {/* Ways to reach us */}
-      <Section spacing="tight">
+      <section className="bg-ink-50 py-16 md:py-24">
         <Container size="wide">
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Headline
+            title="Pick a channel."
+            subtitle="The committee checks all of them every day."
+          />
+
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4">
             {socials.map((social) => (
               <li key={social.label}>
-                <Card
-                  asChild
-                  className="group h-full justify-start gap-0 border-ink-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-ink-900/5"
-                >
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="grid size-12 place-items-center rounded-xl bg-ink-100 transition-colors group-hover:bg-brand-600">
-                      <Image
-                        src={social.icon}
-                        alt=""
-                        width={24}
-                        height={24}
-                        className="size-6 object-contain"
-                      />
-                    </span>
-                    <span className="mt-5 flex items-center gap-1.5 font-display text-base font-bold text-ink-900">
-                      {social.label}
-                      <ArrowUpRight className="size-4 text-ink-400 transition-colors group-hover:text-brand-600" />
-                    </span>
-                    <span className="mt-1 text-sm text-ink-600">
-                      {social.handle}
-                    </span>
-                  </a>
+                <Card className={tile}>
+                  <Image
+                    src={social.icon}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="size-10 object-contain"
+                  />
+                  <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+                    {social.label}
+                  </h3>
+                  <p className="mt-1 text-sm text-ink-500">{social.handle}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                    {channelNotes[social.label]}
+                  </p>
+                  <div className="mt-auto pt-5">
+                    <TextLink href={social.href} external>
+                      Open {social.label}
+                    </TextLink>
+                  </div>
                 </Card>
               </li>
             ))}
 
             <li>
-              <Card
-                asChild
-                className="group h-full justify-start gap-0 border-transparent bg-brand-600 p-6 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-lg"
-              >
-                <a href={`mailto:${site.email}`}>
-                  <span className="grid size-12 place-items-center rounded-xl bg-white/15 ring-1 ring-white/20">
-                    <Mail className="size-6" aria-hidden />
-                  </span>
-                  <span className="mt-5 font-display text-base font-bold">
-                    Email us
-                  </span>
-                  <span className="mt-1 break-all text-sm text-white/80">
-                    {site.email}
-                  </span>
-                </a>
+              <Card className={tile}>
+                <Mail
+                  className="size-10 text-ink-800"
+                  strokeWidth={1.25}
+                  aria-hidden
+                />
+                <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+                  Email
+                </h3>
+                <p className="mt-1 break-all text-sm text-ink-500">
+                  {site.email}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  For anything official: partnerships, sponsorship, letters.
+                </p>
+                <div className="mt-auto pt-5">
+                  <TextLink href={`mailto:${site.email}`}>Send an email</TextLink>
+                </div>
               </Card>
             </li>
           </ul>
         </Container>
-      </Section>
+      </section>
 
-      {/* Form + map */}
-      <Section tone="muted">
+      {/* Form */}
+      <section className="bg-white py-16 md:py-24">
         <Container size="wide">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
-              <SectionHeading
-                eyebrow="Send a message"
-                title="Write to the committee"
-                lede="Issues, concerns, suggestions, or partnership proposals — this reaches the committee inbox directly."
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <Headline
+                title="Write to the committee."
+                subtitle="Issues, concerns, suggestions, or proposals."
               />
-              <Card className="mt-10 border-ink-200 p-6 md:p-8">
-                <ContactForm />
-              </Card>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-500 md:text-lg">
+                This goes straight to the committee inbox. We usually reply
+                within a few days, and what you tell us stays with the
+                committee.
+              </p>
             </div>
 
-            <div className="lg:col-span-5">
-              <SectionHeading
-                eyebrow="Find us"
-                title="Tunghai University"
-                lede="No. 1727, Sec. 4, Taiwan Blvd, Xitun District, Taichung City, Taiwan."
+            <Card
+              className={cn(
+                shelfCardClass,
+                "bg-ink-50 p-6 shadow-none hover:scale-100 hover:shadow-none md:p-10 lg:col-span-7"
+              )}
+            >
+              <ContactForm />
+            </Card>
+          </div>
+        </Container>
+      </section>
+
+      {/* Find us */}
+      <section className="bg-ink-50 py-16 md:py-24">
+        <Container size="wide">
+          <Headline
+            title="Find us."
+            subtitle="No permanent office, but plenty of us on campus."
+          />
+
+          <div className="mt-10 grid gap-5 md:mt-12 lg:grid-cols-3">
+            <Card className={cn(tile, "p-0 lg:col-span-2")}>
+              <iframe
+                title="Tunghai University on Google Maps"
+                src={site.mapEmbedUrl}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-80 w-full border-0 md:h-full md:min-h-[28rem]"
               />
+            </Card>
 
-              <div className="mt-10 overflow-hidden rounded-2xl ring-1 ring-ink-200">
-                <iframe
-                  title="Tunghai University on Google Maps"
-                  src={site.mapEmbedUrl}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="h-80 w-full border-0 md:h-[26rem]"
-                />
-              </div>
-
-              <Card className="mt-6 flex-row items-start gap-3 border-ink-200 p-5">
+            <div className="grid gap-5">
+              <Card className={tile}>
                 <MapPin
-                  className="mt-0.5 size-5 shrink-0 text-brand-600"
+                  className="size-9 text-brand-600"
+                  strokeWidth={1.5}
                   aria-hidden
                 />
-                <p className="text-sm leading-relaxed text-ink-600">
-                  We do not keep a permanent office. The quickest way to reach a
-                  real person is Instagram or LINE — the committee checks both
-                  every day.
+                <h3 className="mt-5 font-display text-xl font-bold text-ink-900">
+                  {site.university}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  No. 1727, Sec. 4, Taiwan Blvd, Xitun District, Taichung City,
+                  Taiwan.
                 </p>
+                <div className="mt-auto pt-5">
+                  <TextLink
+                    href="https://maps.google.com/?q=Tunghai+University"
+                    external
+                  >
+                    Get directions
+                  </TextLink>
+                </div>
+              </Card>
+
+              <Card id="join" className={tile}>
+                <Ticket
+                  className="size-9 text-brand-600"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                <h3 className="mt-5 font-display text-xl font-bold text-ink-900">
+                  Membership
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                  {site.membershipFee}, for Indonesian students at Tunghai.
+                  Members pay less at events.
+                </p>
+                <div className="mt-auto pt-5">
+                  <TextLink href={site.joinFormUrl} external>
+                    Membership form
+                  </TextLink>
+                </div>
               </Card>
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* FAQ */}
-      <Section>
-        <Container size="wide">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
-              <SectionHeading
-                eyebrow="Ask THUISA"
-                title="Questions we get every semester"
-                lede="If yours is not here, send it to us and we will add it."
-              />
-            </div>
+      <section className="bg-white py-16 md:py-24">
+        <Container className="max-w-4xl">
+          <Headline
+            title="Questions."
+            subtitle="The ones we get every semester."
+          />
 
-            <div className="lg:col-span-8">
-              <Accordion
-                type="single"
-                collapsible
-                defaultValue="faq-0"
-                className="w-full"
+          <Accordion
+            type="single"
+            collapsible
+            className="mt-10 w-full border-t border-ink-200 md:mt-12"
+          >
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={faq.q}
+                value={`faq-${index}`}
+                className="border-ink-200"
               >
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={faq.q} value={`faq-${index}`}>
-                    <AccordionTrigger className="py-5 text-left font-display text-base font-bold text-ink-900 hover:no-underline md:text-lg">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-6">
-                      <p className="text-sm leading-relaxed text-ink-600 md:text-base">
-                        {faq.a}
-                      </p>
-                      {faq.link ? (
-                        <Link
-                          href={faq.link.href}
-                          {...(faq.link.href.startsWith("http")
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : {})}
-                          className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800"
-                        >
-                          {faq.link.label}
-                          <ArrowUpRight className="size-4" aria-hidden />
-                        </Link>
-                      ) : null}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </div>
-        </Container>
-      </Section>
+                <AccordionTrigger className="py-6 text-left font-display text-lg font-bold text-ink-900 hover:no-underline md:text-xl">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="pb-6">
+                  <p className="max-w-2xl text-base leading-relaxed text-ink-600">
+                    {faq.a}
+                  </p>
+                  {faq.link ? (
+                    <div className="mt-4">
+                      <TextLink
+                        href={faq.link.href}
+                        external={faq.link.href.startsWith("http")}
+                      >
+                        {faq.link.label}
+                      </TextLink>
+                    </div>
+                  ) : null}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
 
-      <StayConnected />
+          <p className="mt-10 text-base text-ink-500">
+            Not here?{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="font-medium text-brand-600 underline-offset-4 hover:underline"
+            >
+              Ask us directly
+            </a>{" "}
+            and we will add it.
+          </p>
+        </Container>
+      </section>
     </>
   );
 }

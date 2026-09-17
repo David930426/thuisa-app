@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img" aria-label="What we do - Culture">
+  <defs>
+    <linearGradient id="gvqzaop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8A5A12"/>
+      <stop offset="55%" stop-color="#C9831A"/>
+      <stop offset="100%" stop-color="#F4B942"/>
+    </linearGradient>
+    <pattern id="pvqzaop" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="56" height="56" fill="none"/>
+      <path d="M0 28h56M28 0v56" stroke="#ffffff" stroke-opacity="0.07" stroke-width="2"/>
+      <circle cx="28" cy="28" r="6" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="700" fill="url(#gvqzaop)"/>
+  <rect width="1000" height="700" fill="url(#pvqzaop)"/>
+  <g fill="#ffffff" font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="500" y="302.3" font-size="91" font-weight="800" fill-opacity="0.22" letter-spacing="5.46">THUISA</text>
+    <text x="500" y="368.55" font-size="53" font-weight="700">What we do - Culture</text>
+    <text x="500" y="418.95" font-size="28" font-weight="500" fill-opacity="0.75">Indonesia booth or a performance</text>
+    <text x="500" y="666.4" font-size="23.8" font-weight="500" fill-opacity="0.55">1000 x 700 &#183; replace me</text>
+  </g>
+</svg>

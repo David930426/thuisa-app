@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EventsBrowser } from "@/components/events-browser";
-import { StayConnected } from "@/components/sections/stay-connected";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -104,7 +103,6 @@ export default function Page() {
         </Container>
       </Section>
 
-      <StayConnected />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Compass, MessagesSquare } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Hero from "@/components/home/hero";
 import { EventCard } from "@/components/event-card";
 import { Gallery } from "@/components/sections/gallery";
@@ -8,32 +8,11 @@ import { StayConnected } from "@/components/sections/stay-connected";
 import { PartnersStrip } from "@/components/sections/partners-strip";
 import { Pillars } from "@/components/sections/pillars";
 import { StatsBand } from "@/components/sections/stats-band";
-import { Card } from "@/components/ui/card";
+import { WhereToStart } from "@/components/sections/where-to-start";
 import { Button } from "@/components/ui/button";
 import { Container, Section, SectionHeading } from "@/components/ui/section";
 import { getUpcomingEvents } from "@/lib/events";
 import { images, site } from "@/lib/site";
-
-const startHere = [
-  {
-    title: "While you are still in Indonesia",
-    body: "Resident visa, dorm application, admission documents. All of it is slower once you are already here.",
-    href: "/resources#before-you-arrive",
-    icon: Compass,
-  },
-  {
-    title: "Your first two weeks in Taichung",
-    body: "ARC within 15 days of landing, then a bank account, a SIM card, and an EasyCard. In that order.",
-    href: "/resources#first-weeks",
-    icon: CalendarDays,
-  },
-  {
-    title: "Anything the official pages skip",
-    body: "Which dorm is closer to class, where to find sambal, how to read a lease. Message us and a senior will answer.",
-    href: "/contact",
-    icon: MessagesSquare,
-  },
-];
 
 export default function Home() {
   const upcoming = getUpcomingEvents(3);
@@ -124,57 +103,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Start here */}
-      <Section tone="muted">
-        <Container size="wide">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <SectionHeading
-                eyebrow="Arriving soon?"
-                title="Where to start"
-                lede="The Resources page has the full guide. These are the parts people ask about first."
-              />
-              <div className="mt-8 hidden aspect-[4/3] overflow-hidden rounded-2xl bg-ink-100 ring-1 ring-ink-200 lg:block">
-                <div className="relative size-full">
-                  <Image
-                    src={images.homeWelcome}
-                    alt="THUISA members welcoming new students"
-                    fill
-                    sizes="40vw"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <ul className="space-y-4 lg:col-span-7">
-              {startHere.map((item) => (
-                <li key={item.title}>
-                  <Card
-                    asChild
-                    className="group flex-row items-start gap-5 border-ink-200 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lg hover:shadow-ink-900/5 md:p-8"
-                  >
-                    <Link href={item.href}>
-                      <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100 transition-colors group-hover:bg-brand-600 group-hover:text-white">
-                        <item.icon className="size-6" aria-hidden />
-                      </span>
-                      <span className="flex-1">
-                        <span className="flex items-center gap-2 font-display text-lg font-bold text-ink-900">
-                          {item.title}
-                          <ArrowRight className="size-4 text-brand-600 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
-                        </span>
-                        <span className="mt-2 block text-sm leading-relaxed text-ink-600">
-                          {item.body}
-                        </span>
-                      </span>
-                    </Link>
-                  </Card>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </Section>
+      <WhereToStart />
 
       <Gallery />
 

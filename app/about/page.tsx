@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Globe2, Target } from "lucide-react";
-import { StayConnected } from "@/components/sections/stay-connected";
 import { PartnersStrip } from "@/components/sections/partners-strip";
 import { Pillars } from "@/components/sections/pillars";
 import { StatsBand } from "@/components/sections/stats-band";
+import { shelfCardClass } from "@/components/shelf-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,6 +15,7 @@ import {
   SectionHeading,
 } from "@/components/ui/section";
 import { divisions, leadership } from "@/lib/team";
+import { cn } from "@/lib/utils";
 import { images, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -53,89 +53,86 @@ export default function Page() {
       </PageHeader>
 
       {/* Our story */}
-      <Section>
+      <section className="bg-white py-16 md:py-24">
         <Container size="wide">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <SectionHeading
-                eyebrow="Our story"
-                title="Nine years of Indonesian students at Tunghai"
-                lede="THUISA was set up in 2017 and has been run by a student committee every year since."
-              />
-              <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-600">
-                <p>
-                  What began in {site.foundedYear} as a small group organising a
-                  welcome night is now the association every new Indonesian
-                  student at Tunghai gets introduced to. The calendar covers
-                  both semesters: welcome events, holiday dinners, a sports
-                  tournament, and the Indonesia booth at International Week.
-                </p>
-                <p>
-                  The committee changes every year, and so does the calendar.
-                  Each one keeps what worked, drops what did not, and writes it
-                  all down in the accountability report for the next group to
-                  read.
-                </p>
-              </div>
-            </div>
+          <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            <span className="text-ink-900">Our story.</span>{" "}
+            <span className="text-ink-400">
+              Nine years of Indonesian students at Tunghai, run by a new
+              committee every year.
+            </span>
+          </h2>
 
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink-100 ring-1 ring-ink-200">
-              <Image
-                src={images.aboutCampus}
-                alt="Tunghai University campus"
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[28px] bg-ink-100 sm:aspect-[16/9] md:mt-12 lg:aspect-[21/9]">
+            <Image
+              src={images.aboutCampus}
+              alt="Tunghai University campus"
+              fill
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-cover"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-ink-950/75 via-ink-950/10 to-transparent"
+            />
+            <p className="absolute inset-x-0 bottom-0 max-w-xl p-6 font-display text-2xl font-bold leading-tight text-white md:p-10 md:text-4xl">
+              Founded in {site.foundedYear} at Tunghai University, Taichung.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2 md:gap-16">
+            <p className="text-lg leading-relaxed text-ink-500 md:text-xl">
+              <span className="font-semibold text-ink-900">
+                It started with a welcome night.
+              </span>{" "}
+              What began as a small group of students is now the association
+              every new Indonesian student at Tunghai gets introduced to. The
+              calendar covers both semesters: welcome events, holiday dinners,
+              a sports tournament, and the Indonesia booth at International
+              Week.
+            </p>
+            <p className="text-lg leading-relaxed text-ink-500 md:text-xl">
+              <span className="font-semibold text-ink-900">
+                Every year, a new committee.
+              </span>{" "}
+              Each one keeps what worked, drops what did not, and writes it all
+              down in the accountability report for the next group to read.
+            </p>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Mission & vision */}
-      <Section tone="muted" spacing="tight">
+      <section className="bg-ink-50 py-16 md:py-24">
         <Container size="wide">
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card className="border-ink-200 p-2">
-              <CardHeader>
-                <span className="grid size-12 place-items-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
-                  <Target className="size-6" aria-hidden />
-                </span>
-                <CardTitle asChild>
-                  <h2 className="mt-5 font-display text-2xl font-bold text-ink-900">
-                    Our mission
-                  </h2>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-base leading-relaxed text-ink-600">
-                  Support, connect, and empower Indonesian students at Tunghai
-                  University — practically, socially, and culturally.
-                </p>
-              </CardContent>
+          <div className="grid gap-5 md:grid-cols-2">
+            <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                Our mission
+              </h2>
+              <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
+                Support, connect, and empower Indonesian students at Tunghai.
+              </p>
+              <p className="mt-5 text-base leading-relaxed text-ink-500 md:text-lg">
+                Practically, socially, and culturally, from the first week of
+                paperwork to graduation day.
+              </p>
             </Card>
 
-            <Card className="border-ink-200 p-2">
-              <CardHeader>
-                <span className="grid size-12 place-items-center rounded-xl bg-accent-50 text-accent-600 ring-1 ring-accent-100">
-                  <Globe2 className="size-6" aria-hidden />
-                </span>
-                <CardTitle asChild>
-                  <h2 className="mt-5 font-display text-2xl font-bold text-ink-900">
-                    Our vision
-                  </h2>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-base leading-relaxed text-ink-600">
-                  A home away from home for every Indonesian student who comes
-                  to Tunghai, no matter which year they arrive in.
-                </p>
-              </CardContent>
+            <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-accent-600">
+                Our vision
+              </h2>
+              <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
+                A home away from home for every Indonesian student.
+              </p>
+              <p className="mt-5 text-base leading-relaxed text-ink-500 md:text-lg">
+                No matter which year they arrive in, or how long they stay.
+              </p>
             </Card>
           </div>
         </Container>
-      </Section>
+      </section>
 
       <StatsBand />
 
@@ -254,7 +251,6 @@ export default function Page() {
 
       <PartnersStrip />
 
-      <StayConnected />
     </>
   );
 }

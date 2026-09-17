@@ -56,8 +56,8 @@ are printed on each placeholder image.
 - Check every external link in `lib/resources.ts` — the ones commented `// verify`
   are most likely to have moved
 - Replace `joinFormUrl` and the LINE link in `lib/site.ts`
-- Add real Tunghai University and PERPITA logos in `partners` (they currently
-  reuse other logos as stand-ins)
+- Add a real Tunghai University logo in `partners` (it currently reuses the
+  OIR logo as a stand-in)
 - Confirm the event dates in `lib/events.ts` match the real academic year
 
 ## Components

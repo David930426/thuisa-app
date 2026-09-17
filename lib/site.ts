@@ -66,27 +66,38 @@ export const stats = [
   { value: "7", label: "Annual events", detail: "From Yingxin to Graduation" },
 ];
 
-/** What THUISA runs. Shown on the homepage and the About page. */
+/**
+ * What THUISA runs. Shown as a sideways-scrolling shelf on the homepage and
+ * the About page. Each card links somewhere and has its own photo.
+ */
 export const pillars = [
   {
+    eyebrow: "Every September",
     title: "Welcoming new students",
     body: "Two Yingxin events at the start of the year — one on campus, one a trip. New students meet the people already here before the semester gets busy.",
-    icon: "users",
+    image: "/images/what-we-do/welcoming.svg",
+    href: "/events#yingxin-1",
   },
   {
+    eyebrow: "All year",
     title: "Events across both semesters",
     body: "Halloween, Christmas dinner, the Gala Dinner with OIR, and the THUISA Cup in spring. Seven in a year, roughly one every six weeks.",
-    icon: "calendar",
+    image: "/images/what-we-do/events.svg",
+    href: "/events",
   },
   {
+    eyebrow: "Every spring",
     title: "Indonesian culture on campus",
     body: "We run the Indonesia booth at International Week and perform at the Gala Dinner. Food, music, and traditional dress, in front of the whole university.",
-    icon: "globe",
+    image: "/images/what-we-do/culture.svg",
+    href: "/events#international-week",
   },
   {
+    eyebrow: "Whenever you need it",
     title: "The practical stuff",
     body: "ARC paperwork, dorm forms, health insurance, where to buy Indonesian groceries in Taichung. Ask in the group chat — someone has usually done it already.",
-    icon: "lifebuoy",
+    image: "/images/what-we-do/practical.svg",
+    href: "/resources",
   },
 ];
 
@@ -100,11 +111,6 @@ export const partners = [
     name: "Office of International Relations",
     href: "https://oir.thu.edu.tw/",
     logo: "/oirLogo.png",
-  },
-  {
-    name: "PERPITA",
-    href: "https://www.perpitaofficial.org/",
-    logo: "/logoThuisa.jpeg", // TODO: replace with the PERPITA logo
   },
 ];
 

@@ -209,6 +209,34 @@
   }
 }
 
+/* Apple-style shelves (components/shelf.tsx). The track runs edge to edge,
+   but its padding lines the first card up with Container size="wide"
+   (max-w-7xl, px-5 / sm:px-8). Percentages resolve against the full-width
+   track, so this stays exact regardless of scrollbar width. */
+.shelf-track {
+  padding-inline: 1.25rem;
+  scroll-padding-inline: 1.25rem;
+  scrollbar-width: none;
+}
+
+.shelf-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .shelf-track {
+    padding-inline: 2rem;
+    scroll-padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  .shelf-track {
+    padding-inline: calc((100% - 80rem) / 2 + 2rem);
+    scroll-padding-inline: calc((100% - 80rem) / 2 + 2rem);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
