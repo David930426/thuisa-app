@@ -88,7 +88,7 @@ export default function Menu() {
             <span
               className={cn(
                 "block font-display text-lg font-extrabold leading-none tracking-tight",
-                solid ? "text-ink-900" : "text-white"
+                solid ? "text-fg" : "text-white"
               )}
             >
               {site.name}
@@ -96,7 +96,7 @@ export default function Menu() {
             <span
               className={cn(
                 "mt-1 block text-[11px] leading-tight",
-                solid ? "text-ink-600" : "text-white/80"
+                solid ? "text-fg-muted" : "text-white/80"
               )}
             >
               Tunghai University
@@ -120,7 +120,7 @@ export default function Menu() {
                         solid
                           ? active
                             ? "text-brand-700 focus:text-brand-700"
-                            : "text-ink-600 hover:text-ink-900"
+                            : "text-fg-muted hover:text-fg"
                           : active
                             ? "text-white hover:bg-white/10 focus:bg-white/10 focus:text-white"
                             : "text-white/75 hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white"
@@ -178,7 +178,7 @@ export default function Menu() {
                 className={cn(
                   "rounded-xl lg:hidden",
                   solid
-                    ? "text-ink-800 hover:bg-ink-100"
+                    ? "text-fg-body hover:bg-surface-sunken"
                     : "text-white hover:bg-white/15 hover:text-white"
                 )}
               >
@@ -189,7 +189,7 @@ export default function Menu() {
             <SheetContent side="right" className="w-full max-w-sm">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-3 text-left">
-                  <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-lg bg-white ring-1 ring-ink-200">
+                  <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-lg bg-white ring-1 ring-border">
                     <Image
                       src={images.logo}
                       alt=""
@@ -198,7 +198,7 @@ export default function Menu() {
                       className="size-10 object-contain"
                     />
                   </span>
-                  <span className="font-display text-base font-extrabold text-ink-900">
+                  <span className="font-display text-base font-extrabold text-fg">
                     {site.name}
                   </span>
                 </SheetTitle>
@@ -218,7 +218,7 @@ export default function Menu() {
                         "flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-colors",
                         active
                           ? "bg-brand-50 text-brand-700"
-                          : "text-ink-700 hover:bg-ink-50"
+                          : "text-ink-700 hover:bg-surface-muted"
                       )}
                     >
                       {item.label}

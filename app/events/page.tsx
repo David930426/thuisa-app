@@ -41,7 +41,7 @@ export default function Page() {
       {/* The year at a glance */}
       <Section tone="muted" spacing="tight">
         <Container size="wide">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-600">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-fg-muted">
             The year at a glance
           </h2>
           <ol className="mt-6 flex gap-3 overflow-x-auto pb-3">
@@ -51,13 +51,13 @@ export default function Page() {
                 <li key={event.id} className="shrink-0">
                   <Card
                     asChild
-                    className="w-36 gap-0 border-ink-200 p-4 transition-all hover:-translate-y-0.5 hover:border-brand-300"
+                    className="w-36 gap-0 border-border p-4 transition-all hover:-translate-y-0.5 hover:border-brand-300"
                   >
                     <a href={`#${event.id}`}>
                       <span className="text-xs font-bold uppercase tracking-wider text-brand-600">
                         {monthShort} {day}
                       </span>
-                      <span className="mt-1.5 font-display text-sm font-bold leading-snug text-ink-900">
+                      <span className="mt-1.5 font-display text-sm font-bold leading-snug text-fg">
                         {event.title}
                       </span>
                     </a>
@@ -86,10 +86,10 @@ export default function Page() {
       {/* Host with us */}
       <Section tone="muted" spacing="tight">
         <Container size="narrow" className="text-center">
-          <h2 className="font-display text-2xl font-bold text-ink-900 md:text-3xl">
+          <h2 className="font-display text-2xl font-bold text-fg md:text-3xl">
             Want to collaborate on an event?
           </h2>
-          <p className="mt-4 text-ink-600">
+          <p className="mt-4 text-fg-muted">
             We partner with student associations, campus offices, and sponsors
             every year. If you have an idea, or a proposal, we would like to
             hear it.

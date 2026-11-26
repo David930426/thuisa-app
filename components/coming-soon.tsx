@@ -19,10 +19,10 @@ export default function ComingSoon({
         <span className="mx-auto grid size-20 place-items-center rounded-2xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
           <Wrench className="size-10" aria-hidden />
         </span>
-        <h1 className="mt-8 font-display text-3xl font-bold text-ink-900 md:text-5xl">
+        <h1 className="mt-8 font-display text-3xl font-bold text-fg md:text-5xl">
           {title}
         </h1>
-        <p className="mt-4 text-base text-ink-600 md:text-lg">{body}</p>
+        <p className="mt-4 text-base text-fg-muted md:text-lg">{body}</p>
       </Container>
     </Section>
   );

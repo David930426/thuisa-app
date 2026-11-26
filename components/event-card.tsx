@@ -41,11 +41,11 @@ export function EventCard({
       <Card
         id={event.id}
         className={cn(
-          "group gap-0 overflow-hidden border-ink-200 py-0 transition-all duration-300 hover:-translate-y-1 hover:border-ink-300 hover:shadow-xl hover:shadow-ink-900/10",
+          "group gap-0 overflow-hidden border-border py-0 transition-all duration-300 hover:-translate-y-1 hover:border-ink-300 hover:shadow-xl hover:shadow-ink-900/10",
           className
         )}
       >
-        <div className="relative aspect-[3/2] overflow-hidden bg-ink-100">
+        <div className="relative aspect-[3/2] overflow-hidden bg-surface-sunken">
           <Image
             src={event.image}
             alt={event.title}
@@ -63,10 +63,10 @@ export function EventCard({
 
           {/* Date chip */}
           <div className="absolute left-4 top-4 overflow-hidden rounded-xl bg-white/95 text-center shadow-lg backdrop-blur-sm">
-            <p className="bg-brand-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+            <p className="bg-brand-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-fg-inverse">
               {monthShort}
             </p>
-            <p className="px-3 py-1.5 font-display text-xl font-extrabold leading-none text-ink-900">
+            <p className="px-3 py-1.5 font-display text-xl font-extrabold leading-none text-fg">
               {day}
             </p>
           </div>
@@ -89,7 +89,7 @@ export function EventCard({
           >
             {event.type}
           </Badge>
-          <CardTitle className="font-display text-xl font-bold text-ink-900">
+          <CardTitle className="font-display text-xl font-bold text-fg">
             {event.title}
           </CardTitle>
           <CardDescription className="font-medium text-brand-700">
@@ -98,7 +98,7 @@ export function EventCard({
         </CardHeader>
 
         <CardContent className="pt-4">
-          <dl className="space-y-2 text-sm text-ink-600">
+          <dl className="space-y-2 text-sm text-fg-muted">
             <div className="flex items-start gap-2.5">
               <dt className="sr-only">Date</dt>
               <CalendarDays
@@ -122,7 +122,7 @@ export function EventCard({
           <DialogTrigger asChild>
             <Button
               variant="secondary"
-              className="w-full hover:bg-brand-600 hover:text-white"
+              className="w-full hover:bg-brand-600 hover:text-fg-inverse"
             >
               {past ? "See what happened" : "Event details"}
             </Button>
@@ -133,7 +133,7 @@ export function EventCard({
       {/* `block` overrides the base grid: a grid item with an aspect ratio and
           a percentage width collapses its row to zero and overlaps the body. */}
       <DialogContent className="block max-h-[88vh] max-w-2xl overflow-y-auto rounded-2xl p-0">
-        <div className="relative aspect-[5/2] w-full overflow-hidden bg-ink-100">
+        <div className="relative aspect-[5/2] w-full overflow-hidden bg-surface-sunken">
           <Image
             src={event.image}
             alt=""
@@ -152,7 +152,7 @@ export function EventCard({
 
         <div className="px-6 pb-8 pt-2">
           <DialogHeader>
-            <DialogTitle className="font-display text-2xl font-bold text-ink-900">
+            <DialogTitle className="font-display text-2xl font-bold text-fg">
               {event.title}
             </DialogTitle>
             <DialogDescription className="text-base text-brand-700">
@@ -160,15 +160,15 @@ export function EventCard({
             </DialogDescription>
           </DialogHeader>
 
-          <dl className="mt-6 grid gap-3 rounded-xl bg-ink-50 p-4 text-sm sm:grid-cols-2">
+          <dl className="mt-6 grid gap-3 rounded-xl bg-surface-muted p-4 text-sm sm:grid-cols-2">
             <div className="flex items-start gap-2.5">
               <CalendarDays
                 className="mt-0.5 size-4 shrink-0 text-brand-600"
                 aria-hidden
               />
               <div>
-                <dt className="font-semibold text-ink-900">When</dt>
-                <dd className="text-ink-600">{formatEventDate(event.date)}</dd>
+                <dt className="font-semibold text-fg">When</dt>
+                <dd className="text-fg-muted">{formatEventDate(event.date)}</dd>
               </div>
             </div>
             <div className="flex items-start gap-2.5">
@@ -177,8 +177,8 @@ export function EventCard({
                 aria-hidden
               />
               <div>
-                <dt className="font-semibold text-ink-900">Where</dt>
-                <dd className="text-ink-600">{event.location}</dd>
+                <dt className="font-semibold text-fg">Where</dt>
+                <dd className="text-fg-muted">{event.location}</dd>
               </div>
             </div>
             <div className="flex items-start gap-2.5">
@@ -187,8 +187,8 @@ export function EventCard({
                 aria-hidden
               />
               <div>
-                <dt className="font-semibold text-ink-900">Who can come</dt>
-                <dd className="text-ink-600">{event.who}</dd>
+                <dt className="font-semibold text-fg">Who can come</dt>
+                <dd className="text-fg-muted">{event.who}</dd>
               </div>
             </div>
             <div className="flex items-start gap-2.5">
@@ -197,8 +197,8 @@ export function EventCard({
                 aria-hidden
               />
               <div>
-                <dt className="font-semibold text-ink-900">Registration</dt>
-                <dd className="text-ink-600">
+                <dt className="font-semibold text-fg">Registration</dt>
+                <dd className="text-fg-muted">
                   {event.noTicket
                     ? "Free, no registration needed"
                     : "Open to all; members pay a lower price"}
@@ -209,7 +209,7 @@ export function EventCard({
 
           <div className="mt-6 space-y-6 text-sm leading-relaxed text-ink-700">
             <section>
-              <h4 className="font-display text-base font-bold text-ink-900">
+              <h4 className="font-display text-base font-bold text-fg">
                 About the event
               </h4>
               <p className="mt-2">{event.about}</p>
@@ -219,7 +219,7 @@ export function EventCard({
 
             <div className="grid gap-6 sm:grid-cols-2">
               <section>
-                <h4 className="font-display text-base font-bold text-ink-900">
+                <h4 className="font-display text-base font-bold text-fg">
                   What happens
                 </h4>
                 <ul className="mt-2 space-y-1.5">
@@ -236,7 +236,7 @@ export function EventCard({
               </section>
 
               <section>
-                <h4 className="font-display text-base font-bold text-ink-900">
+                <h4 className="font-display text-base font-bold text-fg">
                   Why you should join
                 </h4>
                 <ul className="mt-2 space-y-1.5">
@@ -254,7 +254,7 @@ export function EventCard({
             </div>
 
             {event.note ? (
-              <p className="rounded-xl border-l-4 border-gold-400 bg-gold-50 px-4 py-3 text-ink-800">
+              <p className="rounded-xl border-l-4 border-gold-400 bg-gold-50 px-4 py-3 text-fg-body">
                 <span className="font-semibold">Please note: </span>
                 {event.note}
               </p>

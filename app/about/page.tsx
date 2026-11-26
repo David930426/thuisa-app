@@ -55,17 +55,17 @@ export default function Page() {
       </PageHeader>
 
       {/* Our story */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-surface py-16 md:py-24">
         <Container size="wide">
           <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-            <span className="text-ink-900">Our story.</span>{" "}
+            <span className="text-fg">Our story.</span>{" "}
             <span className="text-ink-500">
               Nine years of Indonesian students at Tunghai, run by a new
               committee every year.
             </span>
           </h2>
 
-          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[28px] bg-ink-100 sm:aspect-[16/9] md:mt-12 lg:aspect-[21/9]">
+          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[28px] bg-surface-sunken sm:aspect-[16/9] md:mt-12 lg:aspect-[21/9]">
             <Image
               src={images.aboutCampus}
               alt="Tunghai University campus"
@@ -83,8 +83,8 @@ export default function Page() {
           </div>
 
           <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2 md:gap-16">
-            <p className="text-lg leading-relaxed text-ink-600 md:text-xl">
-              <span className="font-semibold text-ink-900">
+            <p className="text-lg leading-relaxed text-fg-muted md:text-xl">
+              <span className="font-semibold text-fg">
                 It started with a welcome night.
               </span>{" "}
               What began as a small group of students is now the association
@@ -94,8 +94,8 @@ export default function Page() {
               Week.
             </p>
             <div>
-              <p className="text-lg leading-relaxed text-ink-600 md:text-xl">
-                <span className="font-semibold text-ink-900">
+              <p className="text-lg leading-relaxed text-fg-muted md:text-xl">
+                <span className="font-semibold text-fg">
                   Every year, a new committee.
                 </span>{" "}
                 Each one keeps what worked, drops what did not, and writes it
@@ -111,17 +111,17 @@ export default function Page() {
       </section>
 
       {/* Mission & vision */}
-      <section className="bg-ink-50 py-16 md:py-24">
+      <section className="bg-surface-muted py-16 md:py-24">
         <Container size="wide">
           <div className="grid gap-5 md:grid-cols-2">
             <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
               <h2 className="text-xs font-semibold uppercase tracking-wider text-brand-600">
                 Our mission
               </h2>
-              <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
+              <p className="mt-4 font-display text-3xl font-bold leading-tight text-fg md:text-4xl">
                 Support, connect, and empower Indonesian students at Tunghai.
               </p>
-              <p className="mt-5 text-base leading-relaxed text-ink-600 md:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-fg-muted md:text-lg">
                 Practically, socially, and culturally, from the first week of
                 paperwork to graduation day.
               </p>
@@ -131,10 +131,10 @@ export default function Page() {
               <h2 className="text-xs font-semibold uppercase tracking-wider text-gold-700">
                 Our vision
               </h2>
-              <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
+              <p className="mt-4 font-display text-3xl font-bold leading-tight text-fg md:text-4xl">
                 A home away from home for every Indonesian student.
               </p>
-              <p className="mt-5 text-base leading-relaxed text-ink-600 md:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-fg-muted md:text-lg">
                 No matter which year they arrive in, or how long they stay.
               </p>
             </Card>
@@ -157,19 +157,19 @@ export default function Page() {
           <ol className="mt-14 grid gap-6 md:grid-cols-3">
             {priorities.map((priority, index) => (
               <li key={priority.title}>
-                <Card className="h-full gap-0 border-ink-200 border-t-4 border-t-brand-600 bg-ink-50">
+                <Card className="h-full gap-0 border-border border-t-4 border-t-brand-600 bg-surface-muted">
                   <CardHeader>
                     <span className="font-display text-sm font-extrabold text-brand-600">
                       0{index + 1}
                     </span>
                     <CardTitle asChild>
-                      <h3 className="mt-2 font-display text-lg font-bold text-ink-900">
+                      <h3 className="mt-2 font-display text-lg font-bold text-fg">
                         {priority.title}
                       </h3>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-2.5">
-                    <p className="text-sm leading-relaxed text-ink-600">
+                    <p className="text-sm leading-relaxed text-fg-muted">
                       {priority.body}
                     </p>
                   </CardContent>
@@ -189,23 +189,23 @@ export default function Page() {
             lede="Every role here is voluntary and unpaid, held alongside a full course load."
           />
 
-          <h3 className="mt-14 font-display text-lg font-bold text-ink-900">
+          <h3 className="mt-14 font-display text-lg font-bold text-fg">
             Leadership
           </h3>
           <ul className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
             {leadership.map((member) => (
               <li key={member.name} className="group">
-                <Avatar className="aspect-square size-full rounded-2xl ring-1 ring-ink-200">
+                <Avatar className="aspect-square size-full rounded-2xl ring-1 ring-border">
                   <AvatarImage
                     src={member.photo}
                     alt={member.name}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
-                  <AvatarFallback className="rounded-2xl bg-ink-100 font-display text-2xl font-bold text-ink-600">
+                  <AvatarFallback className="rounded-2xl bg-surface-sunken font-display text-2xl font-bold text-fg-muted">
                     {member.name.slice(0, 2).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
-                <p className="mt-3 font-display font-bold text-ink-900">
+                <p className="mt-3 font-display font-bold text-fg">
                   {member.name}
                 </p>
                 <p className="text-sm text-brand-700">{member.role}</p>
@@ -213,26 +213,26 @@ export default function Page() {
             ))}
           </ul>
 
-          <h3 className="mt-16 font-display text-lg font-bold text-ink-900">
+          <h3 className="mt-16 font-display text-lg font-bold text-fg">
             Divisions
           </h3>
-          <p className="mt-2 max-w-2xl text-sm text-ink-600">
+          <p className="mt-2 max-w-2xl text-sm text-fg-muted">
             Six working divisions carry the year between them. Committee members
             are announced at the start of each term.
           </p>
           <ul className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {divisions.map((division) => (
               <li key={division.name}>
-                <Card className="h-full gap-0 border-ink-200">
+                <Card className="h-full gap-0 border-border">
                   <CardHeader>
                     <CardTitle asChild>
-                      <h4 className="font-display text-base font-bold text-ink-900">
+                      <h4 className="font-display text-base font-bold text-fg">
                         {division.name}
                       </h4>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-2">
-                    <p className="text-sm leading-relaxed text-ink-600">
+                    <p className="text-sm leading-relaxed text-fg-muted">
                       {division.summary}
                     </p>
 
@@ -245,7 +245,7 @@ export default function Page() {
                         ))}
                       </ul>
                     ) : (
-                      <p className="mt-4 text-xs font-medium uppercase tracking-wider text-ink-600">
+                      <p className="mt-4 text-xs font-medium uppercase tracking-wider text-fg-muted">
                         Members announced each term
                       </p>
                     )}

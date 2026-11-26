@@ -22,7 +22,7 @@ export function Gallery() {
             return (
               <figure
                 key={photo.src}
-                className={`group relative overflow-hidden rounded-2xl bg-ink-100 ring-1 ring-ink-200 ${
+                className={`group relative overflow-hidden rounded-2xl bg-surface-sunken ring-1 ring-border ${
                   tall ? "row-span-2" : ""
                 }`}
               >

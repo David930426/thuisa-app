@@ -62,20 +62,20 @@ export function EventsBrowser({
       onValueChange={(value) => setTab(value as Tab)}
       className="w-full"
     >
-      <TabsList className="mx-auto mb-12 h-auto rounded-full bg-ink-100 p-1.5">
+      <TabsList className="mx-auto mb-12 h-auto rounded-full bg-surface-sunken p-1.5">
         <TabsTrigger
           value="upcoming"
-          className="rounded-full px-6 py-2.5 text-sm font-semibold data-[state=active]:bg-brand-600 data-[state=active]:text-white"
+          className="group rounded-full px-6 py-2.5 text-sm font-semibold data-[state=active]:bg-brand-600 data-[state=active]:text-fg-inverse"
         >
           Upcoming
-          <span className="ml-2 text-xs opacity-70">{upcoming.length}</span>
+          <span className="ml-2 text-xs opacity-70 group-data-[state=active]:opacity-100">{upcoming.length}</span>
         </TabsTrigger>
         <TabsTrigger
           value="past"
-          className="rounded-full px-6 py-2.5 text-sm font-semibold data-[state=active]:bg-brand-600 data-[state=active]:text-white"
+          className="group rounded-full px-6 py-2.5 text-sm font-semibold data-[state=active]:bg-brand-600 data-[state=active]:text-fg-inverse"
         >
           Past
-          <span className="ml-2 text-xs opacity-70">{past.length}</span>
+          <span className="ml-2 text-xs opacity-70 group-data-[state=active]:opacity-100">{past.length}</span>
         </TabsTrigger>
       </TabsList>
 
@@ -118,7 +118,7 @@ export function EventsBrowser({
 
 function EmptyState({ message }: { message: string }) {
   return (
-    <p className="rounded-2xl border border-dashed border-ink-300 bg-ink-50 px-6 py-16 text-center text-ink-600">
+    <p className="rounded-2xl border border-dashed border-ink-300 bg-surface-muted px-6 py-16 text-center text-fg-muted">
       {message}
     </p>
   );

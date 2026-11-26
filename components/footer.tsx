@@ -25,14 +25,14 @@ export default function Footer() {
                 />
               </span>
               <div>
-                <p className="font-display text-xl font-extrabold text-white">
+                <p className="font-display text-xl font-extrabold text-fg-inverse">
                   {site.name}
                 </p>
-                <p className="text-sm text-ink-400">{site.fullName}</p>
+                <p className="text-sm text-fg-inverse-muted">{site.fullName}</p>
               </div>
             </div>
 
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-ink-400">
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-fg-inverse-muted">
               A home away from home for Indonesian students at Tunghai
               University since {site.foundedYear}. Come for the events, stay for
               the people.
@@ -41,12 +41,12 @@ export default function Footer() {
             <div className="mt-6 space-y-2 text-sm">
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-2.5 text-ink-300 transition-colors hover:text-white"
+                className="flex items-center gap-2.5 text-ink-300 transition-colors hover:text-fg-inverse"
               >
                 <Mail className="size-4 shrink-0 text-brand-400" aria-hidden />
                 {site.email}
               </a>
-              <p className="flex items-center gap-2.5 text-ink-400">
+              <p className="flex items-center gap-2.5 text-fg-inverse-muted">
                 <MapPin className="size-4 shrink-0 text-brand-400" aria-hidden />
                 {site.university}, {site.city}
               </p>
@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <nav className="lg:col-span-3" aria-label="Footer">
-            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-white">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-fg-inverse">
               Explore
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
@@ -63,7 +63,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-ink-400 transition-colors hover:text-white"
+                    className="text-fg-inverse-muted transition-colors hover:text-fg-inverse"
                   >
                     {item.label}
                   </Link>
@@ -74,7 +74,7 @@ export default function Footer() {
 
           {/* Partners */}
           <div className="lg:col-span-2">
-            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-white">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-fg-inverse">
               In partnership with
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
@@ -84,7 +84,7 @@ export default function Footer() {
                     href={partner.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ink-400 transition-colors hover:text-white"
+                    className="text-fg-inverse-muted transition-colors hover:text-fg-inverse"
                   >
                     {partner.name}
                   </a>
@@ -95,7 +95,7 @@ export default function Footer() {
 
           {/* Social */}
           <div className="lg:col-span-2">
-            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-white">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-fg-inverse">
               Follow us
             </h2>
             <ul className="mt-5 space-y-3">
@@ -107,7 +107,7 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-3 text-sm text-ink-400 transition-colors hover:text-white"
+                      className="group flex items-center gap-3 text-sm text-fg-inverse-muted transition-colors hover:text-fg-inverse"
                     >
                       <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 transition-colors group-hover:bg-brand-600">
                         <Image
@@ -119,7 +119,7 @@ export default function Footer() {
                         />
                       </span>
                       <span>
-                        <span className="block text-white">{social.label}</span>
+                        <span className="block text-fg-inverse">{social.label}</span>
                         <span className="block text-xs">{social.handle}</span>
                       </span>
                     </a>
@@ -130,7 +130,7 @@ export default function Footer() {
         </div>
 
         <Separator className="mt-14 bg-white/10" />
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-ink-400 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-fg-inverse-muted sm:flex-row">
           <p>
             © {year} <span className="font-semibold text-ink-300">{site.name}</span>.
             All rights reserved.

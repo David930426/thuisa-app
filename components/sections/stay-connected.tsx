@@ -28,10 +28,10 @@ const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
 
 export function StayConnected() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-surface py-16 md:py-24">
       <Container size="wide">
         <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-          <span className="text-ink-900">Stay in the loop.</span>{" "}
+          <span className="text-fg">Stay in the loop.</span>{" "}
           <span className="text-ink-500">
             Dates, posters, and last-minute changes go here first.
           </span>
@@ -50,7 +50,7 @@ export function StayConnected() {
               className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-gradient-to-br from-gold-300/40 via-brand-400/30 to-fuchsia-500/20 blur-3xl"
             />
             <div className="relative flex h-full flex-col">
-              <span className="grid size-16 place-items-center rounded-2xl bg-ink-50 ring-1 ring-ink-100">
+              <span className="grid size-16 place-items-center rounded-2xl bg-surface-muted ring-1 ring-ink-100">
                 <Image
                   src={instagram.icon}
                   alt=""
@@ -62,10 +62,10 @@ export function StayConnected() {
               <p className="mt-8 text-xs font-semibold uppercase tracking-wider text-brand-600">
                 {instagram.label}
               </p>
-              <h3 className="mt-2 max-w-md font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
+              <h3 className="mt-2 max-w-md font-display text-3xl font-bold leading-tight text-fg md:text-4xl">
                 Every event is announced here first.
               </h3>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-ink-600">
+              <p className="mt-4 max-w-md text-base leading-relaxed text-fg-muted">
                 Posters, registration links, date changes, and the photos
                 afterwards. Questions in the DMs get answered by the committee.
               </p>
@@ -81,7 +81,7 @@ export function StayConnected() {
           {/* TikTok, LINE */}
           {otherSocials.map((social) => (
             <Card key={social.label} className={tile}>
-              <span className="grid size-12 place-items-center rounded-xl bg-ink-50 ring-1 ring-ink-100">
+              <span className="grid size-12 place-items-center rounded-xl bg-surface-muted ring-1 ring-ink-100">
                 <Image
                   src={social.icon}
                   alt=""
@@ -90,11 +90,11 @@ export function StayConnected() {
                   className="size-[26px] object-contain"
                 />
               </span>
-              <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+              <h3 className="mt-6 font-display text-xl font-bold text-fg">
                 {social.label}
               </h3>
-              <p className="mt-1 text-sm text-ink-600">{social.handle}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600">
+              <p className="mt-1 text-sm text-fg-muted">{social.handle}</p>
+              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
                 {socialNotes[social.label]}
               </p>
               {social.href ? (
@@ -109,14 +109,14 @@ export function StayConnected() {
 
           {/* Email */}
           <Card className={tile}>
-            <span className="grid size-12 place-items-center rounded-xl bg-ink-50 text-ink-700 ring-1 ring-ink-100">
+            <span className="grid size-12 place-items-center rounded-xl bg-surface-muted text-ink-700 ring-1 ring-ink-100">
               <Mail className="size-6" strokeWidth={1.5} aria-hidden />
             </span>
-            <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+            <h3 className="mt-6 font-display text-xl font-bold text-fg">
               Email
             </h3>
-            <p className="mt-1 break-all text-sm text-ink-600">{site.email}</p>
-            <p className="mt-3 text-sm leading-relaxed text-ink-600">
+            <p className="mt-1 break-all text-sm text-fg-muted">{site.email}</p>
+            <p className="mt-3 text-sm leading-relaxed text-fg-muted">
               For anything official: partnerships, sponsorship, and letters.
             </p>
             <div className="mt-auto pt-5">
@@ -125,17 +125,17 @@ export function StayConnected() {
           </Card>
 
           {/* Membership */}
-          <Card id="join" className={cn(tile, "bg-ink-50 shadow-none")}>
-            <span className="grid size-12 place-items-center rounded-xl bg-white text-brand-600 ring-1 ring-ink-100">
+          <Card id="join" className={cn(tile, "bg-surface-muted shadow-none")}>
+            <span className="grid size-12 place-items-center rounded-xl bg-surface text-brand-600 ring-1 ring-ink-100">
               <Ticket className="size-6" strokeWidth={1.5} aria-hidden />
             </span>
-            <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+            <h3 className="mt-6 font-display text-xl font-bold text-fg">
               Membership
             </h3>
-            <p className="mt-1 text-sm font-medium text-ink-600">
+            <p className="mt-1 text-sm font-medium text-fg-muted">
               {site.membershipFee}
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-ink-600">
+            <p className="mt-3 text-sm leading-relaxed text-fg-muted">
               For Indonesian students at Tunghai. Members pay less at events;
               you do not need it to come along.
             </p>

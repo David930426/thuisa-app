@@ -28,7 +28,7 @@ export default function Home() {
         <Container size="wide">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink-100 ring-1 ring-ink-200">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-sunken ring-1 ring-border">
                 <Image
                   src={images.aboutStory}
                   alt="THUISA members together on campus"
@@ -38,11 +38,11 @@ export default function Home() {
                 />
               </div>
               {/* Small overlapping card, anchored to the image */}
-              <div className="absolute -bottom-6 -right-4 hidden w-56 rounded-2xl bg-white p-5 shadow-xl ring-1 ring-ink-200 sm:block lg:-right-8">
+              <div className="absolute -bottom-6 -right-4 hidden w-56 rounded-2xl bg-surface p-5 shadow-xl ring-1 ring-border sm:block lg:-right-8">
                 <p className="font-display text-3xl font-extrabold text-brand-600">
                   {site.foundedYear}
                 </p>
-                <p className="mt-1 text-sm leading-snug text-ink-600">
+                <p className="mt-1 text-sm leading-snug text-fg-muted">
                   Founded at Tunghai, and run by students every year since.
                 </p>
               </div>
@@ -55,7 +55,7 @@ export default function Home() {
                 lede="It has existed since 2017 and is run by a committee of students, elected each year, across six working divisions."
               />
               {/* TODO: confirm member count (400) */}
-              <p className="mt-5 text-base leading-relaxed text-ink-600">
+              <p className="mt-5 text-base leading-relaxed text-fg-muted">
                 Around 400 Indonesian students study at Tunghai University in
                 Taichung. We organise seven events across the academic year,
                 work with the university&apos;s Office of International Relations

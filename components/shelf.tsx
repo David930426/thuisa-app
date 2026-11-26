@@ -68,10 +68,10 @@ export function Shelf({
   };
 
   return (
-    <section id={id} className={cn("bg-ink-50 py-16 md:py-24", className)}>
+    <section id={id} className={cn("bg-surface-muted py-16 md:py-24", className)}>
       <Container size="wide">
         <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-          <span className="text-ink-900">{title}</span>
+          <span className="text-fg">{title}</span>
           {subtitle ? (
             <>
               {" "}

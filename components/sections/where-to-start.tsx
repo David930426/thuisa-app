@@ -45,13 +45,13 @@ export function WhereToStart() {
         >
           <Link href={item.href}>
             <item.icon className="size-9 shrink-0 text-brand-600" strokeWidth={1.5} />
-            <h3 className="mt-6 font-display text-xl font-bold leading-snug text-ink-900 sm:text-2xl">
+            <h3 className="mt-6 font-display text-xl font-bold leading-snug text-fg sm:text-2xl">
               {item.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-600">
+            <p className="mt-3 text-sm leading-relaxed text-fg-muted">
               {item.body}
             </p>
-            <span className="mt-auto grid size-9 shrink-0 place-items-center self-end rounded-full bg-ink-900 text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-600">
+            <span className="mt-auto grid size-9 shrink-0 place-items-center self-end rounded-full bg-surface-inverse text-fg-inverse transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-600">
               <Plus className="size-5" aria-hidden />
             </span>
           </Link>
@@ -60,7 +60,7 @@ export function WhereToStart() {
 
       <Card
         asChild
-        className={cn(shelfCardClass, cardSize, "relative bg-ink-900 p-8")}
+        className={cn(shelfCardClass, cardSize, "relative bg-surface-inverse p-8")}
       >
         <Link href="/resources">
           <Image
@@ -82,7 +82,7 @@ export function WhereToStart() {
               Everything else is in the full guide.
             </h3>
           </div>
-          <span className="relative mt-5 grid size-9 shrink-0 place-items-center self-end rounded-full bg-white text-ink-900 transition-transform duration-300 group-hover:scale-110">
+          <span className="relative mt-5 grid size-9 shrink-0 place-items-center self-end rounded-full bg-white text-fg transition-transform duration-300 group-hover:scale-110">
             <Plus className="size-5" aria-hidden />
           </span>
         </Link>

@@ -47,16 +47,16 @@ export default function Page() {
               .map((item) => (
                 <Card
                   key={item.label}
-                  className="border-ink-200 border-t-4 border-t-brand-600 bg-ink-50"
+                  className="border-border border-t-4 border-t-brand-600 bg-surface-muted"
                 >
                   <CardContent>
-                    <dd className="font-display text-4xl font-extrabold text-ink-900">
+                    <dd className="font-display text-4xl font-extrabold text-fg">
                       {item.value}
                     </dd>
                     <dt className="mt-2 font-display text-sm font-bold text-brand-700">
                       {item.label}
                     </dt>
-                    <p className="mt-1.5 text-sm text-ink-600">{item.detail}</p>
+                    <p className="mt-1.5 text-sm text-fg-muted">{item.detail}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -82,7 +82,7 @@ export default function Page() {
                   {budgetBreakdown.map((line) => (
                     <li key={line.label}>
                       <div className="flex items-baseline justify-between gap-4">
-                        <span className="font-display text-sm font-bold text-ink-900 md:text-base">
+                        <span className="font-display text-sm font-bold text-fg md:text-base">
                           {line.label}
                         </span>
                         <span className="font-display text-sm font-extrabold text-brand-700 tabular-nums">
@@ -118,7 +118,7 @@ export default function Page() {
             lede="Reports are published at the end of each committee year. Entries marked as in preparation are being finalised and checked by the incoming committee."
           />
 
-          <ul className="mt-14 divide-y divide-ink-200 border-y border-ink-200">
+          <ul className="mt-14 divide-y divide-border border-y border-border">
             {reports.map((report) => (
               <li
                 key={report.id}
@@ -130,7 +130,7 @@ export default function Page() {
 
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <h3 className="font-display text-lg font-bold text-ink-900">
+                    <h3 className="font-display text-lg font-bold text-fg">
                       {report.title}
                     </h3>
                     <Badge variant="secondary">{report.kind}</Badge>
@@ -138,7 +138,7 @@ export default function Page() {
                   <p className="mt-1 text-sm font-medium text-brand-700">
                     {report.period}
                   </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-600">
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-fg-muted">
                     {report.summary}
                   </p>
                 </div>
@@ -165,10 +165,10 @@ export default function Page() {
       {/* Request access */}
       <Section tone="dark" spacing="tight">
         <Container size="narrow" className="text-center">
-          <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+          <h2 className="font-display text-2xl font-bold text-fg-inverse md:text-3xl">
             Members can ask for the detail behind any figure
           </h2>
-          <p className="mt-4 text-ink-400">
+          <p className="mt-4 text-fg-inverse-muted">
             If you pay the {site.membershipFee} membership fee, you are entitled
             to see how it was spent. Email us and the Finance division will walk
             you through it.

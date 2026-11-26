@@ -37,10 +37,10 @@ export function Section({
   spacing?: "tight" | "default" | "loose";
 }) {
   const tones = {
-    default: "bg-white text-ink-800",
-    muted: "bg-ink-50 text-ink-800",
-    brand: "bg-brand-600 text-white",
-    dark: "bg-ink-900 text-ink-100",
+    default: "bg-surface text-fg-body",
+    muted: "bg-surface-muted text-fg-body",
+    brand: "bg-brand-600 text-fg-inverse",
+    dark: "bg-surface-inverse text-ink-100",
   };
   const spacings = {
     tight: "py-12 md:py-16",
@@ -99,7 +99,7 @@ export function SectionHeading({
       <Heading
         className={cn(
           "mt-4 text-3xl font-bold leading-[1.1] md:text-4xl lg:text-5xl",
-          light ? "text-white" : "text-ink-900"
+          light ? "text-fg-inverse" : "text-fg"
         )}
       >
         {title}
@@ -108,7 +108,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-5 text-base leading-relaxed md:text-lg",
-            light ? "text-white/80" : "text-ink-600"
+            light ? "text-white/80" : "text-fg-muted"
           )}
         >
           {lede}
@@ -131,7 +131,7 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <header className="relative overflow-hidden bg-ink-900 pt-28 pb-16 text-white md:pt-36 md:pb-24">
+    <header className="relative overflow-hidden bg-surface-inverse pt-28 pb-16 text-fg-inverse md:pt-36 md:pb-24">
       {/* soft brand wash + woven texture, kept subtle so text stays readable */}
       <div
         aria-hidden

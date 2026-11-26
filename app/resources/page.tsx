@@ -45,14 +45,14 @@ export default function Page() {
         <Container size="wide">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-start gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25">
+              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-white/15 text-fg-inverse ring-1 ring-white/25">
                 <Phone className="size-6" aria-hidden />
               </span>
               <div>
-                <h2 className="font-display text-xl font-bold text-white">
+                <h2 className="font-display text-xl font-bold text-fg-inverse">
                   Emergency? Call now
                 </h2>
-                <p className="mt-1 text-sm text-white">
+                <p className="mt-1 text-sm text-fg-inverse">
                   Free from any phone. Save these numbers now, not later.
                 </p>
               </div>
@@ -68,7 +68,7 @@ export default function Page() {
                     <span className="font-display text-3xl font-extrabold tabular-nums">
                       {item.number}
                     </span>
-                    <span className="text-sm font-semibold text-ink-900">
+                    <span className="text-sm font-semibold text-fg">
                       {item.label}
                     </span>
                   </a>
@@ -77,7 +77,7 @@ export default function Page() {
             </ul>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 border-t border-white/20 pt-5 text-sm text-white sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-3 border-t border-white/20 pt-5 text-sm text-fg-inverse sm:flex-row sm:items-center sm:justify-between">
             <a
               href={foreignerHelpLine.href}
               className="underline-offset-4 hover:underline"
@@ -100,7 +100,7 @@ export default function Page() {
       {/* Checklist */}
       <Section spacing="tight">
         <Container size="wide">
-          <div className="grid gap-10 rounded-2xl bg-ink-900 p-8 text-white md:grid-cols-12 md:p-12">
+          <div className="grid gap-10 rounded-2xl bg-surface-inverse p-8 text-fg-inverse md:grid-cols-12 md:p-12">
             <div className="md:col-span-5">
               <p className="eyebrow-light">
                 <span aria-hidden className="h-px w-6 bg-gold-300/70" />
@@ -109,7 +109,7 @@ export default function Page() {
               <h2 className="mt-4 font-display text-2xl font-bold md:text-3xl">
                 Six things, in order
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-ink-400">
+              <p className="mt-4 text-sm leading-relaxed text-fg-inverse-muted">
                 If you only read one part of this page, read this. Work down the
                 list and you will avoid most of the problems new students run
                 into.
@@ -122,7 +122,7 @@ export default function Page() {
                   key={item}
                   className="flex items-start gap-4 rounded-xl bg-white/5 p-4 ring-1 ring-white/10"
                 >
-                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-brand-600 font-display text-xs font-bold text-white">
+                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-brand-600 font-display text-xs font-bold text-fg-inverse">
                     {index + 1}
                   </span>
                   <span className="text-sm text-ink-200 md:text-base">
@@ -145,7 +145,7 @@ export default function Page() {
                   <Badge
                     asChild
                     variant="secondary"
-                    className="gap-2 px-4 py-2 text-sm font-medium hover:bg-brand-600 hover:text-white"
+                    className="gap-2 px-4 py-2 text-sm font-medium hover:bg-brand-600 hover:text-fg-inverse"
                   >
                     <a href={`#${group.id}`}>
                       <Icon name={group.icon} className="size-4" />
@@ -172,27 +172,27 @@ export default function Page() {
                 <span className="grid size-12 place-items-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
                   <Icon name={group.icon} className="size-6" />
                 </span>
-                <h2 className="mt-5 font-display text-2xl font-bold text-ink-900 md:text-3xl">
+                <h2 className="mt-5 font-display text-2xl font-bold text-fg md:text-3xl">
                   {group.title}
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-ink-600">
+                <p className="mt-4 text-base leading-relaxed text-fg-muted">
                   {group.summary}
                 </p>
               </div>
 
-              <ul className="divide-y divide-ink-200 lg:col-span-8">
+              <ul className="divide-y divide-border lg:col-span-8">
                 {group.items.map((item) => {
                   const external = isExternal(item.href);
                   const content = (
                     <>
                       <span className="flex-1">
-                        <span className="flex items-center gap-2 font-display text-base font-bold text-ink-900 transition-colors group-hover:text-brand-700">
+                        <span className="flex items-center gap-2 font-display text-base font-bold text-fg transition-colors group-hover:text-brand-700">
                           {item.title}
                           {external ? (
                             <ArrowUpRight className="size-4 shrink-0 text-ink-500 transition-colors group-hover:text-brand-600" />
                           ) : null}
                         </span>
-                        <span className="mt-1.5 block text-sm leading-relaxed text-ink-600">
+                        <span className="mt-1.5 block text-sm leading-relaxed text-fg-muted">
                           {item.description}
                         </span>
                       </span>
@@ -230,9 +230,9 @@ export default function Page() {
       {/* Link accuracy note */}
       <Section spacing="tight" tone="default">
         <Container size="wide">
-          <Card className="flex-col gap-4 border-dashed border-ink-300 bg-ink-50 p-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm leading-relaxed text-ink-600">
-              <span className="font-semibold text-ink-900">
+          <Card className="flex-col gap-4 border-dashed border-ink-300 bg-surface-muted p-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-relaxed text-fg-muted">
+              <span className="font-semibold text-fg">
                 Found something out of date?
               </span>{" "}
               Government and university pages move around. Tell us and we will

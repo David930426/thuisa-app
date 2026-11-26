@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply bg-background text-ink-800 antialiased;
+    @apply bg-background text-fg-body antialiased;
     font-family: var(--font-sans);
   }
 

@@ -21,7 +21,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20",
+          "bg-destructive text-fg-inverse hover:bg-destructive/90 focus-visible:ring-destructive/20",
         outline:
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
         secondary:
@@ -30,13 +30,13 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
 
         brand:
-          "bg-brand-600 text-white shadow-sm shadow-brand-900/20 hover:bg-brand-700 hover:shadow-md hover:shadow-brand-900/25",
+          "bg-brand-600 text-fg-inverse shadow-sm shadow-brand-900/20 hover:bg-brand-700 hover:shadow-md hover:shadow-brand-900/25",
         brandOutline:
           "bg-transparent text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50 hover:ring-brand-300",
         onDark:
           "bg-white text-brand-700 shadow-sm hover:bg-gold-50 hover:text-brand-800",
         onDarkOutline:
-          "bg-transparent text-white ring-1 ring-white/40 hover:bg-white/10 hover:ring-white/70",
+          "bg-transparent text-fg-inverse ring-1 ring-white/40 hover:bg-white/10 hover:ring-white/70",
       },
       size: {
         default: "h-10 px-5 py-2 has-[>svg]:px-4",

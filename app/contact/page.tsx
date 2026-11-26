@@ -75,8 +75,8 @@ const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
 function Headline({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-      <span className="text-ink-900">{title}</span>{" "}
-      <span className="text-ink-600">{subtitle}</span>
+      <span className="text-fg">{title}</span>{" "}
+      <span className="text-fg-muted">{subtitle}</span>
     </h2>
   );
 }
@@ -91,7 +91,7 @@ export default function Page() {
       />
 
       {/* Ways to reach us */}
-      <section className="bg-ink-50 py-16 md:py-24">
+      <section className="bg-surface-muted py-16 md:py-24">
         <Container size="wide">
           <Headline
             title="Pick a channel."
@@ -109,11 +109,11 @@ export default function Page() {
                     height={40}
                     className="size-10 object-contain"
                   />
-                  <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+                  <h3 className="mt-6 font-display text-xl font-bold text-fg">
                     {social.label}
                   </h3>
-                  <p className="mt-1 text-sm text-ink-600">{social.handle}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  <p className="mt-1 text-sm text-fg-muted">{social.handle}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-fg-muted">
                     {channelNotes[social.label]}
                   </p>
                   {social.href ? (
@@ -130,17 +130,17 @@ export default function Page() {
             <li>
               <Card className={tile}>
                 <Mail
-                  className="size-10 text-ink-800"
+                  className="size-10 text-fg-body"
                   strokeWidth={1.25}
                   aria-hidden
                 />
-                <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
+                <h3 className="mt-6 font-display text-xl font-bold text-fg">
                   Email
                 </h3>
-                <p className="mt-1 break-all text-sm text-ink-600">
+                <p className="mt-1 break-all text-sm text-fg-muted">
                   {site.email}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                <p className="mt-3 text-sm leading-relaxed text-fg-muted">
                   For anything official: partnerships, sponsorship, letters.
                 </p>
                 <div className="mt-auto pt-5">
@@ -153,7 +153,7 @@ export default function Page() {
       </section>
 
       {/* Form */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-surface py-16 md:py-24">
         <Container size="wide">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
@@ -161,7 +161,7 @@ export default function Page() {
                 title="Write to the committee."
                 subtitle="Issues, concerns, suggestions, or proposals."
               />
-              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-600 md:text-lg">
+              <p className="mt-6 max-w-md text-base leading-relaxed text-fg-muted md:text-lg">
                 This goes straight to the committee inbox. We usually reply
                 within a few days, and what you tell us stays with the
                 committee.
@@ -171,7 +171,7 @@ export default function Page() {
             <Card
               className={cn(
                 shelfCardClass,
-                "bg-ink-50 p-6 shadow-none hover:scale-100 hover:shadow-none md:p-10 lg:col-span-7"
+                "bg-surface-muted p-6 shadow-none hover:scale-100 hover:shadow-none md:p-10 lg:col-span-7"
               )}
             >
               <ContactForm />
@@ -181,7 +181,7 @@ export default function Page() {
       </section>
 
       {/* Find us */}
-      <section className="bg-ink-50 py-16 md:py-24">
+      <section className="bg-surface-muted py-16 md:py-24">
         <Container size="wide">
           <Headline
             title="Find us."
@@ -207,10 +207,10 @@ export default function Page() {
                   strokeWidth={1.5}
                   aria-hidden
                 />
-                <h3 className="mt-5 font-display text-xl font-bold text-ink-900">
+                <h3 className="mt-5 font-display text-xl font-bold text-fg">
                   {site.university}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">
                   No. 1727, Sec. 4, Taiwan Blvd, Xitun District, Taichung City,
                   Taiwan.
                 </p>
@@ -230,10 +230,10 @@ export default function Page() {
                   strokeWidth={1.5}
                   aria-hidden
                 />
-                <h3 className="mt-5 font-display text-xl font-bold text-ink-900">
+                <h3 className="mt-5 font-display text-xl font-bold text-fg">
                   Membership
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">
                   {site.membershipFee}, for Indonesian students at Tunghai.
                   Members pay less at events.
                 </p>
@@ -251,7 +251,7 @@ export default function Page() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-surface py-16 md:py-24">
         <Container className="max-w-4xl">
           <Headline
             title="Questions."
@@ -261,19 +261,19 @@ export default function Page() {
           <Accordion
             type="single"
             collapsible
-            className="mt-10 w-full border-t border-ink-200 md:mt-12"
+            className="mt-10 w-full border-t border-border md:mt-12"
           >
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={faq.q}
                 value={`faq-${index}`}
-                className="border-ink-200"
+                className="border-border"
               >
-                <AccordionTrigger className="py-6 text-left font-display text-lg font-bold text-ink-900 hover:no-underline md:text-xl">
+                <AccordionTrigger className="py-6 text-left font-display text-lg font-bold text-fg hover:no-underline md:text-xl">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="pb-6">
-                  <p className="max-w-2xl text-base leading-relaxed text-ink-600">
+                  <p className="max-w-2xl text-base leading-relaxed text-fg-muted">
                     {faq.a}
                   </p>
                   {faq.link ? (
@@ -291,7 +291,7 @@ export default function Page() {
             ))}
           </Accordion>
 
-          <p className="mt-10 text-base text-ink-600">
+          <p className="mt-10 text-base text-fg-muted">
             Not here?{" "}
             <a
               href={`mailto:${site.email}`}

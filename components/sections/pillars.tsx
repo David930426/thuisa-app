@@ -27,10 +27,10 @@ export function Pillars() {
               <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
                 {pillar.eyebrow}
               </p>
-              <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-ink-900 sm:text-[28px]">
+              <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-fg sm:text-[28px]">
                 {pillar.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600">
+              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
                 {pillar.body}
               </p>
             </div>

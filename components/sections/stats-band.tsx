@@ -12,13 +12,13 @@ export function StatsBand() {
         <dl className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center lg:text-left">
-              <dd className="font-display text-4xl font-extrabold text-white md:text-5xl">
+              <dd className="font-display text-4xl font-extrabold text-fg-inverse md:text-5xl">
                 {stat.value}
               </dd>
               <dt className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-300">
                 {stat.label}
               </dt>
-              <p className="mt-1.5 text-sm text-ink-400">{stat.detail}</p>
+              <p className="mt-1.5 text-sm text-fg-inverse-muted">{stat.detail}</p>
             </div>
           ))}
         </dl>
