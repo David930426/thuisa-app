@@ -16,17 +16,14 @@ import * as Slot from "@radix-ui/react-slot"
  *                `group` for group-hover effects inside.
  *   tile         the same surface without the hover scale, for cards that
  *                aren't links (About mission/vision, Contact and home tiles).
- *   muted        a tile on the ink-50 surface (Contact form, home
- *                Membership tile).
+ *   muted        a flat tile on the ink-50 surface, no shadow (Contact form,
+ *                home Membership tile).
  *
- * The radius and shadows reproduce what the site rendered when these
- * variants were introduced, which is not what the shelf classes intended:
- * since the token rename, cn() kept the base card's rounded-xl and shadow-sm
- * next to rounded-shelf and shadow-shelf, and those won. So shelf cards show
- * a 16px radius and shadow-sm (not 18px and shadow-shelf), and the muted
- * cards show shadow-shelf where shadow-none was meant. Moving to
- * rounded-shelf/shadow-shelf (and shadow-none for muted) is a visible change
- * awaiting sign-off; it only needs the strings below.
+ * Don't build these from the default variant plus overrides: cn() would keep
+ * the default's rounded-xl and shadow-sm next to rounded-shelf and
+ * shadow-shelf, and the default's classes win in the stylesheet. That is how
+ * the shelf cards briefly showed 16px corners and a small shadow after the
+ * token migration.
  */
 const cardVariants = cva("", {
   variants: {
@@ -34,11 +31,11 @@ const cardVariants = cva("", {
       default:
         "flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm",
       interactive:
-        "group flex flex-col gap-0 overflow-hidden rounded-xl bg-surface text-card-foreground shadow-sm transition-all duration-300 hover:scale-[1.01] hover:shadow-shelf-hover",
+        "group flex flex-col gap-0 overflow-hidden rounded-shelf bg-surface text-card-foreground shadow-shelf transition-all duration-300 hover:scale-[1.01] hover:shadow-shelf-hover",
       tile:
-        "flex flex-col gap-0 overflow-hidden rounded-xl bg-surface text-card-foreground shadow-sm transition-all duration-300 hover:shadow-shelf-hover",
+        "flex flex-col gap-0 overflow-hidden rounded-shelf bg-surface text-card-foreground shadow-shelf transition-all duration-300 hover:shadow-shelf-hover",
       muted:
-        "flex flex-col gap-0 overflow-hidden rounded-xl bg-surface-muted text-card-foreground shadow-shelf transition-all duration-300 hover:shadow-shelf-hover",
+        "flex flex-col gap-0 overflow-hidden rounded-shelf bg-surface-muted text-card-foreground transition-all duration-300",
     },
   },
   defaultVariants: {

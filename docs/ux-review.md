@@ -87,12 +87,12 @@ All **open** unless marked.
 - `shelfCardClass` is reused outside shelves and then partly undone with `hover:scale-100`.
   **Fixed:** [`Card`](../components/ui/card.tsx) has variants (`default`, `interactive`, `tile`, `muted`)
   and `shelfCardClass` is gone.
-- Since token migration step 5, shelf cards don't look as their classes intend. `cn()` (tailwind-merge)
-  doesn't recognise `rounded-shelf` and `shadow-shelf`, so the base card's `rounded-xl` and `shadow-sm`
-  stay and win: shelf cards and tiles show a 16px radius and a small shadow instead of 18px and the soft
-  shelf shadow, and the Contact form and home Membership cards show the shelf shadow where none was meant.
-  The Card variants reproduce this exactly. **Open:** restoring the intended look is a visible change;
-  [components/ui/card.tsx](../components/ui/card.tsx) explains which strings to change.
+- Token migration step 5 accidentally changed the shelf cards. `cn()` (tailwind-merge) doesn't recognise
+  `rounded-shelf` and `shadow-shelf`, so the base card's `rounded-xl` and `shadow-sm` stayed and won:
+  shelf cards and tiles showed a 16px radius and a small shadow instead of 18px and the soft shelf shadow,
+  and the Contact form and home Membership cards gained a shadow.
+  **Fixed:** the Card variants now give each card its own complete class list, and the rendered pages
+  match the site from before the migration (checked with `scripts/verify/compare-html.mjs`).
 - Page widths and gutters are repeated as numbers in several files; the page header uses a narrower container than the page body.
   **Partly fixed:** widths and gutters come from tokens (step 4). The page header is still narrower; widening it is a visible change.
 - Swiper is themed with many `!important` overrides in [app/globals.css](../app/globals.css).

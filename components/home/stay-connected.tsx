@@ -119,8 +119,8 @@ export function StayConnected() {
             </div>
           </Card>
 
-          {/* Membership */}
-          <Card id="join" variant="muted" className="h-full p-7">
+          {/* Membership: flat until hovered, like the tiles around it */}
+          <Card id="join" variant="muted" className="h-full p-7 hover:shadow-shelf-hover">
             <span className="grid size-12 place-items-center rounded-xl bg-surface text-brand-600 ring-1 ring-ink-100">
               <Ticket className="size-6" strokeWidth={1.5} aria-hidden />
             </span>
