@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, Compass, MessagesSquare, Plus } from "lucide-react";
-import { Shelf } from "@/components/shelf";
-import { shelfCardClass } from "@/components/shelf-card";
+import { Shelf } from "@/components/shared/shelf";
+import { shelfCardClass } from "@/components/shared/shelf-card";
 import { Card } from "@/components/ui/card";
 import { images } from "@/lib/site";
 import { cn } from "@/lib/utils";

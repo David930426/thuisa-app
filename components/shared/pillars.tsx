@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Shelf } from "@/components/shelf";
-import { shelfCardClass } from "@/components/shelf-card";
+import { Shelf } from "@/components/shared/shelf";
+import { shelfCardClass } from "@/components/shared/shelf-card";
 import { Card } from "@/components/ui/card";
 import { pillars } from "@/lib/site";
 import { cn } from "@/lib/utils";

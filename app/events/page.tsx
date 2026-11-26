@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EventsBrowser } from "@/components/events-browser";
+import { EventsBrowser } from "@/components/events/events-browser";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {

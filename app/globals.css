@@ -123,7 +123,7 @@
   }
 }
 
-/* Apple-style shelves (components/shelf.tsx). The track runs edge to edge,
+/* Apple-style shelves (components/shared/shelf.tsx). The track runs edge to edge,
    but its padding lines the first card up with Container size="wide"
    (max-w-page, px-gutter / sm:px-gutter-wide). Percentages resolve against the full-width
    track, so this stays exact regardless of scrollbar width. */

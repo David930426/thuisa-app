@@ -20,7 +20,7 @@ still mention the form, so check them if the link will take a while:
 While the link is empty, LINE buttons are hidden. The LINE cards on the home and
 contact pages still show the ID and this text:
 
-- [ ] [components/sections/stay-connected.tsx:24](components/sections/stay-connected.tsx#L24)
+- [ ] [components/home/stay-connected.tsx:24](components/home/stay-connected.tsx#L24)
 - [ ] [app/contact/page.tsx:69](app/contact/page.tsx#L69) and [app/contact/page.tsx:52](app/contact/page.tsx#L52)
 
 ## 3. Hosting and email
@@ -42,7 +42,7 @@ contact pages still show the ID and this text:
 - [ ] Send a test message from the live site and confirm it arrives.
 - [ ] Confirm who reads the inbox, and that these promises are true:
       replies "within a few days" ([app/contact/page.tsx:166](app/contact/page.tsx#L166),
-      [components/form.tsx:105](components/form.tsx#L105)) and channels checked
+      [components/contact/contact-form.tsx:105](components/contact/contact-form.tsx#L105)) and channels checked
       "every day" ([app/contact/page.tsx:98](app/contact/page.tsx#L98)).
 
 ## 4. Real figures

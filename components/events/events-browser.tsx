@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { EventCard } from "@/components/event-card";
+import { EventCard } from "@/components/events/event-card";
 import type { ThuisaEvent } from "@/lib/events";
 
 type Tab = "upcoming" | "past";

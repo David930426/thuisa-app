@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
-import Menu from "@/components/menu";
-import Footer from "@/components/footer";
+import Menu from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 import { site } from "@/lib/site";
 
 const geistSans = Geist({

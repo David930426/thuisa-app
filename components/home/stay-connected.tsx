@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Mail, Ticket } from "lucide-react";
-import { shelfCardClass } from "@/components/shelf-card";
-import { TextLink } from "@/components/text-link";
+import { shelfCardClass } from "@/components/shared/shelf-card";
+import { TextLink } from "@/components/shared/text-link";
 import { Card } from "@/components/ui/card";
 import { Container, Section } from "@/components/ui/section";
 import { links } from "@/lib/links";

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { PartnersStrip } from "@/components/sections/partners-strip";
-import { Pillars } from "@/components/sections/pillars";
-import { StatsBand } from "@/components/sections/stats-band";
-import { shelfCardClass } from "@/components/shelf-card";
-import { TextLink } from "@/components/text-link";
+import { PartnersStrip } from "@/components/shared/partners-strip";
+import { Pillars } from "@/components/shared/pillars";
+import { StatsBand } from "@/components/shared/stats-band";
+import { shelfCardClass } from "@/components/shared/shelf-card";
+import { TextLink } from "@/components/shared/text-link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

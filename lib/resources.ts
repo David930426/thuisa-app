@@ -17,7 +17,7 @@ export type ResourceGroup = {
   id: string;
   title: string;
   summary: string;
-  /** Lucide icon name, mapped in components/icon.tsx */
+  /** Lucide icon name, mapped in components/shared/icon.tsx */
   icon: string;
   items: Resource[];
 };

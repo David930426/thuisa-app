@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Mail, MapPin, Ticket } from "lucide-react";
-import { ContactForm } from "@/components/form";
-import { shelfCardClass } from "@/components/shelf-card";
-import { TextLink } from "@/components/text-link";
+import { ContactForm } from "@/components/contact/contact-form";
+import { shelfCardClass } from "@/components/shared/shelf-card";
+import { TextLink } from "@/components/shared/text-link";
 import {
   Accordion,
   AccordionContent,
