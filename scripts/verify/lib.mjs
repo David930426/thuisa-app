@@ -131,6 +131,45 @@ export const toPx = (v) =>
     .replace(/calc\(([\d.]+)rem - ([\d.]+)px\)/g, (_, a, b) => `${a * 16 - b}px`)
     .replace(/([\d.]+)rem/g, (_, a) => `${a * 16}px`);
 
+// Shorthands that overlap with longhands set by other classes (e.g. py-12 sets
+// padding-block, pt-0 sets padding-top). They are split into per-side
+// properties so the cascade decides each side, as in a browser.
+// Horizontal writing mode is assumed (block = top/bottom, inline = left/right).
+const SIDES = { block: ["top", "bottom"], inline: ["left", "right"] };
+function splitTopLevel(value) {
+  const parts = [];
+  let depth = 0;
+  let cur = "";
+  for (const ch of value.trim()) {
+    if (ch === "(") depth++;
+    if (ch === ")") depth--;
+    if (/\s/.test(ch) && depth === 0) {
+      if (cur) parts.push(cur);
+      cur = "";
+    } else cur += ch;
+  }
+  if (cur) parts.push(cur);
+  return parts;
+}
+function expand(prop, value) {
+  const box = prop.match(/^(padding|margin|scroll-padding|scroll-margin)(?:-(block|inline))?$/);
+  const inset = prop.match(/^inset(?:-(block|inline))?$/);
+  if (box || inset) {
+    const base = box ? box[1] : null;
+    const axis = box ? box[2] : inset[1];
+    const name = (side) => (base ? `${base}-${side}` : side);
+    const v = splitTopLevel(value);
+    if (axis) return SIDES[axis].map((side, i) => [name(side), v[Math.min(i, v.length - 1)]]);
+    const [t, r = t, b = t, l = r] = v;
+    return [[name("top"), t], [name("right"), r], [name("bottom"), b], [name("left"), l]];
+  }
+  if (prop === "gap") {
+    const [row, col = row] = splitTopLevel(value);
+    return [["row-gap", row], ["column-gap", col]];
+  }
+  return [[prop, value]];
+}
+
 /**
  * Effective declarations for an element carrying `classes` at viewport
  * `width`. Returns { styles: {key: value}, unknown: [classes with no CSS] }.
@@ -138,7 +177,10 @@ export const toPx = (v) =>
 export function effectiveStyle(index, classes, width) {
   const list = [...new Set(classes)];
   const known = list.filter((c) => index.rules.has(c));
-  const decls = known.flatMap((c) => index.rules.get(c)).filter((d) => d.minW <= width);
+  const decls = known
+    .flatMap((c) => index.rules.get(c))
+    .filter((d) => d.minW <= width)
+    .flatMap((d) => expand(d.prop, d.value).map(([prop, value]) => ({ ...d, prop, value, key: `${d.ctx}|${prop}` })));
   decls.sort((a, b) => a.seq - b.seq); // later in the stylesheet wins
   const own = {};
   for (const d of decls) own[d.key] = d;
