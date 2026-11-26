@@ -4,9 +4,10 @@ Small Node scripts that check a styling refactor didn't change how the site
 looks. They compile the CSS with the project's own Tailwind and compare the
 results, so they need the project's dependencies installed (`pnpm install`).
 
-They compare compiled CSS, not screenshots. A change in HTML structure, such
-as replacing a `<section>` with a `<Section>` component, isn't covered; check
-those in a browser.
+`check-step.mjs`, `compare.mjs` and `pairs.mjs` compare compiled CSS, not
+screenshots. A change in HTML structure, such as replacing a `<section>` with
+a `<Section>` component, isn't covered by them; `compare-html.mjs` covers it
+for every page that is rendered at build time.
 
 Run every command from the project root.
 
@@ -43,6 +44,8 @@ read by hand.
 The exit code is 0 when everything matches and 1 otherwise.
 
 **Limits**
+- Files moved with `git mv` (or that git detects as renamed) are paired with
+  their old path (`git diff -M`), so only their edited lines are compared.
 - Only strings on the same line are paired. A class list split across lines
   differently in the new version shows up under "review by hand".
 - Class names built at runtime (for example `` `text-${colour}` ``) aren't seen.
@@ -52,6 +55,61 @@ The exit code is 0 when everything matches and 1 otherwise.
   the element itself, and that effect shows in the real properties compared.
 - Sizes are compared at a 16px root font. Values that only match at that size,
   such as `0.75rem + 4px` and `1rem`, are reported separately.
+
+## compare-html.mjs: compare the rendered pages
+
+Every route is pre-rendered to `.next/server/app/*.html` by `next build`. This
+script compares those pages with a saved baseline, so a refactor that moves
+components around or builds class lists differently can be checked as the
+browser receives it.
+
+```bash
+# once, on the version you start from (clean working tree)
+pnpm build
+node scripts/verify/compare-html.mjs --save ../baseline-html
+
+# after each step
+pnpm build
+node scripts/verify/compare-html.mjs ../baseline-html            # add --verbose for detail
+```
+
+Keep the baseline folder outside the project (or in a temp folder), so it
+isn't scanned or committed. `--save` records the current commit in
+`REF`; that commit's `app/globals.css` is used for the old side.
+
+Per page it compares:
+
+1. **Element tree, attributes and text**, after removing what doesn't affect
+   rendering: `<script>` tags (including React's flight data), script
+   preloads, comments, the build id, and stylesheet file names. React `useId`
+   values (`_R_..._`, used by Radix for `id`/`aria-controls`) are renumbered
+   in order of appearance, so they must still pair up but may change value.
+   Runs of whitespace in text count as one space.
+2. **Class attributes as sets.** When an element's classes differ, their
+   effective style is compared as in `check-step.mjs`: old classes compiled
+   with `globals.css` at the baseline commit, new classes with the files on
+   disk, at 375 to 1280px including hover/focus states. A reordered or
+   re-expressed class list that renders the same passes. Classes with no CSS
+   of their own (`group`, `peer`, the next/font `__variable_*` classes) must
+   match exactly, because other elements' styles depend on them.
+3. **The CSS each page links to**, rule by rule. Rules found in only one
+   version are listed; a renamed class usually shows here as one rule out
+   and one in.
+
+The exit code is 0 when every page matches and 1 otherwise.
+
+**Limits**
+- Only the HTML rendered at build time is seen. UI that React renders in the
+  browser later (dialogs such as the event details, the phone menu sheet,
+  select menus, toasts) isn't in it; check those with `check-step.mjs` or in
+  a browser.
+- Element styles are computed from each element's own classes. Inherited
+  values and selectors that reach into other elements (other than via the
+  marker classes above) are not evaluated, but since the tree and every class
+  set are compared, a difference there would show as a difference somewhere.
+- Text is compared exactly (apart from whitespace runs), so pages whose
+  content depends on the build date (upcoming/past events, the footer year)
+  must be built on the same day as the baseline.
 
 ## compare.mjs: compare two compiled CSS files
 

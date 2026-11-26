@@ -18,7 +18,7 @@
 //    1024 and 1280px.
 // 3. New classes that produce no CSS at all (typos, removed tokens).
 // Hunks whose line counts differ cannot be paired automatically and are
-// listed for a manual look.
+// listed for a manual look. Moved files are paired with their old path.
 //
 // Exit code 1 if anything differs or needs a manual look.
 import fs from "fs";
@@ -59,7 +59,10 @@ section("1. Global CSS (globals.css + tokens.css, no utility classes)");
 }
 
 // --- 2. Changed class strings ---------------------------------------------
-const diff = git(["diff", "--unified=0", "--no-color", base, "--", "app", "components", "lib"]).replace(/\r/g, "");
+// -M pairs a moved file with its old path, so a file that was only moved (or
+// moved with small edits) shows just its edited lines instead of being listed
+// as entirely deleted and entirely added.
+const diff = git(["diff", "-M", "--unified=0", "--no-color", base, "--", "app", "components", "lib"]).replace(/\r/g, "");
 const pairs = []; // { file, line, oldLine, newLine }
 const unpaired = [];
 {
