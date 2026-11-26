@@ -3,7 +3,8 @@
 import { useActionState, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
-import { sendSuggest, type ComplainState } from "@/actions/supportAction";
+import { sendContactMessage, type ContactState } from "@/actions/supportAction";
+import { contactCategories } from "@/lib/contact";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,30 +18,22 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import Spinner from "@/components/ui/spinner";
 
-const subjects = [
-  { value: "general", label: "General question" },
-  { value: "concern", label: "A concern" },
-  { value: "suggestion", label: "A suggestion" },
-  { value: "support", label: "I need help with something" },
-  { value: "other", label: "Something else" },
-];
-
 export function ContactForm() {
-  const initialState: ComplainState = { ok: false, message: "" };
+  const initialState: ContactState = { ok: false, message: "" };
   const [state, formAction, isPending] = useActionState(
-    sendSuggest,
+    sendContactMessage,
     initialState
   );
   const formRef = useRef<HTMLFormElement>(null);
   // Radix Select is controlled, so the reset below has to clear it explicitly.
-  const [subject, setSubject] = useState("general");
+  const [category, setCategory] = useState("general");
 
   useEffect(() => {
     if (!state.message) return;
     if (state.ok) {
       toast.success(state.message);
       formRef.current?.reset();
-      setSubject("general");
+      setCategory("general");
     } else {
       toast.error(state.message);
     }
@@ -74,18 +67,18 @@ export function ContactForm() {
       </div>
 
       <div className="grid gap-2">
-        <Label htmlFor="subject">What is this about?</Label>
+        <Label htmlFor="category">What is this about?</Label>
         <Select
-          name="subject"
-          value={subject}
-          onValueChange={setSubject}
+          name="category"
+          value={category}
+          onValueChange={setCategory}
           required
         >
-          <SelectTrigger id="subject" className="w-full">
+          <SelectTrigger id="category" className="w-full">
             <SelectValue placeholder="Choose a topic" />
           </SelectTrigger>
           <SelectContent>
-            {subjects.map((item) => (
+            {contactCategories.map((item) => (
               <SelectItem key={item.value} value={item.value}>
                 {item.label}
               </SelectItem>

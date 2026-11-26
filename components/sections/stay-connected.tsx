@@ -4,6 +4,7 @@ import { shelfCardClass } from "@/components/shelf-card";
 import { TextLink } from "@/components/text-link";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/section";
+import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -96,11 +97,13 @@ export function StayConnected() {
               <p className="mt-3 text-sm leading-relaxed text-ink-600">
                 {socialNotes[social.label]}
               </p>
-              <div className="mt-auto pt-5">
-                <TextLink href={social.href} external>
-                  Open {social.label}
-                </TextLink>
-              </div>
+              {social.href ? (
+                <div className="mt-auto pt-5">
+                  <TextLink href={social.href} external>
+                    Open {social.label}
+                  </TextLink>
+                </div>
+              ) : null}
             </Card>
           ))}
 
@@ -137,9 +140,11 @@ export function StayConnected() {
               you do not need it to come along.
             </p>
             <div className="mt-auto flex flex-col items-start gap-1 pt-5">
-              <TextLink href={site.joinFormUrl} external>
-                Membership form
-              </TextLink>
+              {links.membershipForm ? (
+                <TextLink href={links.membershipForm} external>
+                  Membership form
+                </TextLink>
+              ) : null}
               <TextLink href="/contact">Ask about it</TextLink>
             </div>
           </Card>

@@ -235,29 +235,31 @@ export default function Menu() {
 
               <div className="mt-auto flex flex-col gap-2 px-4 pb-6">
                 <Separator className="mb-2" />
-                {socials.map((social) => (
-                  <Button
-                    key={social.label}
-                    asChild
-                    variant="outline"
-                    className="w-full justify-start"
-                  >
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                {socials
+                  .filter((social) => social.href)
+                  .map((social) => (
+                    <Button
+                      key={social.label}
+                      asChild
+                      variant="outline"
+                      className="w-full justify-start"
                     >
-                      <Image
-                        src={social.icon}
-                        alt=""
-                        width={16}
-                        height={16}
-                        className="size-4 object-contain"
-                      />
-                      {social.label}
-                    </a>
-                  </Button>
-                ))}
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Image
+                          src={social.icon}
+                          alt=""
+                          width={16}
+                          height={16}
+                          className="size-4 object-contain"
+                        />
+                        {social.label}
+                      </a>
+                    </Button>
+                  ))}
               </div>
             </SheetContent>
           </Sheet>

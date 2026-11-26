@@ -196,8 +196,7 @@ export default function Page() {
                   Save these now, not later
                 </h2>
                 <p className="mt-1 text-sm text-white/80">
-                  110 police · 119 fire and ambulance · 0800-024-111 foreigner
-                  hotline
+                  110 police · 119 fire and ambulance · 1990 foreigner hotline
                 </p>
               </div>
             </div>

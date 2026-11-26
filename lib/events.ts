@@ -30,7 +30,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "yingxin-1",
     title: "Yingxin 1",
-    date: "2026-09-26",
+    date: "2026-09-26", // TODO: confirm event date
     tagline: "Welcome Night for New Students",
     type: "Welcoming Event",
     who: "All Indonesian students at Tunghai, especially freshmen",
@@ -52,7 +52,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "yingxin-2",
     title: "Yingxin 2",
-    date: "2026-10-13",
+    date: "2026-10-13", // TODO: confirm event date
     tagline: "Trip & Bonding Adventure",
     type: "Student Trip / Bonding",
     who: "All Indonesian students at Tunghai",
@@ -74,7 +74,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "halloween",
     title: "Halloween",
-    date: "2026-10-31",
+    date: "2026-10-31", // TODO: confirm event date
     tagline: "Costume & Spooky Fun",
     type: "Holiday Celebration",
     who: "All Indonesian students at Tunghai",
@@ -96,7 +96,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "christmas-dinner",
     title: "Christmas Dinner",
-    date: "2026-12-24",
+    date: "2026-12-24", // TODO: confirm event date
     tagline: "Warm & Joyful Gathering",
     type: "Holiday Dinner",
     who: "All Indonesian students at Tunghai",
@@ -118,7 +118,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "gala-dinner",
     title: "Gala Dinner",
-    date: "2027-02-15",
+    date: "2027-02-15", // TODO: confirm event date
     tagline: "Cultural Exchange & Formal Celebration",
     type: "Formal Dinner / Cultural Showcase",
     who: "Indonesian and international students, OIR, and invited guests",
@@ -141,7 +141,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "thuisa-cup",
     title: "THUISA Cup",
-    date: "2027-03-15",
+    date: "2027-03-15", // TODO: confirm event date
     tagline: "Sports & Unity Challenge",
     type: "Sports Competition",
     who: "Indonesian students from universities across Taiwan",
@@ -163,7 +163,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "international-week",
     title: "International Week",
-    date: "2027-04-20",
+    date: "2027-04-20", // TODO: confirm event date
     tagline: "Culture & Flavors Festival",
     type: "Cultural Event",
     who: "Open to all Tunghai students and faculty",
@@ -186,7 +186,7 @@ export const events: ThuisaEvent[] = [
   {
     id: "graduation",
     title: "Graduation",
-    date: "2027-06-15",
+    date: "2027-06-15", // TODO: confirm event date
     tagline: "Honoring Our Seniors",
     type: "Graduation Ceremony",
     who: "Graduating Indonesian students, families, and friends",

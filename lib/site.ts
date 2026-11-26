@@ -3,6 +3,8 @@
  *
  * Almost everything you will want to edit day to day lives in this folder:
  *   lib/site.ts       - org details, navigation, socials, stats, partners, images
+ *   lib/links.ts      - membership form and LINE invite links
+ *   lib/contact.ts    - contact form categories
  *   lib/events.ts     - the event calendar
  *   lib/team.ts       - the people on the team
  *   lib/resources.ts  - the new-student resource links
@@ -13,6 +15,8 @@
  * (.jpg, .png, .webp, .svg).
  */
 
+import { links } from "@/lib/links";
+
 export const site = {
   name: "THUISA",
   fullName: "Tunghai University Indonesian Student Association",
@@ -22,9 +26,8 @@ export const site = {
   university: "Tunghai University",
   city: "Taichung, Taiwan",
   email: "thuisa2025@gmail.com",
-  lineId: "thuisa",
-  membershipFee: "NT$200 / year",
-  joinFormUrl: "https://www.google.com/", // TODO: replace with the real membership form
+  lineId: "thuisa", // TODO: confirm this LINE ID is real
+  membershipFee: "NT$200 / year", // TODO: confirm the membership fee
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.693668951489!2d120.59997247606017!3d24.182473772050418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2sUniversitas%20Tunghai!5e0!3m2!1sid!2sid!4v1755167301397!5m2!1sid!2sid",
 };
@@ -54,15 +57,15 @@ export const socials = [
   {
     label: "LINE",
     handle: `ID: ${site.lineId}`,
-    href: "https://line.me/", // TODO: replace with the real LINE invite link
+    href: links.lineInvite, // hidden while empty, see lib/links.ts
     icon: "/line.png",
   },
 ];
 
 export const stats = [
   { value: "2017", label: "Founded in", detail: "The year THUISA started at Tunghai" },
-  { value: "400+", label: "Community", detail: "Indonesians across Tunghai" },
-  { value: "42", label: "Active members", detail: "Committee and volunteers" },
+  { value: "400+", label: "Community", detail: "Indonesians across Tunghai" }, // TODO: confirm member count
+  { value: "42", label: "Active members", detail: "Committee and volunteers" }, // TODO: confirm member count
   { value: "7", label: "Annual events", detail: "From Yingxin to Graduation" },
 ];
 

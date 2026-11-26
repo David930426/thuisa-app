@@ -1,8 +1,9 @@
 "use server"
 import nodemailer from "nodemailer";
-import { SuggestSchema } from "@/actions/schema";
+import { ContactSchema } from "@/actions/schema";
+import { contactCategories } from "@/lib/contact";
 
-export type ComplainState = {
+export type ContactState = {
   ok: boolean;
   message: string;
   fieldErrors?: Record<string, string[]>;
@@ -21,21 +22,20 @@ function getTransporter() {
   return transporter;
 }
 
-export async function sendSuggest(
-  _prev: ComplainState,
+export async function sendContactMessage(
+  _prev: ContactState,
   formData: FormData
-): Promise<ComplainState> {
+): Promise<ContactState> {
   // Take all the data from the form
   const raw = {
     name: String(formData.get("name") ?? ""),
     email: String(formData.get("email") ?? ""),
-    subject: String(formData.get("subject") ?? ""),
     message: String(formData.get("message") ?? ""),
     category: String(formData.get("category") ?? "other"),
   };
 
   // Check the data by using schema and zod, throw the error if there aby error
-  const parsed = SuggestSchema.safeParse(raw);
+  const parsed = ContactSchema.safeParse(raw);
   if (!parsed.success) {
     const fieldErrors: Record<string, string[]> = {};
     for (const issue of parsed.error.issues) {
@@ -48,27 +48,38 @@ export async function sendSuggest(
   // Take the data that already being parsed by zod
   const data = parsed.data;
 
+  const categoryLabel =
+    contactCategories.find((category) => category.value === data.category)
+      ?.label ?? data.category;
+  const sendFailed: ContactState = {
+    ok: false,
+    message: "We couldn’t send your message. Please try again later.",
+  };
+
+  // The committee inbox is configured per deployment, never in the code
+  const recipient = process.env.MAIL_TO;
+  if (!recipient) {
+    console.error("Mail error: MAIL_TO is not set");
+    return sendFailed;
+  }
+
   // Send the data by using email
   try {
     const transporter = getTransporter();
     await transporter.sendMail({
       from: process.env.MAIL_FROM!,
-      to: process.env.MAIL_TO!,
+      to: recipient,
       replyTo: `${data.name} <${data.email}>`,
-      subject: `[Complaint] ${data.subject} (${data.category})`,
-      text: `Category: ${data.category}
+      subject: `[THUISA website] ${categoryLabel} from ${data.name}`,
+      text: `Category: ${categoryLabel}
 From: ${data.name} <${data.email}>
-Subject: ${data.subject}
 
 ${data.message}`,
     });
 
-    return { ok: true, message: "Thanks! Your complaint was sent." };
+    return { ok: true, message: "Thanks! Your message was sent." };
   } catch (e) {
     console.error("Mail error:", e);
-    return {
-      ok: false,
-      message: "We couldn’t send your message. Please try again later.",
-    };
+    return sendFailed;
   }
 }

@@ -45,6 +45,7 @@ export default function Page() {
       <PageHeader
         eyebrow="About Us"
         title="A home away from home, built by students"
+        // TODO: confirm member count (400)
         lede={`Since ${site.foundedYear}, THUISA has been the Indonesian student association at Tunghai University — run entirely by students, for the roughly 400 Indonesians studying here.`}
       >
         <Button asChild variant="onDarkOutline" size="lg">

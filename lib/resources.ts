@@ -72,8 +72,9 @@ export const resourceGroups: ResourceGroup[] = [
       {
         title: "ARC (Alien Resident Certificate)",
         description:
-          "Apply within 15 days of arrival at the National Immigration Agency office in Taichung. You need this before almost anything else — bank account, phone contract, insurance.",
-        href: "https://www.immigration.gov.tw/",
+          "With a Resident Visa, apply online within 30 days of arrival, or within 30 days of getting the visa if it was issued inside Taiwan. On a visitor visa marked FS, convert it to a Resident Visa first. You need the ARC before almost anything else — bank account, phone contract, insurance. Source: National Immigration Agency.",
+        // NIA guidelines for foreign students (dated 2026-08-28)
+        href: "https://www.immigration.gov.tw/5475/5478/141465/141808/417829/cp_news",
       },
       {
         title: "National Health Insurance",
@@ -195,7 +196,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         title: "THUISA membership",
         description:
-          "Open to Indonesian students at Tunghai. NT$200 a year, and the only thing it changes is that you pay less at our events.",
+          "Open to Indonesian students at Tunghai. NT$200 a year, and the only thing it changes is that you pay less at our events.", // TODO: confirm the membership fee
         href: "/contact",
       },
     ],
@@ -214,10 +215,11 @@ export const resourceGroups: ResourceGroup[] = [
         href: "tel:110",
       },
       {
-        title: "Foreigners in Taiwan hotline: 0800-024-111",
+        title: "Foreigners in Taiwan hotline: 1990",
         description:
           "Government helpline with English and Indonesian support for visa, life, and legal questions.",
-        href: "tel:0800024111",
+        // Source: https://www.immigration.gov.tw/5475/5478/6928/6940/204896/204917/cp_news
+        href: "tel:1990",
       },
       {
         title: "Indonesian Economic and Trade Office (KDEI Taipei)",
@@ -239,7 +241,7 @@ export const resourceGroups: ResourceGroup[] = [
 export const arrivalChecklist = [
   "Apply for your resident visa before you fly",
   "Confirm your dorm place with OIR",
-  "Apply for your ARC within 15 days of landing",
+  "Apply for your ARC online within 30 days of arrival (Resident Visa holders)",
   "Open a bank account and get a local SIM",
   "Register for an EasyCard or iPass",
   "Join the THUISA group chat and come to Yingxin",

@@ -52,6 +52,7 @@ export default function Home() {
                 title="THUISA is the Indonesian student association at Tunghai"
                 lede="It has existed since 2017 and is run by a committee of students, elected each year, across six working divisions."
               />
+              {/* TODO: confirm member count (400) */}
               <p className="mt-5 text-base leading-relaxed text-ink-600">
                 Around 400 Indonesian students study at Tunghai University in
                 Taichung. We organise seven events across the academic year,

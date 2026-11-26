@@ -16,7 +16,7 @@ const startHere = [
   },
   {
     title: "Your first two weeks in Taichung",
-    body: "ARC within 15 days of landing, then a bank account, a SIM card, and an EasyCard. In that order.",
+    body: "Resident Visa? Apply for your ARC online within 30 days of arrival. Then bank, SIM, EasyCard.",
     href: "/resources#first-weeks",
     icon: CalendarDays,
   },

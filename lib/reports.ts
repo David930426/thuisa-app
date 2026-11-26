@@ -56,7 +56,18 @@ export const reports: Report[] = [
   },
 ];
 
-/** Headline numbers shown above the report list. Update once a year. */
+/**
+ * Spending figures are only shown once a "Financial summary" entry above has a
+ * `file`. Until then the page says the financial report is coming soon.
+ */
+export const hasFinancialReport = reports.some(
+  (report) => report.kind === "Financial summary" && Boolean(report.file)
+);
+
+/**
+ * Headline numbers shown above the report list. Update once a year. Mark money
+ * figures with `financial: true` so they follow the rule above.
+ */
 export const transparencyHighlights = [
   {
     value: "7",
@@ -64,21 +75,24 @@ export const transparencyHighlights = [
     detail: "Across the 2025/2026 committee year",
   },
   {
-    value: "100%",
+    value: "100%", // TODO: confirm against the financial report
     label: "Of fees spent on members",
     detail: "Committee roles are unpaid and voluntary",
+    financial: true,
   },
   {
-    value: "42",
+    value: "42", // TODO: confirm member count
     label: "Committee and volunteers",
     detail: "Across six working divisions",
   },
 ];
 
 /**
- * A plain-language breakdown so members can see the shape of the budget even
- * before a PDF is published. Percentages should add up to 100.
+ * A plain-language breakdown so members can see the shape of the budget.
+ * Hidden until the financial report is published. Percentages should add up
+ * to 100.
  */
+// TODO: replace these percentages with the figures from the financial report
 export const budgetBreakdown = [
   { label: "Events and programming", percent: 62 },
   { label: "Equipment and logistics", percent: 16 },

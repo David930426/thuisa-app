@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { Container, PageHeader } from "@/components/ui/section";
+import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +30,9 @@ const faqs = [
   {
     q: "How do I become a member?",
     a: "Fill in the membership form and pay the fee to one of the committee (ganbu). If you are not sure who to pay, message us on Instagram and we will point you to the right person.",
-    link: { label: "Open the membership form", href: site.joinFormUrl },
+    link: links.membershipForm
+      ? { label: "Open the membership form", href: links.membershipForm }
+      : undefined,
   },
   {
     q: "How much is the membership fee?",
@@ -113,11 +116,13 @@ export default function Page() {
                   <p className="mt-3 text-sm leading-relaxed text-ink-600">
                     {channelNotes[social.label]}
                   </p>
-                  <div className="mt-auto pt-5">
-                    <TextLink href={social.href} external>
-                      Open {social.label}
-                    </TextLink>
-                  </div>
+                  {social.href ? (
+                    <div className="mt-auto pt-5">
+                      <TextLink href={social.href} external>
+                        Open {social.label}
+                      </TextLink>
+                    </div>
+                  ) : null}
                 </Card>
               </li>
             ))}
@@ -232,11 +237,13 @@ export default function Page() {
                   {site.membershipFee}, for Indonesian students at Tunghai.
                   Members pay less at events.
                 </p>
-                <div className="mt-auto pt-5">
-                  <TextLink href={site.joinFormUrl} external>
-                    Membership form
-                  </TextLink>
-                </div>
+                {links.membershipForm ? (
+                  <div className="mt-auto pt-5">
+                    <TextLink href={links.membershipForm} external>
+                      Membership form
+                    </TextLink>
+                  </div>
+                ) : null}
               </Card>
             </div>
           </div>

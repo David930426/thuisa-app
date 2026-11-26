@@ -99,30 +99,32 @@ export default function Footer() {
               Follow us
             </h2>
             <ul className="mt-5 space-y-3">
-              {socials.map((social) => (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-3 text-sm text-ink-400 transition-colors hover:text-white"
-                  >
-                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 transition-colors group-hover:bg-brand-600">
-                      <Image
-                        src={social.icon}
-                        alt=""
-                        width={18}
-                        height={18}
-                        className="size-[18px] object-contain"
-                      />
-                    </span>
-                    <span>
-                      <span className="block text-white">{social.label}</span>
-                      <span className="block text-xs">{social.handle}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
+              {socials
+                .filter((social) => social.href)
+                .map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 text-sm text-ink-400 transition-colors hover:text-white"
+                    >
+                      <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 transition-colors group-hover:bg-brand-600">
+                        <Image
+                          src={social.icon}
+                          alt=""
+                          width={18}
+                          height={18}
+                          className="size-[18px] object-contain"
+                        />
+                      </span>
+                      <span>
+                        <span className="block text-white">{social.label}</span>
+                        <span className="block text-xs">{social.handle}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>

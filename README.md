@@ -25,8 +25,10 @@ SMTP_PASS=your_app_password
 # SMTP gmail pass must use app password, cannot use basic password
 
 # --- Mail metadata ---
-MAIL_FROM="GlowGrove Support <support@glowgrove.com>"
-MAIL_TO="support@glowgrove.com"
+MAIL_FROM=
+MAIL_TO=
+# MAIL_FROM is the sender address (usually the same account as SMTP_USER)
+# MAIL_TO is the committee inbox that receives contact form messages
 
 ## Editing the site content
 
@@ -38,6 +40,8 @@ file to change what the site says:
 | `lib/site.ts` | Org details, navigation, socials, stats, the four "what we do" cards, partners, and **all image paths** |
 | `lib/events.ts` | The event calendar. Adding an event here adds it to the homepage and the events page |
 | `lib/team.ts` | Leadership photos/names and the six divisions |
+| `lib/links.ts` | Membership form and LINE invite links (hidden while empty) |
+| `lib/contact.ts` | Contact form categories |
 | `lib/resources.ts` | The new-student guide links |
 | `lib/reports.ts` | Accountability reports and the budget breakdown |
 
@@ -55,7 +59,8 @@ are printed on each placeholder image.
 
 - Check every external link in `lib/resources.ts` — the ones commented `// verify`
   are most likely to have moved
-- Replace `joinFormUrl` and the LINE link in `lib/site.ts`
+- Add the membership form and LINE links in `lib/links.ts`
+- Work through `TODO.md`
 - Add a real Tunghai University logo in `partners` (it currently reuses the
   OIR logo as a stand-in)
 - Confirm the event dates in `lib/events.ts` match the real academic year

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/section";
 import {
   budgetBreakdown,
+  hasFinancialReport,
   reports,
   transparencyHighlights,
 } from "@/lib/reports";
@@ -41,62 +42,72 @@ export default function Page() {
       <Section spacing="tight">
         <Container size="wide">
           <dl className="grid gap-6 sm:grid-cols-3">
-            {transparencyHighlights.map((item) => (
-              <Card
-                key={item.label}
-                className="border-ink-200 border-t-4 border-t-brand-600 bg-ink-50"
-              >
-                <CardContent>
-                  <dd className="font-display text-4xl font-extrabold text-ink-900">
-                    {item.value}
-                  </dd>
-                  <dt className="mt-2 font-display text-sm font-bold text-brand-700">
-                    {item.label}
-                  </dt>
-                  <p className="mt-1.5 text-sm text-ink-600">{item.detail}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {transparencyHighlights
+              .filter((item) => hasFinancialReport || !item.financial)
+              .map((item) => (
+                <Card
+                  key={item.label}
+                  className="border-ink-200 border-t-4 border-t-brand-600 bg-ink-50"
+                >
+                  <CardContent>
+                    <dd className="font-display text-4xl font-extrabold text-ink-900">
+                      {item.value}
+                    </dd>
+                    <dt className="mt-2 font-display text-sm font-bold text-brand-700">
+                      {item.label}
+                    </dt>
+                    <p className="mt-1.5 text-sm text-ink-600">{item.detail}</p>
+                  </CardContent>
+                </Card>
+              ))}
           </dl>
         </Container>
       </Section>
 
-      {/* Budget shape */}
-      <Section tone="muted">
-        <Container size="wide">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <SectionHeading
-                eyebrow="The shape of the budget"
-                title="Roughly where every NT$100 goes"
-                lede="A plain-language summary while the full financial report is being prepared. The audited figures always take precedence over this chart."
-              />
-            </div>
+      {/* Budget shape, shown only once the financial report file exists */}
+      {hasFinancialReport ? (
+        <Section tone="muted">
+          <Container size="wide">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <SectionHeading
+                  eyebrow="The shape of the budget"
+                  title="Roughly where every NT$100 goes"
+                  lede="A plain-language summary of the financial report. The audited figures always take precedence over this chart."
+                />
+              </div>
 
-            <div className="lg:col-span-7">
-              <ul className="space-y-6">
-                {budgetBreakdown.map((line) => (
-                  <li key={line.label}>
-                    <div className="flex items-baseline justify-between gap-4">
-                      <span className="font-display text-sm font-bold text-ink-900 md:text-base">
-                        {line.label}
-                      </span>
-                      <span className="font-display text-sm font-extrabold text-brand-700 tabular-nums">
-                        {line.percent}%
-                      </span>
-                    </div>
-                    <Progress
-                      value={line.percent}
-                      aria-label={`${line.label}: ${line.percent} percent`}
-                      className="mt-2 h-2.5 bg-ink-200 [&>[data-slot=progress-indicator]]:bg-brand-600"
-                    />
-                  </li>
-                ))}
-              </ul>
+              <div className="lg:col-span-7">
+                <ul className="space-y-6">
+                  {budgetBreakdown.map((line) => (
+                    <li key={line.label}>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <span className="font-display text-sm font-bold text-ink-900 md:text-base">
+                          {line.label}
+                        </span>
+                        <span className="font-display text-sm font-extrabold text-brand-700 tabular-nums">
+                          {line.percent}%
+                        </span>
+                      </div>
+                      <Progress
+                        value={line.percent}
+                        aria-label={`${line.label}: ${line.percent} percent`}
+                        className="mt-2 h-2.5 bg-ink-200 [&>[data-slot=progress-indicator]]:bg-brand-600"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-        </Container>
-      </Section>
+          </Container>
+        </Section>
+      ) : (
+        <Section tone="muted" spacing="tight">
+          <Container size="wide">
+            <SectionHeading title="Financial report coming soon" align="center" />
+          </Container>
+        </Section>
+      )}
 
       {/* Report list */}
       <Section>
