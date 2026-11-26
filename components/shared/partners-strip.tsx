@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Container, Section } from "@/components/ui/section";
+import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 import { partners } from "@/lib/site";
 
 export function PartnersStrip() {

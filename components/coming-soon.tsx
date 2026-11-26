@@ -1,5 +1,6 @@
 import { Wrench } from "lucide-react";
-import { Container, Section } from "@/components/ui/section";
+import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 
 /**
  * Placeholder for a page that is not built yet. Nothing uses it right now —

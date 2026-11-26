@@ -12,6 +12,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
@@ -19,11 +20,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
 import { images, navigation, site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-export default function Menu() {
+/** Fixed site header: logo, desktop navigation and the phone menu sheet. */
+export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);

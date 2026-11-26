@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
+import { Container } from "@/components/layout/container";
 import { Separator } from "@/components/ui/separator";
-import { Container } from "@/components/ui/section";
 import { footerNavigation, images, partners, site, socials } from "@/lib/site";
 
 export default function Footer() {

@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { PageHeader } from "@/components/layout/page-header";
+import { Section } from "@/components/layout/section";
 import { PartnersStrip } from "@/components/shared/partners-strip";
 import { Pillars } from "@/components/shared/pillars";
-import { StatsBand } from "@/components/shared/stats-band";
 import { shelfCardClass } from "@/components/shared/shelf-card";
+import { StatsBand } from "@/components/shared/stats-band";
 import { TextLink } from "@/components/shared/text-link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Container,
-  PageHeader,
-  Section,
-  SectionHeading,
-} from "@/components/ui/section";
 import { divisions, leadership } from "@/lib/team";
 import { cn } from "@/lib/utils";
 import { images, site } from "@/lib/site";
@@ -57,13 +55,11 @@ export default function Page() {
       {/* Our story */}
       <Section>
         <Container size="wide">
-          <h2 className="max-w-4xl type-headline">
-            <span className="text-fg">Our story.</span>{" "}
-            <span className="text-ink-500">
-              Nine years of Indonesian students at Tunghai, run by a new
-              committee every year.
-            </span>
-          </h2>
+          <Heading
+            variant="headline"
+            title="Our story."
+            subtitle="Nine years of Indonesian students at Tunghai, run by a new committee every year."
+          />
 
           <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-feature bg-surface-sunken sm:aspect-[16/9] md:mt-12 lg:aspect-[21/9]">
             <Image
@@ -149,7 +145,7 @@ export default function Page() {
       {/* Current priorities */}
       <Section>
         <Container size="wide">
-          <SectionHeading
+          <Heading
             eyebrow="Where we are heading"
             title="What this committee is working on"
             lede="Our priorities are reviewed each year and published so members can hold us to them."
@@ -183,7 +179,7 @@ export default function Page() {
       {/* Leadership */}
       <Section tone="muted">
         <Container size="wide">
-          <SectionHeading
+          <Heading
             eyebrow="Our team"
             title="The people running THUISA this year"
             lede="Every role here is voluntary and unpaid, held alongside a full course load."

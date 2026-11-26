@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Download, FileText, Lock } from "lucide-react";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { PageHeader } from "@/components/layout/page-header";
+import { Section } from "@/components/layout/section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import {
-  Container,
-  PageHeader,
-  Section,
-  SectionHeading,
-} from "@/components/ui/section";
 import {
   budgetBreakdown,
   hasFinancialReport,
@@ -70,7 +68,7 @@ export default function Page() {
           <Container size="wide">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5">
-                <SectionHeading
+                <Heading
                   eyebrow="The shape of the budget"
                   title="Roughly where every NT$100 goes"
                   lede="A plain-language summary of the financial report. The audited figures always take precedence over this chart."
@@ -104,7 +102,7 @@ export default function Page() {
       ) : (
         <Section tone="muted" spacing="tight">
           <Container size="wide">
-            <SectionHeading title="Financial report coming soon" align="center" />
+            <Heading title="Financial report coming soon" align="center" />
           </Container>
         </Section>
       )}
@@ -112,7 +110,7 @@ export default function Page() {
       {/* Report list */}
       <Section>
         <Container size="wide">
-          <SectionHeading
+          <Heading
             eyebrow="Documents"
             title="Published reports"
             lede="Reports are published at the end of each committee year. Entries marked as in preparation are being finalised and checked by the incoming committee."

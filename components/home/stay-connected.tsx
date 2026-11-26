@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { Mail, Ticket } from "lucide-react";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { Section } from "@/components/layout/section";
 import { shelfCardClass } from "@/components/shared/shelf-card";
 import { TextLink } from "@/components/shared/text-link";
 import { Card } from "@/components/ui/card";
-import { Container, Section } from "@/components/ui/section";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -30,12 +32,11 @@ export function StayConnected() {
   return (
     <Section>
       <Container size="wide">
-        <h2 className="max-w-4xl type-headline">
-          <span className="text-fg">Stay in the loop.</span>{" "}
-          <span className="text-ink-500">
-            Dates, posters, and last-minute changes go here first.
-          </span>
-        </h2>
+        <Heading
+          variant="headline"
+          title="Stay in the loop."
+          subtitle="Dates, posters, and last-minute changes go here first."
+        />
 
         <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Instagram, featured */}

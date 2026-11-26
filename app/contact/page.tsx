@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Mail, MapPin, Ticket } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { PageHeader } from "@/components/layout/page-header";
+import { Section } from "@/components/layout/section";
 import { shelfCardClass } from "@/components/shared/shelf-card";
 import { TextLink } from "@/components/shared/text-link";
 import {
@@ -11,7 +15,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
-import { Container, PageHeader, Section } from "@/components/ui/section";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -71,16 +74,6 @@ const channelNotes: Record<string, string> = {
 
 const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
 
-/** Two-tone Apple-style section headline. */
-function Headline({ title, subtitle }: { title: string; subtitle: string }) {
-  return (
-    <h2 className="max-w-4xl type-headline">
-      <span className="text-fg">{title}</span>{" "}
-      <span className="text-fg-muted">{subtitle}</span>
-    </h2>
-  );
-}
-
 export default function Page() {
   return (
     <>
@@ -93,7 +86,9 @@ export default function Page() {
       {/* Ways to reach us */}
       <Section tone="muted">
         <Container size="wide">
-          <Headline
+          <Heading
+            variant="headline"
+            subtitleTone="muted"
             title="Pick a channel."
             subtitle="The committee checks all of them every day."
           />
@@ -157,7 +152,9 @@ export default function Page() {
         <Container size="wide">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <Headline
+              <Heading
+                variant="headline"
+                subtitleTone="muted"
                 title="Write to the committee."
                 subtitle="Issues, concerns, suggestions, or proposals."
               />
@@ -183,7 +180,9 @@ export default function Page() {
       {/* Find us */}
       <Section tone="muted">
         <Container size="wide">
-          <Headline
+          <Heading
+            variant="headline"
+            subtitleTone="muted"
             title="Find us."
             subtitle="No permanent office, but plenty of us on campus."
           />
@@ -253,7 +252,9 @@ export default function Page() {
       {/* FAQ */}
       <Section>
         <Container className="max-w-4xl">
-          <Headline
+          <Heading
+            variant="headline"
+            subtitleTone="muted"
             title="Questions."
             subtitle="The ones we get every semester."
           />

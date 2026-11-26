@@ -9,8 +9,10 @@ import {
   useState,
 } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import { Container, Section } from "@/components/ui/section";
 
 /**
  * Apple Store-style shelf: a two-tone headline ("Bold part. Grey part.") over
@@ -69,15 +71,7 @@ export function Shelf({
   return (
     <Section id={id} tone="muted" className={className}>
       <Container size="wide">
-        <h2 className="max-w-4xl type-headline">
-          <span className="text-fg">{title}</span>
-          {subtitle ? (
-            <>
-              {" "}
-              <span className="text-ink-500">{subtitle}</span>
-            </>
-          ) : null}
-        </h2>
+        <Heading variant="headline" title={title} subtitle={subtitle} />
       </Container>
 
       <ul

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
+import { Container } from "@/components/layout/container";
+import { PageHeader } from "@/components/layout/page-header";
+import { Section } from "@/components/layout/section";
 import { Icon } from "@/components/shared/icon";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Container,
-  PageHeader,
-  Section,
-} from "@/components/ui/section";
+import { Card } from "@/components/ui/card";
 import {
   arrivalChecklist,
   emergencyNumbers,

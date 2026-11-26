@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import Hero from "@/components/home/hero";
 import { EventCard } from "@/components/events/event-card";
 import { Gallery } from "@/components/home/gallery";
+import Hero from "@/components/home/hero";
 import { StayConnected } from "@/components/home/stay-connected";
+import { WhereToStart } from "@/components/home/where-to-start";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { Section } from "@/components/layout/section";
 import { PartnersStrip } from "@/components/shared/partners-strip";
 import { Pillars } from "@/components/shared/pillars";
 import { StatsBand } from "@/components/shared/stats-band";
-import { WhereToStart } from "@/components/home/where-to-start";
 import { Button } from "@/components/ui/button";
-import { Container, Section, SectionHeading } from "@/components/ui/section";
 import { getUpcomingEvents } from "@/lib/events";
 import { images, site } from "@/lib/site";
 
@@ -49,7 +51,7 @@ export default function Home() {
             </div>
 
             <div>
-              <SectionHeading
+              <Heading
                 eyebrow="Who we are"
                 title="THUISA is the Indonesian student association at Tunghai"
                 lede="It has existed since 2017 and is run by a committee of students, elected each year, across six working divisions."
@@ -83,7 +85,7 @@ export default function Home() {
       <Section>
         <Container size="wide">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
+            <Heading
               eyebrow="What's next"
               title="Coming up at THUISA"
               lede="Our calendar follows the academic year, from the welcome nights in September through to Graduation in June."

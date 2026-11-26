@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EventsBrowser } from "@/components/events/events-browser";
-import { Card } from "@/components/ui/card";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { PageHeader } from "@/components/layout/page-header";
+import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import {
-  Container,
-  PageHeader,
-  Section,
-  SectionHeading,
-} from "@/components/ui/section";
+import { Card } from "@/components/ui/card";
 import { events, eventDateParts, getPastEvents, isUpcoming } from "@/lib/events";
 
 export const metadata: Metadata = {
@@ -72,7 +70,7 @@ export default function Page() {
       {/* Full calendar */}
       <Section>
         <Container size="wide">
-          <SectionHeading
+          <Heading
             eyebrow="Calendar"
             title="Every event, in full"
             lede="Open any event for the run-down: what happens, who it is for, and what you should know before you turn up."

@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { Container, Section, SectionHeading } from "@/components/ui/section";
+import { Container } from "@/components/layout/container";
+import { Heading } from "@/components/layout/heading";
+import { Section } from "@/components/layout/section";
 import { images } from "@/lib/site";
 
 /**
@@ -10,7 +12,7 @@ export function Gallery() {
   return (
     <Section>
       <Container size="wide">
-        <SectionHeading
+        <Heading
           eyebrow="Life at THUISA"
           title="Two semesters, in pictures"
           lede="Trips, tournaments, food stalls, and a lot of group photos. This is what the year actually looks like."
