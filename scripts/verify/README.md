@@ -47,6 +47,9 @@ The exit code is 0 when everything matches and 1 otherwise.
   differently in the new version shows up under "review by hand".
 - Class names built at runtime (for example `` `text-${colour}` ``) aren't seen.
 - `@supports` blocks are treated as supported, as in any current browser.
+- Tailwind's internal `--tw-*` variables are ignored when only one side sets
+  them. Tailwind registers them with `inherits: false`, so they only affect
+  the element itself, and that effect shows in the real properties compared.
 - Sizes are compared at a 16px root font. Values that only match at that size,
   such as `0.75rem + 4px` and `1rem`, are reported separately.
 

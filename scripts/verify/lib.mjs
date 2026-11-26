@@ -161,6 +161,11 @@ export function compareClassSets(oldIndex, oldClasses, newIndex, newClasses) {
     const b = effectiveStyle(newIndex, newClasses, w).styles;
     for (const key of new Set([...Object.keys(a), ...Object.keys(b)])) {
       if (a[key] === b[key]) continue;
+      // Tailwind's internal --tw-* variables are registered with
+      // `inherits: false`, so one set on only one side can't reach other
+      // elements; its effect on this element already shows in the real
+      // properties (line-height, font-weight, ...) compared here.
+      if (key.includes("|--tw-") && (a[key] === undefined || b[key] === undefined)) continue;
       if (a[key] && b[key] && toPx(a[key]) === toPx(b[key])) issues.add(`${key}: equal only at a 16px root font size (${a[key]} vs ${b[key]})`);
       else issues.add(`@${w}px ${key}: old=${a[key] ?? "(none)"} new=${b[key] ?? "(none)"}`);
     }

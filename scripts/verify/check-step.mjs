@@ -67,6 +67,8 @@ const unpaired = [];
   let hunk = null;
   const flush = () => {
     if (!hunk) return;
+    // CSS files are covered by section 1; only source files hold class strings.
+    if (!/\.(tsx?|jsx?|mjs)$/.test(file ?? "")) { hunk = null; return; }
     if (hunk.removed.length === hunk.added.length) {
       hunk.removed.forEach((oldLine, i) => pairs.push({ file, line: hunk.start + i, oldLine, newLine: hunk.added[i] }));
     } else if (hunk.removed.length || hunk.added.length) {
