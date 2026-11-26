@@ -2,17 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Mail, MapPin, Ticket } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
+import { type Faq, FaqList } from "@/components/contact/faq-list";
 import { Container } from "@/components/layout/container";
 import { Heading } from "@/components/layout/heading";
 import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { TextLink } from "@/components/shared/text-link";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
@@ -23,7 +18,7 @@ export const metadata: Metadata = {
     "Get in touch with THUISA — Instagram, TikTok, LINE, or email. Frequently asked questions about membership, events, and joining the Indonesian student community at Tunghai.",
 };
 
-const faqs = [
+const faqs: Faq[] = [
   {
     q: "What is THUISA?",
     a: "THUISA is the Indonesian Student Association at Tunghai University. We run cultural, social, academic, and faith-friendly activities for Indonesian students — and plenty that are open to non-Indonesian students too.",
@@ -250,38 +245,7 @@ export default function Page() {
             subtitle="The ones we get every semester."
           />
 
-          <Accordion
-            type="single"
-            collapsible
-            className="mt-10 w-full border-t border-border md:mt-12"
-          >
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={faq.q}
-                value={`faq-${index}`}
-                className="border-border"
-              >
-                <AccordionTrigger className="py-6 text-left font-display text-lg font-bold text-fg hover:no-underline md:text-xl">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="pb-6">
-                  <p className="max-w-2xl text-base leading-relaxed text-fg-muted">
-                    {faq.a}
-                  </p>
-                  {faq.link ? (
-                    <div className="mt-4">
-                      <TextLink
-                        href={faq.link.href}
-                        external={faq.link.href.startsWith("http")}
-                      >
-                        {faq.link.label}
-                      </TextLink>
-                    </div>
-                  ) : null}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <FaqList items={faqs} />
 
           <p className="mt-10 text-base text-fg-muted">
             Not here?{" "}
