@@ -8,6 +8,7 @@
  *   lib/events.ts     - the event calendar
  *   lib/team.ts       - the people on the team
  *   lib/resources.ts  - the new-student resource links
+ *   lib/help.ts       - emergency numbers and who to contact (/help)
  *   lib/reports.ts    - accountability / transparency reports
  *
  * To swap a placeholder picture for a real photo: drop your file into
@@ -38,6 +39,7 @@ export const navigation = [
   { label: "About Us", href: "/about" },
   { label: "Our Events", href: "/events" },
   { label: "New Students", href: "/resources" },
+  { label: "Help", href: "/help" },
   { label: "Contact Us", href: "/contact" },
 ];
 
