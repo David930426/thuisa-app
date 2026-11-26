@@ -46,6 +46,7 @@ file to change what the site says:
 | `lib/links.ts` | Membership form and LINE invite links (hidden while empty) |
 | `lib/contact.ts` | Contact form categories |
 | `lib/resources.ts` | The new-student guide links |
+| `lib/help.ts` | Emergency numbers (110, 119, 1990), KDEI, the university contact and THUISA's entry on the Help page (`/help`); empty university fields stay hidden |
 | `lib/reports.ts` | Accountability reports and the budget breakdown |
 
 ### Swapping the placeholder pictures
@@ -77,8 +78,8 @@ components/
   shared/    used on more than one page: pillars, stats-band, partners-strip,
              shelf, text-link, icon
   home/      hero, where-to-start, gallery, stay-connected
-  guide/     New Students guide: emergency-numbers, arrival-checklist,
-             resource-group
+  guide/     New Students guide: emergency-numbers (also on the Help page),
+             arrival-checklist, resource-group
   events/    event-card, events-browser
   contact/   contact-form, faq-list
 ```
@@ -94,6 +95,9 @@ components/
   `variant="headline"` is the two-tone "Bold part. Grey part." headline
   (`title`, `subtitle`, `subtitleTone`).
 - `PageHeader`: the dark header at the top of every page except the home page.
+- `Shelf` (in `shared/`): a headline over a sideways-scrolling row of cards
+  from `md` (768px) up; below that the cards stack in one full-width column.
+  Give shelf cards `w-full` and set their shelf size with `md:` classes.
 
 ### shadcn/ui
 

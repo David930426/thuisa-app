@@ -9,6 +9,8 @@ students looking for information.
 - **Status:** steps 1 and 2 of the plan are done, and the code part of step 3
   (CSS tokens, component folders, one heading and card system, cleanup) is done
   on the `step-3b-components` branch (see [Order of work](#order-of-work)).
+  The Help page, the hero heading and focus fixes, and stacked shelf cards on
+  phones are done on the `step-4-help` branch.
   Each problem below is marked **Fixed** or **Open**.
 - **Information the committee must supply** (links, figures, photos, hosting)
   is tracked in [TODO.md](../TODO.md) with file and line references.
@@ -40,7 +42,7 @@ Ranked by impact.
 | # | Problem | Status |
 |---|---|---|
 | 4 | **Past events didn't render**, so links to them did nothing. After the last event of the year, every event would show in both tabs. | **Fixed** in step 2. "Upcoming" is still decided when the site is built, so it goes stale until the next deploy. |
-| 5 | **New students had to hunt for their path.** "Arriving soon?" was the sixth block on the home page, the guide link was on the third hero slide, and the guide had three different names. | **Mostly fixed** in step 2: section moved under the hero, guide linked from slide 1, one name ("New Students"). Still open: the card row scrolls sideways on phones with no visible arrows, and checklist items don't link to their details. |
+| 5 | **New students had to hunt for their path.** "Arriving soon?" was the sixth block on the home page, the guide link was on the third hero slide, and the guide had three different names. | **Mostly fixed** in step 2: section moved under the hero, guide linked from slide 1, one name ("New Students"). The card row now stacks vertically on phones (`step-4-help`). Still open: checklist items don't link to their details. |
 | 6 | **Events don't say when, how much, or how to sign up.** No time, price or registration link; the only action is "Ask us". Event details are in a pop-up, so one event can't be shared as a link. Past events still say "Why you should join". | **Open.** Needs new event fields and content. |
 | 7 | **Report page looked untrustworthy.** It showed "100% of fees spent on members" and a budget split with no report published, and "Report" in the menu read like "report a problem". | **Partly fixed.** Figures hidden until the financial report exists (step 1). Renamed "Transparency" and moved to the footer and About page (step 2). Still open: lock icon on "In preparation", header text that implies reports exist. |
 | 8 | **The site looks unfinished.** Every image under `public/images/` is a "replace me" placeholder, and division member lists are empty. | **Open.** Waiting for photos with consent. |
@@ -52,9 +54,9 @@ Ranked by impact.
 |---|---|---|
 | 10 | **English only, with unexplained terms:** ganbu, Yingxin, OIR, ARC, NHI, KDEI. No Chinese names or addresses to show a taxi driver or office counter. | **Open.** Language decision needed. |
 | 11 | **Prospective students are barely served.** Nothing on intakes, costs, housing basics, or getting from the airport to campus. | **Open.** Content needed. |
-| 12 | **Emergency help was hard to reach.** Numbers were at the bottom of the guide, and the "110 / 119" entry only dialled 110. | **Fixed** in step 2. 110 and 119 are tap-to-call buttons at the top of the guide, with 1990 below them as a help line. The Contact page still has no pointer to urgent help. |
+| 12 | **Emergency help was hard to reach.** Numbers were at the bottom of the guide, and the "110 / 119" entry only dialled 110. | **Fixed** in step 2. 110 and 119 are tap-to-call buttons at the top of the guide, with 1990 below them as a help line. Since `step-4-help` there is also a [Help page](#other-pages) in the menu, and the Contact page header points to it. |
 | 13 | **Navigation on phones.** The logo text is hidden on small screens, tapping the current page in the menu doesn't close it, and the header hides when scrolling down. | **Open.** |
-| 14 | **Accessibility.** Low-contrast grey and gold text; the hero autoplayed with no pause. | **Partly fixed** in step 2: contrast meets WCAG AA, and the hero has a pause button. Still open: three `h1` headings in the hero, links inside hidden slides that keyboard users can reach, event titles that aren't headings, gallery captions shown only on hover. |
+| 14 | **Accessibility.** Low-contrast grey and gold text; the hero autoplayed with no pause. | **Partly fixed** in step 2: contrast meets WCAG AA, and the hero has a pause button. Fixed in `step-4-help`: the home page has one `h1` (the slide titles are `h2`), hidden slides are `inert`, and the slide arrows and dots can be reached with Tab. Still open: event titles that aren't headings, gallery captions shown only on hover. |
 | 15 | **Sharing and polish.** No share image for links posted on LINE or Instagram, the web manifest isn't linked, and "Nine years" is hard-coded. | **Open.** |
 
 ### Two visitor walkthroughs
@@ -62,7 +64,7 @@ Ranked by impact.
 | Visitor and goal | Before | Now |
 |---|---|---|
 | Current student: "What's on, and how do I join?" | Event cards with no time, price or sign-up; membership form opened Google. | Membership button hidden until the real form exists. Time, price and sign-up still missing. |
-| Current student: "Something's wrong, who do I call?" | Emergency numbers at the bottom of a long guide. | 110 and 119 at the top of the New Students guide, as tap-to-call buttons. |
+| Current student: "Something's wrong, who do I call?" | Emergency numbers at the bottom of a long guide. | "Help" in the menu: 110 and 119 as tap-to-call buttons, then 1990, KDEI, the university and THUISA. The same buttons are at the top of the New Students guide. |
 | New student: "What do I do before flying?" | Guide buried and named three ways; wrong ARC deadline. | Guide is in the menu as "New Students" and directly under the hero; ARC deadline corrected. |
 | Prospective student: "Should I apply, what does it cost?" | Little beyond links to university homepages. | Unchanged; content needed. |
 
@@ -119,7 +121,7 @@ All **open** unless marked.
 /resources     New Students guide   (could move to /new-students with a redirect)
 /events        Events               (later: /events/[id], one shareable page per event)
 /about         About, team, membership
-/help          NEW: emergency numbers and who to contact
+/help          Help: emergency numbers and who to contact (done)
 /contact       Channels, form, FAQ
 /report        Transparency         (footer and About only)
 ```
@@ -127,6 +129,9 @@ All **open** unless marked.
 ### Navigation
 
 - **Desktop:** `Logo | New Students | Events | About | Contact | [Help] [Join THUISA]`. Show "Join THUISA" only once the real membership form exists.
+  **Help done** (`step-4-help`): "Help" is in the header, phone menu and footer, after "New Students"
+  (`Home | About Us | Our Events | New Students | Help | Contact Us`); the six links fit on one line at 1024px.
+  Reordering the rest and the "Join THUISA" button are still open.
 - **Phones:** logo with a short "THUISA Tunghai" label, and a menu button. Menu order: New Students, Help, Events, About, Contact, Join, then social links. The menu closes on every tap, and the header stays visible.
 - **Footer:** three groups: Students, THUISA (including Transparency), Follow us and partners.
 
@@ -162,9 +167,12 @@ Checklist: each step links to its details, with deadline and official source
 ### Other pages
 
 - **Help:** tap-to-call 110 and 119, then 1990 as a help line, KDEI, the university contact (to be supplied), and THUISA with expected response time.
+  **Done** (`step-4-help`, [app/help/page.tsx](../app/help/page.tsx), data in [lib/help.ts](../lib/help.ts)).
+  The university card shows only the OIR website until the committee supplies phone, email, office and
+  after-hours contact ([TODO.md](../TODO.md) section 8).
 - **Events:** next event featured, then upcoming, then past events on the same page. Each event shows date, time, place with a map link, member and non-member price, who can come, sign-up link and deadline, then the description.
 - **About:** story, what we run, team, membership (fee, benefits, how to pay), partners, Transparency link, contact button.
-- **Contact:** a line pointing to urgent help, channels with the best one marked, the form, location, FAQ.
+- **Contact:** a line pointing to urgent help (done), channels with the best one marked, the form, location, FAQ.
 - **Transparency:** documents first; figures only when a published report backs them.
 
 ### Language
@@ -190,7 +198,7 @@ components/
   guide/        emergency-numbers, arrival-checklist, resource-group   [stage picker]
   events/       event-card, events-browser   [event facts]
   contact/      contact-form, faq-list
-lib/            site, links, contact, events, resources, team, reports, utils   [help]
+lib/            site, links, contact, events, resources, help, team, reports, utils
 styles/         tokens.css   [base.css]
 actions/        contact action, schema
 ```
@@ -252,7 +260,7 @@ text, so sharing one component would be a visible change.
 |---|---|---|
 | 1. Correctness | Hotline and ARC facts, hide placeholder links, fix the contact form's wording and categories, hide unsupported report figures, create TODO.md. | **Done** (`648e72f`) |
 | 2. Quick wins | Past events, navigation names, new-student section under the hero, emergency numbers at the top of the guide, contrast, hero pause button. Real photos postponed. | **Done** (`7f7b9d7`) |
-| 3. Structure (about a week) | Help page; restructure the New Students guide; event fields and per-event pages; CSS tokens and a single heading and card system; component folders; remove unused code, packages and the old lockfile. | **In progress:** tokens, heading and card system, folders and cleanup done (branch `step-3b-components`); visible follow-ups (page header width, one headline style, intended shelf card radius and shadow) await sign-off. Help page, guide and events still to do. |
+| 3. Structure (about a week) | Help page; restructure the New Students guide; event fields and per-event pages; CSS tokens and a single heading and card system; component folders; remove unused code, packages and the old lockfile. | **In progress:** tokens, heading and card system, folders and cleanup done (branch `step-3b-components`); visible follow-ups (page header width, one headline style, intended shelf card radius and shadow) await sign-off. Help page done (branch `step-4-help`). Guide and events still to do. |
 | 4. Content and upkeep | Prospective-student content, Indonesian summaries, published reports, a fact and link check before each intake, spam protection, optional dark mode, real photos. | Later |
 
 ## Open items
@@ -272,17 +280,22 @@ Left over from steps 1 and 2, roughly in order of importance.
 
 **Pages**
 - "Upcoming" events are decided at build time. Rebuild regularly, or revalidate daily once hosting is chosen.
-- Hero: three `h1` headings, and links in hidden slides can receive keyboard focus.
-- "Arriving soon?" cards scroll sideways on phones with no visible arrows.
+- ~~Hero: three `h1` headings, and links in hidden slides can receive keyboard focus.~~ **Fixed** (`step-4-help`): one visually hidden `h1`, slide titles are `h2`, hidden slides are `inert`, autoplay holds while keyboard focus is in the hero, and Swiper's A11y module makes the arrows and dots focusable.
+- ~~"Arriving soon?" cards scroll sideways on phones with no visible arrows.~~ **Fixed** (`step-4-help`): below 768px both shelves ("Arriving soon?", "The things we run") stack their cards full width; from 768px up they are unchanged.
 - Header hides on scroll; the phone menu doesn't close when tapping the current page; logo text is hidden on small screens.
 - Transparency page: lock icon on "In preparation"; header says "These are our accountability reports" although none is published; the highlight row has a gap while the money figure is hidden.
-- Contact page: no pointer to urgent help.
+- ~~Contact page: no pointer to urgent help.~~ **Fixed** (`step-4-help`): a line in the page header links to the Help page.
+- Help page: university phone, email, office and after-hours contact still to be supplied ([TODO.md](../TODO.md) section 8).
 - No share image, no 404 page, web manifest not linked.
 
 **Not yet checked in a browser** (step 2)
 - Tapping a past event in "The year at a glance" switches to Past and scrolls to it.
 - The hero pause button doesn't overlap the slide arrows on a laptop.
-- The emergency buttons work on a phone.
+- The emergency buttons work on a phone (also on the Help page).
+
+**Not yet checked on a real device** (`step-4-help`; checked in headless Chrome only)
+- The hero with a screen reader (VoiceOver, TalkBack, NVDA): one `h1`, only the visible slide read.
+- Stacked shelf cards on a real phone and in Safari.
 
 ## Questions for the committee
 
