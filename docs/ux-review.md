@@ -6,7 +6,9 @@ students looking for information.
 
 - **Reviewed:** 26 November 2026, from the source code. The site was built and
   its pages fetched, but not clicked through in a browser.
-- **Status:** steps 1 and 2 of the plan are done (see [Order of work](#order-of-work)).
+- **Status:** steps 1 and 2 of the plan are done, and the code part of step 3
+  (CSS tokens, component folders, one heading and card system, cleanup) is done
+  on the `step-3b-components` branch (see [Order of work](#order-of-work)).
   Each problem below is marked **Fixed** or **Open**.
 - **Information the committee must supply** (links, figures, photos, hosting)
   is tracked in [TODO.md](../TODO.md) with file and line references.
@@ -76,21 +78,36 @@ All **open** unless marked.
 - A `dark` variant is declared but there are no dark-mode colours, and pages hard-code `bg-white`.
   **Fixed:** dark mode removed (step 6) and pages use semantic colours such as `bg-surface` (step 3). The `dark` variant line stays as a guard.
 - Two heading styles: `SectionHeading` and a two-tone headline whose classes are copied into four files.
-  **Partly fixed:** both now use type roles (`type-h2`, `type-headline`, step 6). Merging them is a visible change, left for committee sign-off.
+  **Partly fixed:** both now use type roles (`type-h2`, `type-headline`, step 6), and one
+  [`Heading`](../components/layout/heading.tsx) component replaces both (`variant="section"` and
+  `variant="headline"`). The two looks remain, and Contact's headline subtitle is `ink-600` while the
+  others are `ink-500` (`subtitleTone`). Making them one style is a visible change, left for committee sign-off.
 - Several sections use a raw `<section>` instead of the `Section` component.
+  **Fixed:** only the full-bleed hero and the sub-sections of the event dialog use a plain `<section>`, on purpose.
 - `shelfCardClass` is reused outside shelves and then partly undone with `hover:scale-100`.
+  **Fixed:** [`Card`](../components/ui/card.tsx) has variants (`default`, `interactive`, `tile`, `muted`)
+  and `shelfCardClass` is gone.
+- Since token migration step 5, shelf cards don't look as their classes intend. `cn()` (tailwind-merge)
+  doesn't recognise `rounded-shelf` and `shadow-shelf`, so the base card's `rounded-xl` and `shadow-sm`
+  stay and win: shelf cards and tiles show a 16px radius and a small shadow instead of 18px and the soft
+  shelf shadow, and the Contact form and home Membership cards show the shelf shadow where none was meant.
+  The Card variants reproduce this exactly. **Open:** restoring the intended look is a visible change;
+  [components/ui/card.tsx](../components/ui/card.tsx) explains which strings to change.
 - Page widths and gutters are repeated as numbers in several files; the page header uses a narrower container than the page body.
   **Partly fixed:** widths and gutters come from tokens (step 4). The page header is still narrower; widening it is a visible change.
 - Swiper is themed with many `!important` overrides in [app/globals.css](../app/globals.css).
 
 **Components and project**
 - `components/ui/` mixes shadcn primitives with site layout (`section.tsx`).
+  **Fixed:** layout components live in `components/layout/`, and components are grouped by page (see [Folders](#folders)).
 - Membership details and social channel descriptions are written in several places.
 - The Instagram URL is hard-coded in several files.
 - Apparently unused: `coming-soon.tsx`, `ui/dropdown-menu.tsx`, `ui/sonner.tsx`, the Geist Mono font, and the packages `@heroicons/react`, `@radix-ui/themes` and `next-themes`.
-  **Partly fixed:** `ui/sonner.tsx` and `next-themes` removed (step 6).
+  **Fixed:** `ui/sonner.tsx` and `next-themes` removed (step 6); the rest removed with the component reorganisation.
 - Two lockfiles: `package-lock.json` is out of date, while `packageManager` is pnpm.
+  **Fixed:** `package-lock.json` removed.
 - The README's run commands look wrong (`node dist/server.js`).
+  **Fixed:** the README lists the pnpm commands.
 - **Fixed:** `npm run lint` failed because pnpm 10 no longer hoists ESLint plugins. [pnpm-workspace.yaml](../pnpm-workspace.yaml) now sets `publicHoistPattern`.
 
 ## Proposed layout
@@ -161,20 +178,25 @@ student committee to keep up to date.
 
 ### Folders
 
+**Done** for `components/` (the parts in brackets are proposals still open):
+
 ```
-app/            layout, page, not-found, globals.css, one folder per route
+app/            layout, page, globals.css, one folder per route   [not-found]
 components/
   ui/           shadcn primitives only
-  layout/       header, mobile menu, footer, container, section, page header, section heading
-  shared/       channel card, membership card, text link, icon, partners
-  home/         hero, audience split, next events
-  guide/        checklist, stage picker, guide section, resource item
-  events/       event card, event list, event facts
-  contact/      contact form, FAQ list
-lib/            site, links, contact, events, resources, help, team, reports, utils
-styles/         tokens.css, base.css
+  layout/       header (with the phone menu), footer, container, section, page-header, heading
+  shared/       pillars, stats-band, partners-strip, shelf, text-link, icon   [channel card, membership card]
+  home/         hero, where-to-start, gallery, stay-connected   [audience split, next events]
+  guide/        emergency-numbers, arrival-checklist, resource-group   [stage picker]
+  events/       event-card, events-browser   [event facts]
+  contact/      contact-form, faq-list
+lib/            site, links, contact, events, resources, team, reports, utils   [help]
+styles/         tokens.css   [base.css]
 actions/        contact action, schema
 ```
+
+The channel and membership cards on Home and Contact differ in icon size and
+text, so sharing one component would be a visible change.
 
 - Keep content in `lib/`; no CMS is needed.
 - Add `sourceUrl` and `lastVerified` to guide items, and `startTime`, `priceMember`, `priceNonMember`, `signupUrl` and `signupDeadline` to events.
@@ -206,6 +228,7 @@ actions/        contact action, schema
 ```
 
 - One `SectionHeading`, `Section` tones for every band, and `Card` variants (`plain`, `interactive`) instead of override strings.
+  **Done:** `Heading`, `Section` and `Card` variants (`default`, `interactive`, `tile`, `muted`).
 - One container width, shared by header, page header and body.
 - Mobile first, using only the `sm`, `md` and `lg` breakpoints.
 - Dark mode: add it only after pages use the semantic colours above; otherwise remove the unused `dark` variant.
@@ -229,7 +252,7 @@ actions/        contact action, schema
 |---|---|---|
 | 1. Correctness | Hotline and ARC facts, hide placeholder links, fix the contact form's wording and categories, hide unsupported report figures, create TODO.md. | **Done** (`648e72f`) |
 | 2. Quick wins | Past events, navigation names, new-student section under the hero, emergency numbers at the top of the guide, contrast, hero pause button. Real photos postponed. | **Done** (`7f7b9d7`) |
-| 3. Structure (about a week) | Help page; restructure the New Students guide; event fields and per-event pages; CSS tokens and a single heading and card system; component folders; remove unused code, packages and the old lockfile. | Next |
+| 3. Structure (about a week) | Help page; restructure the New Students guide; event fields and per-event pages; CSS tokens and a single heading and card system; component folders; remove unused code, packages and the old lockfile. | **In progress:** tokens, heading and card system, folders and cleanup done (branch `step-3b-components`); visible follow-ups (page header width, one headline style, intended shelf card radius and shadow) await sign-off. Help page, guide and events still to do. |
 | 4. Content and upkeep | Prospective-student content, Indonesian summaries, published reports, a fact and link check before each intake, spam protection, optional dark mode, real photos. | Later |
 
 ## Open items

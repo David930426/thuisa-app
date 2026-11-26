@@ -10,7 +10,7 @@ then, search it for `TODO`.
 While this is empty, the membership form buttons are hidden. These sentences
 still mention the form, so check them if the link will take a while:
 
-- [ ] "Fill in the membership form…": [app/contact/page.tsx:32](app/contact/page.tsx#L32)
+- [ ] "Fill in the membership form…": [app/contact/page.tsx:28](app/contact/page.tsx#L28)
 
 ## 2. LINE link
 
@@ -21,7 +21,7 @@ While the link is empty, LINE buttons are hidden. The LINE cards on the home and
 contact pages still show the ID and this text:
 
 - [ ] [components/home/stay-connected.tsx:24](components/home/stay-connected.tsx#L24)
-- [ ] [app/contact/page.tsx:69](app/contact/page.tsx#L69) and [app/contact/page.tsx:52](app/contact/page.tsx#L52)
+- [ ] [app/contact/page.tsx:65](app/contact/page.tsx#L65) and [app/contact/page.tsx:48](app/contact/page.tsx#L48)
 
 ## 3. Hosting and email
 
@@ -41,17 +41,17 @@ contact pages still show the ID and this text:
 
 - [ ] Send a test message from the live site and confirm it arrives.
 - [ ] Confirm who reads the inbox, and that these promises are true:
-      replies "within a few days" ([app/contact/page.tsx:166](app/contact/page.tsx#L166),
+      replies "within a few days" ([app/contact/page.tsx:154](app/contact/page.tsx#L154),
       [components/contact/contact-form.tsx:105](components/contact/contact-form.tsx#L105)) and channels checked
-      "every day" ([app/contact/page.tsx:98](app/contact/page.tsx#L98)).
+      "every day" ([app/contact/page.tsx:84](app/contact/page.tsx#L84)).
 
 ## 4. Real figures
 
 ### Member counts
 
 - [ ] "400+": [lib/site.ts:73](lib/site.ts#L73)
-- [ ] "400": [app/about/page.tsx:50](app/about/page.tsx#L50)
-- [ ] "400": [app/page.tsx:59](app/page.tsx#L59)
+- [ ] "400": [app/about/page.tsx:46](app/about/page.tsx#L46)
+- [ ] "400": [app/page.tsx:61](app/page.tsx#L61)
 - [ ] "42" active members: [lib/site.ts:74](lib/site.ts#L74)
 - [ ] "42" committee and volunteers: [lib/reports.ts:84](lib/reports.ts#L84)
 
@@ -83,16 +83,16 @@ contact pages still show the ID and this text:
 - [ ] THUISA Cup report PDF: [lib/reports.ts:46](lib/reports.ts#L46)
 - [ ] 2024/2025 annual report PDF: [lib/reports.ts:55](lib/reports.ts#L55)
 - [ ] Confirm the wording about published and audited reports:
-      [app/report/page.tsx:34](app/report/page.tsx#L34),
-      [app/report/page.tsx:76](app/report/page.tsx#L76),
-      [app/report/page.tsx:118](app/report/page.tsx#L118)
+      [app/report/page.tsx:32](app/report/page.tsx#L32),
+      [app/report/page.tsx:74](app/report/page.tsx#L74),
+      [app/report/page.tsx:116](app/report/page.tsx#L116)
 
 ## 5. Languages
 
 - [ ] Decide which languages the site should use (English, Indonesian, Chinese,
       or a mix). The site is currently marked as English at
-      [app/layout.tsx:60](app/layout.tsx#L60) and
-      [app/layout.tsx:49](app/layout.tsx#L49). The page text itself is spread
+      [app/layout.tsx:55](app/layout.tsx#L55) and
+      [app/layout.tsx:44](app/layout.tsx#L44). The page text itself is spread
       across `app/`, `components/` and `lib/`.
 
 ## 6. Photos, with consent
