@@ -70,6 +70,7 @@ All **open** unless marked.
 
 **CSS**
 - `accent` means two things: the gold colour scale (`accent-50` to `accent-900`) and shadcn's grey surface (`bg-accent`).
+  **Fixed:** the gold scale is now `gold-*` (token migration step 2).
 - Colours are written twice, once in `@theme` and again in `:root`. Error red is the same as brand red.
 - A `dark` variant is declared but there are no dark-mode colours, and pages hard-code `bg-white`.
 - Two heading styles: `SectionHeading` and a two-tone headline whose classes are copied into four files.
@@ -210,7 +211,7 @@ actions/        contact action, schema
 |---|---|---|
 | Small text on white or `ink-50` | `text-ink-600` or darker | 6.6–7.0 : 1 |
 | Large headings and icons on light backgrounds | `text-ink-500` | 4.3–4.5 : 1 |
-| Small gold text on white | `text-accent-700` | 4.9 : 1 |
+| Small gold text on white | `text-gold-700` | 4.9 : 1 |
 | Text on `ink-900` / `ink-950` | `text-ink-400` or lighter | 6.9–7.6 : 1 |
 | Text on the red `brand-600` band | solid `text-white` | 5.6 : 1 |
 

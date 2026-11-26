@@ -90,7 +90,7 @@ export function SectionHeading({
             aria-hidden
             className={cn(
               "h-px w-6",
-              light ? "bg-accent-300/70" : "bg-brand-400/70"
+              light ? "bg-gold-300/70" : "bg-brand-400/70"
             )}
           />
           {eyebrow}
@@ -145,7 +145,7 @@ export function PageHeader({
         <div className="max-w-3xl">
           {eyebrow ? (
             <p className="eyebrow-light">
-              <span aria-hidden className="h-px w-6 bg-accent-300/70" />
+              <span aria-hidden className="h-px w-6 bg-gold-300/70" />
               {eyebrow}
             </p>
           ) : null}

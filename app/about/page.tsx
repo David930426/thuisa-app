@@ -128,7 +128,7 @@ export default function Page() {
             </Card>
 
             <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-accent-700">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-gold-700">
                 Our vision
               </h2>
               <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">

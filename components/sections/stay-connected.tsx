@@ -47,7 +47,7 @@ export function StayConnected() {
           >
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-gradient-to-br from-accent-300/40 via-brand-400/30 to-fuchsia-500/20 blur-3xl"
+              className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-gradient-to-br from-gold-300/40 via-brand-400/30 to-fuchsia-500/20 blur-3xl"
             />
             <div className="relative flex h-full flex-col">
               <span className="grid size-16 place-items-center rounded-2xl bg-ink-50 ring-1 ring-ink-100">

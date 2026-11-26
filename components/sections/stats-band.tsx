@@ -15,7 +15,7 @@ export function StatsBand() {
               <dd className="font-display text-4xl font-extrabold text-white md:text-5xl">
                 {stat.value}
               </dd>
-              <dt className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-accent-300">
+              <dt className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-300">
                 {stat.label}
               </dt>
               <p className="mt-1.5 text-sm text-ink-400">{stat.detail}</p>

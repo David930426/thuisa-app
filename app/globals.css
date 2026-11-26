@@ -9,22 +9,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* TEMPORARY (token migration step 1): the gold scale is now gold-* in
-   styles/tokens.css. These aliases keep the old accent-* classes working
-   until the next step renames them. */
-@theme inline {
-  --color-accent-50: var(--color-gold-50);
-  --color-accent-100: var(--color-gold-100);
-  --color-accent-200: var(--color-gold-200);
-  --color-accent-300: var(--color-gold-300);
-  --color-accent-400: var(--color-gold-400);
-  --color-accent-500: var(--color-gold-500);
-  --color-accent-600: var(--color-gold-600);
-  --color-accent-700: var(--color-gold-700);
-  --color-accent-800: var(--color-gold-800);
-  --color-accent-900: var(--color-gold-900);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/40;
@@ -58,7 +42,7 @@
 
   /* Thin gold rule used under eyebrows in dark sections */
   .eyebrow-light {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent-300;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300;
   }
 }
 

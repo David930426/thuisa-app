@@ -103,7 +103,7 @@ export default function Page() {
           <div className="grid gap-10 rounded-2xl bg-ink-900 p-8 text-white md:grid-cols-12 md:p-12">
             <div className="md:col-span-5">
               <p className="eyebrow-light">
-                <span aria-hidden className="h-px w-6 bg-accent-300/70" />
+                <span aria-hidden className="h-px w-6 bg-gold-300/70" />
                 Quick checklist
               </p>
               <h2 className="mt-4 font-display text-2xl font-bold md:text-3xl">

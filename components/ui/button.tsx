@@ -34,7 +34,7 @@ const buttonVariants = cva(
         brandOutline:
           "bg-transparent text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50 hover:ring-brand-300",
         onDark:
-          "bg-white text-brand-700 shadow-sm hover:bg-accent-50 hover:text-brand-800",
+          "bg-white text-brand-700 shadow-sm hover:bg-gold-50 hover:text-brand-800",
         onDarkOutline:
           "bg-transparent text-white ring-1 ring-white/40 hover:bg-white/10 hover:ring-white/70",
       },

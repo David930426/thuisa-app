@@ -145,7 +145,7 @@ export function EventCard({
             aria-hidden
             className="absolute inset-0 bg-gradient-to-t from-ink-950/80 to-transparent"
           />
-          <Badge className="absolute bottom-4 left-6 bg-white/15 uppercase tracking-[0.16em] text-accent-300 backdrop-blur-sm">
+          <Badge className="absolute bottom-4 left-6 bg-white/15 uppercase tracking-[0.16em] text-gold-300 backdrop-blur-sm">
             {event.type}
           </Badge>
         </div>
@@ -244,7 +244,7 @@ export function EventCard({
                     <li key={reason} className="flex gap-2">
                       <span
                         aria-hidden
-                        className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent-500"
+                        className="mt-1.5 size-1.5 shrink-0 rounded-full bg-gold-500"
                       />
                       {reason}
                     </li>
@@ -254,7 +254,7 @@ export function EventCard({
             </div>
 
             {event.note ? (
-              <p className="rounded-xl border-l-4 border-accent-400 bg-accent-50 px-4 py-3 text-ink-800">
+              <p className="rounded-xl border-l-4 border-gold-400 bg-gold-50 px-4 py-3 text-ink-800">
                 <span className="font-semibold">Please note: </span>
                 {event.note}
               </p>

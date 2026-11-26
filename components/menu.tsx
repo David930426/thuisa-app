@@ -134,7 +134,7 @@ export default function Menu() {
                           active
                             ? solid
                               ? "bg-brand-600"
-                              : "bg-accent-300"
+                              : "bg-gold-300"
                             : "bg-transparent"
                         )}
                       />

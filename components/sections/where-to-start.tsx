@@ -75,7 +75,7 @@ export function WhereToStart() {
             className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent"
           />
           <div className="relative mt-auto">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-300">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">
               New student guide
             </p>
             <h3 className="mt-2 font-display text-2xl font-bold leading-snug text-white">
