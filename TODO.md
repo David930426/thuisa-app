@@ -28,7 +28,7 @@ contact pages still show the ID and this text:
 - [ ] Choose where the site is hosted. The contact form needs a server, so a
       static-only host such as GitHub Pages will not work.
 - [ ] Set these environment variables on the host, and in `.env.local` for local
-      testing. Never commit that file. Examples: [README.md:20](README.md#L20)
+      testing. Never commit that file. Examples: [README.md:23](README.md#L23)
 
 | Variable | Used at |
 | --- | --- |
