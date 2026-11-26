@@ -27,7 +27,8 @@ const startHere = [
   },
 ];
 
-const cardSize = "h-[340px] w-[290px] sm:w-[330px]";
+// Stacked and full width below md (see Shelf); the shelf card size from md up.
+const cardSize = "w-full md:h-[340px] md:w-[330px]";
 
 /** "Where to start" — compact icon cards, closing on a photo card. */
 export function WhereToStart() {
@@ -61,14 +62,14 @@ export function WhereToStart() {
       <Card
         asChild
         variant="interactive"
-        className={cn(cardSize, "relative bg-surface-inverse p-8")}
+        className={cn(cardSize, "relative h-[240px] bg-surface-inverse p-8")}
       >
         <Link href="/resources">
           <Image
             src={images.homeWelcome}
             alt=""
             fill
-            sizes="330px"
+            sizes="(min-width: 768px) 330px, 100vw"
             className="object-cover opacity-60 transition-transform duration-500 group-hover:scale-105"
           />
           <div

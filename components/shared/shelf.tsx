@@ -20,6 +20,10 @@ import { Button } from "@/components/ui/button";
  *
  * The track bleeds to the edge of the screen but its first card lines up with
  * the page container (see `.shelf-track` in globals.css).
+ *
+ * Below md (768px) the cards stack in one full-width column instead, inside
+ * the normal page gutters, with no sideways scrolling and no paddles. Cards
+ * should be full width below md and set their shelf size from md up.
  */
 export function Shelf({
   title,
@@ -77,7 +81,7 @@ export function Shelf({
       <ul
         ref={trackRef}
         aria-label={title}
-        className="shelf-track mt-8 flex snap-x snap-proximity gap-5 overflow-x-auto py-6 md:mt-10"
+        className="shelf-track mt-8 grid gap-5 py-6 md:mt-10 md:flex md:snap-x md:snap-proximity md:overflow-x-auto"
       >
         {Children.toArray(children).map((child, index) => (
           <li

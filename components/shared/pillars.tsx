@@ -4,7 +4,10 @@ import { Shelf } from "@/components/shared/shelf";
 import { Card } from "@/components/ui/card";
 import { pillars } from "@/lib/site";
 
-/** "What we do" — large photo cards in a sideways-scrolling shelf. */
+/**
+ * "What we do" — large photo cards in a sideways-scrolling shelf. Below md
+ * they stack full width, 420px tall instead of 500px.
+ */
 export function Pillars() {
   return (
     <Shelf
@@ -16,7 +19,7 @@ export function Pillars() {
           key={pillar.title}
           asChild
           variant="interactive"
-          className="h-[480px] w-[290px] sm:h-[500px] sm:w-[372px] lg:w-[400px]"
+          className="h-[420px] w-full md:h-[500px] md:w-[372px] lg:w-[400px]"
         >
           <Link href={pillar.href}>
             <div className="p-7 sm:p-8">
@@ -36,7 +39,7 @@ export function Pillars() {
                 src={pillar.image}
                 alt=""
                 fill
-                sizes="(min-width: 1024px) 400px, (min-width: 640px) 372px, 290px"
+                sizes="(min-width: 1024px) 400px, (min-width: 768px) 372px, 100vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
