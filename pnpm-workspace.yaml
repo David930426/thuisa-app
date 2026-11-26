@@ -1,3 +1,9 @@
+# eslint-config-next loads its plugins from the project root, and pnpm 10 no
+# longer hoists them there by default. Without this, `npm run lint` fails with
+# "Cannot find module 'eslint-plugin-react-hooks'".
+publicHoistPattern:
+  - '*eslint*'
+
 ignoredBuiltDependencies:
   - '@tailwindcss/oxide'
   - sharp
