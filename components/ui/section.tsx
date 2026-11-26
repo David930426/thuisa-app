@@ -138,11 +138,11 @@ export function PageHeader({
       {/* soft brand wash + woven texture, kept subtle so text stays readable */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_110%_at_15%_0%,rgba(206,17,38,0.55),transparent_60%),radial-gradient(60%_100%_at_90%_10%,rgba(201,131,26,0.28),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-header-glow"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(135deg,#fff_1px,transparent_1px),linear-gradient(45deg,#fff_1px,transparent_1px)] [background-size:28px_28px]"
+        className="pointer-events-none absolute inset-0 opacity-[0.07] bg-woven"
       />
       <Container className="relative">
         <div className="max-w-3xl">

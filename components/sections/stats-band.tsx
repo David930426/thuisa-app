@@ -6,7 +6,7 @@ export function StatsBand() {
     <Section tone="dark" spacing="tight" className="relative overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_120%_at_20%_0%,rgba(206,17,38,0.4),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-band-glow"
       />
       <Container size="wide" className="relative">
         <dl className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">

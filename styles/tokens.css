@@ -372,3 +372,41 @@
   padding-block: calc(var(--spacing) * 20);          /* py-20 */
   @variant md { padding-block: calc(var(--spacing) * 32); } /* md:py-32 */
 }
+
+
+/* -----------------------------------------------------------------------------
+   5. Decoration
+   Glows and texture on the dark page header and stats band, and the colours
+   of the slideshow buttons. Translucent colours are plain rgba() values of a
+   palette colour (noted beside each) rather than color-mix(), so browsers
+   from before 2023 still show them.
+
+   Classes:
+     bg-header-glow    red and gold glow behind the page header
+     bg-band-glow      red glow behind the stats band
+     bg-woven          fine diagonal grid (used at opacity-[0.07])
+----------------------------------------------------------------------------- */
+:root {
+  --glow-brand-strong: rgba(206, 17, 38, 0.55);     /* brand-600 at 55% */
+  --glow-brand: rgba(206, 17, 38, 0.4);             /* brand-600 at 40% */
+  --glow-gold: rgba(201, 131, 26, 0.28);            /* gold-600 at 28% */
+  --control-overlay: rgba(0, 0, 0, 0.3);            /* slideshow arrows */
+  --control-overlay-hover: rgba(206, 17, 38, 0.85); /* brand-600 at 85% */
+}
+
+@utility bg-header-glow {
+  background-image:
+    radial-gradient(70% 110% at 15% 0%, var(--glow-brand-strong), transparent 60%),
+    radial-gradient(60% 100% at 90% 10%, var(--glow-gold), transparent 55%);
+}
+
+@utility bg-band-glow {
+  background-image: radial-gradient(60% 120% at 20% 0%, var(--glow-brand), transparent 60%);
+}
+
+@utility bg-woven {
+  background-image:
+    linear-gradient(135deg, var(--color-white) 1px, transparent 1px),
+    linear-gradient(45deg, var(--color-white) 1px, transparent 1px);
+  background-size: 28px 28px;
+}

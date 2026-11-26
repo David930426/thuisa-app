@@ -65,7 +65,7 @@ export default function Page() {
             </span>
           </h2>
 
-          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[28px] bg-surface-sunken sm:aspect-[16/9] md:mt-12 lg:aspect-[21/9]">
+          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-feature bg-surface-sunken sm:aspect-[16/9] md:mt-12 lg:aspect-[21/9]">
             <Image
               src={images.aboutCampus}
               alt="Tunghai University campus"
