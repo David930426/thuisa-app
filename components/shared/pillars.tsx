@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Shelf } from "@/components/shared/shelf";
-import { shelfCardClass } from "@/components/shared/shelf-card";
 import { Card } from "@/components/ui/card";
 import { pillars } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 /** "What we do" — large photo cards in a sideways-scrolling shelf. */
 export function Pillars() {
@@ -17,10 +15,8 @@ export function Pillars() {
         <Card
           key={pillar.title}
           asChild
-          className={cn(
-            shelfCardClass,
-            "h-[480px] w-[290px] sm:h-[500px] sm:w-[372px] lg:w-[400px]"
-          )}
+          variant="interactive"
+          className="h-[480px] w-[290px] sm:h-[500px] sm:w-[372px] lg:w-[400px]"
         >
           <Link href={pillar.href}>
             <div className="p-7 sm:p-8">

@@ -6,7 +6,6 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { PartnersStrip } from "@/components/shared/partners-strip";
 import { Pillars } from "@/components/shared/pillars";
-import { shelfCardClass } from "@/components/shared/shelf-card";
 import { StatsBand } from "@/components/shared/stats-band";
 import { TextLink } from "@/components/shared/text-link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -14,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { divisions, leadership } from "@/lib/team";
-import { cn } from "@/lib/utils";
 import { images, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -110,7 +108,7 @@ export default function Page() {
       <Section tone="muted">
         <Container size="wide">
           <div className="grid gap-5 md:grid-cols-2">
-            <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
+            <Card variant="tile" className="h-full p-8 md:p-12">
               <h2 className="text-xs font-semibold uppercase tracking-wider text-brand-600">
                 Our mission
               </h2>
@@ -123,7 +121,7 @@ export default function Page() {
               </p>
             </Card>
 
-            <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
+            <Card variant="tile" className="h-full p-8 md:p-12">
               <h2 className="text-xs font-semibold uppercase tracking-wider text-gold-700">
                 Our vision
               </h2>

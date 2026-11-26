@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, Compass, MessagesSquare, Plus } from "lucide-react";
 import { Shelf } from "@/components/shared/shelf";
-import { shelfCardClass } from "@/components/shared/shelf-card";
 import { Card } from "@/components/ui/card";
 import { images } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -41,7 +40,8 @@ export function WhereToStart() {
         <Card
           key={item.title}
           asChild
-          className={cn(shelfCardClass, cardSize, "p-8")}
+          variant="interactive"
+          className={cn(cardSize, "p-8")}
         >
           <Link href={item.href}>
             <item.icon className="size-9 shrink-0 text-brand-600" strokeWidth={1.5} />
@@ -60,7 +60,8 @@ export function WhereToStart() {
 
       <Card
         asChild
-        className={cn(shelfCardClass, cardSize, "relative bg-surface-inverse p-8")}
+        variant="interactive"
+        className={cn(cardSize, "relative bg-surface-inverse p-8")}
       >
         <Link href="/resources">
           <Image

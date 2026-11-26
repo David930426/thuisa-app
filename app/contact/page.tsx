@@ -6,7 +6,6 @@ import { Container } from "@/components/layout/container";
 import { Heading } from "@/components/layout/heading";
 import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
-import { shelfCardClass } from "@/components/shared/shelf-card";
 import { TextLink } from "@/components/shared/text-link";
 import {
   Accordion,
@@ -17,7 +16,6 @@ import {
 import { Card } from "@/components/ui/card";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -72,8 +70,6 @@ const channelNotes: Record<string, string> = {
   LINE: "The fastest way to reach someone on the committee.",
 };
 
-const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
-
 export default function Page() {
   return (
     <>
@@ -96,7 +92,7 @@ export default function Page() {
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4">
             {socials.map((social) => (
               <li key={social.label}>
-                <Card className={tile}>
+                <Card variant="tile" className="h-full p-7">
                   <Image
                     src={social.icon}
                     alt=""
@@ -123,7 +119,7 @@ export default function Page() {
             ))}
 
             <li>
-              <Card className={tile}>
+              <Card variant="tile" className="h-full p-7">
                 <Mail
                   className="size-10 text-fg-body"
                   strokeWidth={1.25}
@@ -165,12 +161,7 @@ export default function Page() {
               </p>
             </div>
 
-            <Card
-              className={cn(
-                shelfCardClass,
-                "bg-surface-muted p-6 shadow-none hover:scale-100 hover:shadow-none md:p-10 lg:col-span-7"
-              )}
-            >
+            <Card variant="muted" className="p-6 md:p-10 lg:col-span-7">
               <ContactForm />
             </Card>
           </div>
@@ -188,7 +179,7 @@ export default function Page() {
           />
 
           <div className="mt-10 grid gap-5 md:mt-12 lg:grid-cols-3">
-            <Card className={cn(tile, "p-0 lg:col-span-2")}>
+            <Card variant="tile" className="h-full lg:col-span-2">
               <iframe
                 title="Tunghai University on Google Maps"
                 src={site.mapEmbedUrl}
@@ -200,7 +191,7 @@ export default function Page() {
             </Card>
 
             <div className="grid gap-5">
-              <Card className={tile}>
+              <Card variant="tile" className="h-full p-7">
                 <MapPin
                   className="size-9 text-brand-600"
                   strokeWidth={1.5}
@@ -223,7 +214,7 @@ export default function Page() {
                 </div>
               </Card>
 
-              <Card id="join" className={tile}>
+              <Card id="join" variant="tile" className="h-full p-7">
                 <Ticket
                   className="size-9 text-brand-600"
                   strokeWidth={1.5}

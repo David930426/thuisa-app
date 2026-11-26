@@ -3,12 +3,10 @@ import { Mail, Ticket } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Heading } from "@/components/layout/heading";
 import { Section } from "@/components/layout/section";
-import { shelfCardClass } from "@/components/shared/shelf-card";
 import { TextLink } from "@/components/shared/text-link";
 import { Card } from "@/components/ui/card";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 /**
  * Closing section of the homepage (used there only), in the same Apple Store
@@ -26,8 +24,6 @@ const socialNotes: Record<string, string> = {
   LINE: "The quickest way to reach someone on the committee directly.",
 };
 
-const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
-
 export function StayConnected() {
   return (
     <Section>
@@ -41,10 +37,8 @@ export function StayConnected() {
         <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Instagram, featured */}
           <Card
-            className={cn(
-              tile,
-              "relative overflow-hidden p-8 md:col-span-2 lg:row-span-2 md:p-10"
-            )}
+            variant="tile"
+            className="relative h-full p-8 md:col-span-2 md:p-10 lg:row-span-2"
           >
             <div
               aria-hidden
@@ -81,7 +75,7 @@ export function StayConnected() {
 
           {/* TikTok, LINE */}
           {otherSocials.map((social) => (
-            <Card key={social.label} className={tile}>
+            <Card key={social.label} variant="tile" className="h-full p-7">
               <span className="grid size-12 place-items-center rounded-xl bg-surface-muted ring-1 ring-ink-100">
                 <Image
                   src={social.icon}
@@ -109,7 +103,7 @@ export function StayConnected() {
           ))}
 
           {/* Email */}
-          <Card className={tile}>
+          <Card variant="tile" className="h-full p-7">
             <span className="grid size-12 place-items-center rounded-xl bg-surface-muted text-ink-700 ring-1 ring-ink-100">
               <Mail className="size-6" strokeWidth={1.5} aria-hidden />
             </span>
@@ -126,7 +120,7 @@ export function StayConnected() {
           </Card>
 
           {/* Membership */}
-          <Card id="join" className={cn(tile, "bg-surface-muted shadow-none")}>
+          <Card id="join" variant="muted" className="h-full p-7">
             <span className="grid size-12 place-items-center rounded-xl bg-surface text-brand-600 ring-1 ring-ink-100">
               <Ticket className="size-6" strokeWidth={1.5} aria-hidden />
             </span>
