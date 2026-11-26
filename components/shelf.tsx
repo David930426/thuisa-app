@@ -10,8 +10,7 @@ import {
 } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/section";
-import { cn } from "@/lib/utils";
+import { Container, Section } from "@/components/ui/section";
 
 /**
  * Apple Store-style shelf: a two-tone headline ("Bold part. Grey part.") over
@@ -68,7 +67,7 @@ export function Shelf({
   };
 
   return (
-    <section id={id} className={cn("bg-surface-muted py-16 md:py-24", className)}>
+    <Section id={id} tone="muted" className={className}>
       <Container size="wide">
         <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
           <span className="text-fg">{title}</span>
@@ -122,6 +121,6 @@ export function Shelf({
           </Button>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

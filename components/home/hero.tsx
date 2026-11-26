@@ -92,7 +92,7 @@ export default function Hero() {
               />
 
               <div className="absolute inset-0 flex items-center">
-                <div className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8">
+                <div className="mx-auto w-full max-w-page px-gutter pb-16 sm:px-gutter-wide">
                   <div className="max-w-2xl">
                     <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white ring-1 ring-white/25 backdrop-blur-sm sm:text-xs">
                       {slide.eyebrow}

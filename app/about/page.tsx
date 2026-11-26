@@ -55,7 +55,7 @@ export default function Page() {
       </PageHeader>
 
       {/* Our story */}
-      <section className="bg-surface py-16 md:py-24">
+      <Section>
         <Container size="wide">
           <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
             <span className="text-fg">Our story.</span>{" "}
@@ -108,10 +108,10 @@ export default function Page() {
             </div>
           </div>
         </Container>
-      </section>
+      </Section>
 
       {/* Mission & vision */}
-      <section className="bg-surface-muted py-16 md:py-24">
+      <Section tone="muted">
         <Container size="wide">
           <div className="grid gap-5 md:grid-cols-2">
             <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
@@ -140,7 +140,7 @@ export default function Page() {
             </Card>
           </div>
         </Container>
-      </section>
+      </Section>
 
       <StatsBand />
 

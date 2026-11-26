@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
-import { Container, PageHeader } from "@/components/ui/section";
+import { Container, PageHeader, Section } from "@/components/ui/section";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -91,7 +91,7 @@ export default function Page() {
       />
 
       {/* Ways to reach us */}
-      <section className="bg-surface-muted py-16 md:py-24">
+      <Section tone="muted">
         <Container size="wide">
           <Headline
             title="Pick a channel."
@@ -150,10 +150,10 @@ export default function Page() {
             </li>
           </ul>
         </Container>
-      </section>
+      </Section>
 
       {/* Form */}
-      <section className="bg-surface py-16 md:py-24">
+      <Section>
         <Container size="wide">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
@@ -178,10 +178,10 @@ export default function Page() {
             </Card>
           </div>
         </Container>
-      </section>
+      </Section>
 
       {/* Find us */}
-      <section className="bg-surface-muted py-16 md:py-24">
+      <Section tone="muted">
         <Container size="wide">
           <Headline
             title="Find us."
@@ -248,10 +248,10 @@ export default function Page() {
             </div>
           </div>
         </Container>
-      </section>
+      </Section>
 
       {/* FAQ */}
-      <section className="bg-surface py-16 md:py-24">
+      <Section>
         <Container className="max-w-4xl">
           <Headline
             title="Questions."
@@ -302,7 +302,7 @@ export default function Page() {
             and we will add it.
           </p>
         </Container>
-      </section>
+      </Section>
     </>
   );
 }

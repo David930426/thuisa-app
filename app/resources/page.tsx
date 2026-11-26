@@ -136,7 +136,8 @@ export default function Page() {
       </Section>
 
       {/* Jump nav */}
-      <Section spacing="tight" className="pt-0">
+      {/* pt-0 only on phones: from md up the section keeps its top padding */}
+      <Section spacing="tight" className="pt-0 md:pt-16">
         <Container size="wide">
           <nav aria-label="Resource sections">
             <ul className="flex flex-wrap gap-2">

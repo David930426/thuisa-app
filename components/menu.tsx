@@ -68,7 +68,7 @@ export default function Menu() {
           : "bg-gradient-to-b from-black/55 to-transparent"
       )}
     >
-      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex h-header w-full max-w-page items-center justify-between gap-4 px-gutter sm:px-gutter-wide">
         <Link
           href="/"
           className="flex items-center gap-3"

@@ -28,9 +28,9 @@
     text-wrap: balance;
   }
 
-  /* Anchor targets clear the fixed 80px header */
+  /* Anchor targets clear the fixed header (--spacing-anchor = header + 1rem) */
   [id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: var(--spacing-anchor);
   }
 }
 
@@ -106,7 +106,7 @@
 .hero-swiper .swiper-pagination {
   bottom: 2.75rem !important;
   text-align: left;
-  padding-left: max(1.25rem, calc((100% - 80rem) / 2 + 2rem));
+  padding-left: max(var(--spacing-gutter), calc((100% - var(--container-page)) / 2 + var(--spacing-gutter-wide)));
 }
 
 @media (max-width: 1023px) {
@@ -122,11 +122,11 @@
 
 /* Apple-style shelves (components/shelf.tsx). The track runs edge to edge,
    but its padding lines the first card up with Container size="wide"
-   (max-w-7xl, px-5 / sm:px-8). Percentages resolve against the full-width
+   (max-w-page, px-gutter / sm:px-gutter-wide). Percentages resolve against the full-width
    track, so this stays exact regardless of scrollbar width. */
 .shelf-track {
-  padding-inline: 1.25rem;
-  scroll-padding-inline: 1.25rem;
+  padding-inline: var(--spacing-gutter);
+  scroll-padding-inline: var(--spacing-gutter);
   scrollbar-width: none;
 }
 
@@ -134,17 +134,17 @@
   display: none;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: --theme(--breakpoint-sm)) {
   .shelf-track {
-    padding-inline: 2rem;
-    scroll-padding-inline: 2rem;
+    padding-inline: var(--spacing-gutter-wide);
+    scroll-padding-inline: var(--spacing-gutter-wide);
   }
 }
 
-@media (min-width: 80rem) {
+@media (min-width: --theme(--container-page)) {
   .shelf-track {
-    padding-inline: calc((100% - 80rem) / 2 + 2rem);
-    scroll-padding-inline: calc((100% - 80rem) / 2 + 2rem);
+    padding-inline: calc((100% - var(--container-page)) / 2 + var(--spacing-gutter-wide));
+    scroll-padding-inline: calc((100% - var(--container-page)) / 2 + var(--spacing-gutter-wide));
   }
 }
 

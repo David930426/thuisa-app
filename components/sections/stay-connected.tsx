@@ -3,7 +3,7 @@ import { Mail, Ticket } from "lucide-react";
 import { shelfCardClass } from "@/components/shelf-card";
 import { TextLink } from "@/components/text-link";
 import { Card } from "@/components/ui/card";
-import { Container } from "@/components/ui/section";
+import { Container, Section } from "@/components/ui/section";
 import { links } from "@/lib/links";
 import { site, socials } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -28,7 +28,7 @@ const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
 
 export function StayConnected() {
   return (
-    <section className="bg-surface py-16 md:py-24">
+    <Section>
       <Container size="wide">
         <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
           <span className="text-fg">Stay in the loop.</span>{" "}
@@ -150,6 +150,6 @@ export function StayConnected() {
           </Card>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }
