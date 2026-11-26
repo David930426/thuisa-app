@@ -32,7 +32,7 @@ export default function Page() {
       </PageHeader>
 
       {/* Emergency numbers, first thing on the page */}
-      <EmergencyNumbers />
+      <EmergencyNumbers moreHref="/help" />
 
       <ArrivalChecklist />
 

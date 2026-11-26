@@ -5,7 +5,11 @@
  * Government and university URLs move around, and a dead link on this page is
  * worse than no link at all. Ones marked `// verify` are the most likely to
  * have changed.
+ *
+ * Emergency numbers and help contacts are in lib/help.ts.
  */
+
+import { emergencyNumbers, foreignerHelpLine, kdei, thuisaHelp } from "@/lib/help";
 
 export type Resource = {
   title: string;
@@ -208,54 +212,30 @@ export const resourceGroups: ResourceGroup[] = [
       "Save these numbers in your phone now, not when you need them.",
     icon: "lifebuoy",
     items: [
+      // The numbers and contacts live in lib/help.ts (also used by /help).
+      ...emergencyNumbers.map((item) => ({
+        title: `Emergency: ${item.number} (${item.label.toLowerCase()})`,
+        description: item.description,
+        href: item.href,
+      })),
       {
-        title: "Emergency: 110 (police)",
-        description:
-          "Free from any phone. If you cannot explain in Mandarin, say your location clearly and stay on the line.",
-        href: "tel:110",
+        title: `${foreignerHelpLine.title}: ${foreignerHelpLine.number}`,
+        description: foreignerHelpLine.description,
+        href: foreignerHelpLine.href,
       },
       {
-        title: "Emergency: 119 (fire and ambulance)",
-        description:
-          "Free from any phone. Call for a fire, an injury, or anyone who needs an ambulance. Say your location first.",
-        href: "tel:119",
+        title: kdei.name,
+        description: kdei.description,
+        href: kdei.href,
       },
       {
-        title: "Foreigners in Taiwan hotline: 1990",
-        description:
-          "Government help line for visa, life, and legal questions. 24 hours in English; Indonesian on weekdays 9:00–17:00. Not for emergencies.",
-        // Source: https://www.immigration.gov.tw/5475/5478/6928/6940/204896/204917/cp_news
-        href: "tel:1990",
-      },
-      {
-        title: "Indonesian Economic and Trade Office (KDEI Taipei)",
-        description:
-          "Indonesia's representative office in Taiwan. Passport services, legal help, and citizen protection.",
-        href: "https://kdei-taipei.org/", // verify
-      },
-      {
-        title: "Talk to THUISA",
-        description:
-          "Struggling with something and not sure who to ask? Start with us. We have almost certainly seen it before, and it stays private.",
+        title: thuisaHelp.title,
+        description: thuisaHelp.description,
         href: "/contact",
       },
     ],
   },
 ];
-
-/** Tap-to-call numbers at the top of the New Students guide. */
-export const emergencyNumbers = [
-  { number: "110", label: "Police", href: "tel:110" },
-  { number: "119", label: "Fire and ambulance", href: "tel:119" },
-];
-
-/** Information line shown under the emergency numbers. Not an emergency number. */
-export const foreignerHelpLine = {
-  number: "1990",
-  label: "Foreigner help line",
-  detail: "24h in English; Indonesian on weekdays 9–17, not for emergencies",
-  href: "tel:1990",
-};
 
 /** Shown as the highlighted checklist near the top of the New Students guide. */
 export const arrivalChecklist = [

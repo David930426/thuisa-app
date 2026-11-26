@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, MapPin, Ticket } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { type Faq, FaqList } from "@/components/contact/faq-list";
@@ -72,7 +73,17 @@ export default function Page() {
         eyebrow="Contact Us"
         title="Talk to us"
         lede="Questions about joining, an event, or something you are struggling with in Taichung — there is no question too small."
-      />
+      >
+        <p className="text-sm text-white/75">
+          Something urgent?{" "}
+          <Link
+            href="/help"
+            className="font-semibold text-fg-inverse underline underline-offset-4 hover:text-gold-300"
+          >
+            Emergency numbers and who to call
+          </Link>
+        </p>
+      </PageHeader>
 
       {/* Ways to reach us */}
       <Section tone="muted">

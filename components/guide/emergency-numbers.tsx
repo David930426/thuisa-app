@@ -1,10 +1,15 @@
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { emergencyNumbers, foreignerHelpLine } from "@/lib/resources";
+import { emergencyNumbers, foreignerHelpLine } from "@/lib/help";
 
-/** Red band at the top of the guide: tap-to-call 110 and 119, then 1990. */
-export function EmergencyNumbers() {
+/**
+ * Red band with tap-to-call 110 and 119, then 1990 as a help line. Used at the
+ * top of the New Students guide and of the Help page. `moreHref` adds a link
+ * to the full list of contacts (the guide passes "/help").
+ */
+export function EmergencyNumbers({ moreHref }: { moreHref?: string }) {
   return (
     <Section tone="brand" spacing="tight">
       <Container size="wide">
@@ -28,6 +33,7 @@ export function EmergencyNumbers() {
               <li key={item.number}>
                 <a
                   href={item.href}
+                  aria-label={`Call ${item.number}, ${item.label.toLowerCase()}`}
                   className="flex items-center gap-4 rounded-xl bg-white px-5 py-3 text-brand-700 shadow-sm transition-colors hover:bg-brand-50"
                 >
                   <span className="font-display text-3xl font-extrabold tabular-nums">
@@ -45,6 +51,7 @@ export function EmergencyNumbers() {
         <div className="mt-6 flex flex-col gap-3 border-t border-white/20 pt-5 text-sm text-fg-inverse sm:flex-row sm:items-center sm:justify-between">
           <a
             href={foreignerHelpLine.href}
+            aria-label={`Call ${foreignerHelpLine.number}, ${foreignerHelpLine.label.toLowerCase()} (${foreignerHelpLine.detail})`}
             className="underline-offset-4 hover:underline"
           >
             <span className="font-semibold">
@@ -52,12 +59,14 @@ export function EmergencyNumbers() {
             </span>{" "}
             <span>({foreignerHelpLine.detail})</span>
           </a>
-          <a
-            href="#help"
-            className="shrink-0 font-semibold underline-offset-4 hover:underline"
-          >
-            Full help list
-          </a>
+          {moreHref ? (
+            <Link
+              href={moreHref}
+              className="shrink-0 font-semibold underline-offset-4 hover:underline"
+            >
+              Full help list
+            </Link>
+          ) : null}
         </div>
       </Container>
     </Section>
