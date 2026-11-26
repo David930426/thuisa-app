@@ -6,19 +6,30 @@ import Link from "next/link";
 import { Pause, Play } from "lucide-react";
 import type { Swiper as SwiperInstance } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from "swiper/modules";
+import { A11y, Autoplay, EffectFade, Keyboard, Navigation, Pagination } from "swiper/modules";
 
 import { Button } from "@/components/ui/button";
-import { images } from "@/lib/site";
+import { images, site } from "@/lib/site";
 
 import "swiper/css";
+import "swiper/css/a11y";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
+/**
+ * Home page slideshow. All slides stay in the DOM (fade effect), so every
+ * slide except the visible one is `inert`: its links can't be focused or
+ * reached by screen readers. Swiper 11's loop mode moves the real slides
+ * around instead of cloning them, so there are no copies to handle.
+ *
+ * The page's only h1 is the visually hidden one below; slide titles are h2.
+ */
 export default function Hero() {
   const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
   const [playing, setPlaying] = useState(true);
+  // Index of the visible slide in images.hero (Swiper's realIndex in loop mode).
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // People who ask their system for less motion start with the slideshow paused.
   useEffect(() => {
@@ -36,8 +47,29 @@ export default function Hero() {
     setPlaying(!playing);
   };
 
+  // While keyboard focus is inside the hero, hold the slideshow still, so the
+  // slide holding the focused link doesn't fade out and become inert. Mouse
+  // clicks (no :focus-visible) keep the slideshow running as before.
+  const holdForFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (!event.target.matches(":focus-visible")) return;
+    if (swiper && playing) swiper.autoplay.stop();
+  };
+  const releaseFocusHold = (event: React.FocusEvent<HTMLElement>) => {
+    if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+    if (swiper && playing) swiper.autoplay.start();
+  };
+
   return (
-    <section className="relative" aria-label="Welcome">
+    <section
+      className="relative"
+      aria-label="Welcome"
+      onFocus={holdForFocus}
+      onBlur={releaseFocusHold}
+    >
+      <h1 className="sr-only">
+        {site.name} — {site.fullName}
+      </h1>
+
       <button
         type="button"
         onClick={togglePlaying}
@@ -54,7 +86,8 @@ export default function Hero() {
 
       <Swiper
         onSwiper={setSwiper}
-        modules={[Navigation, Pagination, Autoplay, EffectFade, Keyboard]}
+        onRealIndexChange={(instance) => setActiveIndex(instance.realIndex)}
+        modules={[Navigation, Pagination, Autoplay, EffectFade, Keyboard, A11y]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
         slidesPerView={1}
@@ -70,7 +103,7 @@ export default function Hero() {
         className="hero-swiper h-[88vh] min-h-[560px] w-full"
       >
         {images.hero.map((slide, index) => (
-          <SwiperSlide key={slide.src}>
+          <SwiperSlide key={slide.src} inert={index !== activeIndex}>
             <div className="relative h-full w-full">
               <Image
                 src={slide.src}
@@ -97,9 +130,9 @@ export default function Hero() {
                     <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white ring-1 ring-white/25 backdrop-blur-sm sm:text-xs">
                       {slide.eyebrow}
                     </p>
-                    <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-5xl lg:text-6xl">
+                    <h2 className="mt-6 text-4xl font-extrabold leading-[1.05] text-white drop-shadow-sm sm:text-5xl lg:text-6xl">
                       {slide.title}
-                    </h1>
+                    </h2>
                     <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
                       {slide.body}
                     </p>

@@ -87,6 +87,15 @@
   cursor: pointer;
 }
 
+/* Swiper's A11y module makes the arrows and dots focusable; give them the
+   same white focus ring as the hero's pause button. */
+.swiper-button-next:focus-visible,
+.swiper-button-prev:focus-visible,
+.swiper-pagination-bullet:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
 /* On the hero the arrows would sit on top of the headline, so move them into
    the bottom-right corner and drop them entirely on small screens where the
    pagination dots and swiping are enough. */
