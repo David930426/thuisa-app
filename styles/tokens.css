@@ -1,0 +1,374 @@
+/* =============================================================================
+   THUISA design tokens
+   -----------------------------------------------------------------------------
+   The single place for colours, type, spacing, widths and radii.
+   Every value here matches what the site renders today; this file is a
+   cleanup, not a redesign.
+
+   How it is loaded: app/globals.css imports it right after Tailwind, e.g.
+       @import "tailwindcss";
+       @import "tw-animate-css";
+       @import "../styles/tokens.css";
+   It must come AFTER "tailwindcss" so these values win over Tailwind's
+   defaults, and it must be imported through Tailwind (not linked separately),
+   because @theme and @utility only work when Tailwind processes them.
+
+   Four layers, top to bottom:
+     1. Palette     raw colours (brand, gold, ink). Hex values live ONLY here.
+     2. Semantic    what a colour is FOR (surface, fg = text). Use these in
+                    new code. shadcn/ui variables point at them.
+     3. Type        role-based text styles (type-h2, type-lead, ...).
+     4. Layout      page width, gutters, header height, section spacing, radii.
+
+   Rules of thumb
+   - In components, prefer semantic classes (bg-surface, text-fg-muted) over
+     palette classes (bg-white, text-ink-600).
+   - Small text: never lighter than text-fg-muted (ink-600) on light
+     backgrounds, never lighter than text-fg-inverse-muted (ink-400) on dark
+     ones. Text on brand red is solid text-fg-inverse (white), no /80 etc.
+   - Tailwind does not warn about unknown classes. After renaming anything
+     here, search the code for the old class name.
+============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. Palette
+   brand = Indonesian flag red, the identity colour (brand-600 is "the" red)
+   gold  = warm gold for highlights and eyebrows on dark backgrounds.
+           (Was called "accent-*". Renamed so it no longer clashes with
+           shadcn's grey "accent" hover surface.)
+   ink   = warm neutral greys for text, borders and light surfaces
+   Classes: bg-brand-600, text-gold-300, border-ink-200, ...
+----------------------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe0e2;
+  --color-brand-200: #ffc6ca;
+  --color-brand-300: #ff9da1;
+  --color-brand-400: #f96a72;
+  --color-brand-500: #e63946;
+  --color-brand-600: #ce1126;
+  --color-brand-700: #ab0d1f;
+  --color-brand-800: #8a0f1d;
+  --color-brand-900: #74131d;
+  --color-brand-950: #40060c;
+
+  --color-gold-50: #fffaeb;
+  --color-gold-100: #fff1c6;
+  --color-gold-200: #ffe088;
+  --color-gold-300: #ffc94a;
+  --color-gold-400: #f4b942;
+  --color-gold-500: #e9a227;
+  --color-gold-600: #c9831a;
+  --color-gold-700: #a06318; /* smallest gold that is readable on white (4.9:1) */
+  --color-gold-800: #834e1a;
+  --color-gold-900: #6f4119;
+
+  --color-ink-50: #faf9f8;
+  --color-ink-100: #f3f1ef;
+  --color-ink-200: #e7e3e0;
+  --color-ink-300: #d3cdc8;
+  --color-ink-400: #a9a19b;
+  --color-ink-500: #7d756f;
+  --color-ink-600: #5f5854;
+  --color-ink-700: #4a4441;
+  --color-ink-800: #332e2c;
+  --color-ink-900: #1c1917;
+  --color-ink-950: #0f0d0c;
+
+  /* white and black come from Tailwind (--color-white, --color-black) */
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. Semantic colours
+   Defined once here, as plain variables, so their meaning can change in one
+   place. This block is also where a dark theme would go later: one extra
+   block such as  .dark { --surface: ...; --fg: ...; }  overriding these names.
+   (There is deliberately no dark set yet.)
+
+   Classes (via @theme inline below):
+     bg-surface          white page and card background
+     bg-surface-muted    ink-50, alternating light bands (Section tone="muted")
+     bg-surface-sunken   ink-100, image placeholders, tab rails, avatars
+     bg-surface-inverse  ink-900, dark bands and the page header
+     text-fg             ink-900, headings and strong text
+     text-fg-body        ink-800, running text (the body default)
+     text-fg-muted       ink-600, secondary text; the lightest allowed for
+                         small text on light backgrounds
+     text-fg-inverse     white, text on ink-900/950 and on brand red
+     text-fg-inverse-muted  ink-400, secondary text on dark backgrounds
+   "fg" = foreground. Names avoid "--text-*" because Tailwind uses that
+   prefix for font sizes. Do NOT use "text-muted": that is shadcn's grey
+   SURFACE (ink-100) and would make text nearly invisible.
+----------------------------------------------------------------------------- */
+:root {
+  --surface: var(--color-white);
+  --surface-muted: var(--color-ink-50);
+  --surface-sunken: var(--color-ink-100);
+  --surface-inverse: var(--color-ink-900);
+
+  --fg: var(--color-ink-900);
+  --fg-body: var(--color-ink-800);
+  --fg-muted: var(--color-ink-600);
+  --fg-inverse: var(--color-white);
+  --fg-inverse-muted: var(--color-ink-400);
+
+  /* shadcn/ui variables. The components in components/ui read these
+     (bg-background, bg-accent, text-muted-foreground, border-border, ...).
+     They only point at the tokens above; do not put hex values here. */
+  --radius: 0.75rem;
+  --background: var(--surface);
+  --foreground: var(--fg);
+  --card: var(--surface);
+  --card-foreground: var(--fg);
+  --popover: var(--surface);
+  --popover-foreground: var(--fg);
+  --primary: var(--color-brand-600);
+  --primary-foreground: var(--fg-inverse);
+  --secondary: var(--surface-sunken);
+  --secondary-foreground: var(--fg-body);
+  --muted: var(--surface-sunken);
+  --muted-foreground: var(--fg-muted);
+  --accent: var(--surface-sunken); /* grey hover surface, NOT gold */
+  --accent-foreground: var(--fg-body);
+  --destructive: var(--color-brand-600); /* same red as the brand today */
+  --border: var(--color-ink-200);
+  --input: var(--color-ink-200);
+  --ring: var(--color-brand-600);
+}
+
+/* "inline" makes each class read the variable at runtime, so a future dark
+   block only has to change the variables above. */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-fg: var(--fg);
+  --color-fg-body: var(--fg-body);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-inverse: var(--fg-inverse);
+  --color-fg-inverse-muted: var(--fg-inverse-muted);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* shadcn radius steps. Note rounded-xl = 1rem here (Tailwind's own
+     default is 0.75rem), which is why rounded-xl and rounded-2xl look
+     the same on this site. */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+
+/* -----------------------------------------------------------------------------
+   3. Type
+   Fonts: Plus Jakarta Sans (--font-display) for headings, Geist for body.
+   Sizes reuse Tailwind's scale (text-xs ... text-6xl); the role classes
+   below bundle size + line height + weight + the responsive steps the site
+   already uses. Breakpoints: sm 640px, md 768px, lg 1024px.
+
+   Role             Mobile -> larger screens      Used today by
+   type-display     4xl -> sm 5xl -> lg 6xl       home hero h1 (extrabold)
+   type-h1          4xl -> md 6xl                 PageHeader title
+   type-h2          3xl -> md 4xl -> lg 5xl       SectionHeading title
+   type-headline    3xl -> md 5xl                 two-tone section headlines
+                                                  (about, contact, shelf,
+                                                  stay-connected). To merge
+                                                  into type-h2 later; that
+                                                  is a visible change.
+   type-h3          2xl -> md 3xl                 sub-section headings
+   type-title       xl                            card titles
+   type-title-sm    lg                            small headings, FAQ items
+   type-lead        base -> md lg                 intro paragraph under a heading
+   type-lead-lg     lg -> md xl                   PageHeader intro, About story
+   type-body        base                          running text
+   type-small       sm                            card text, lists
+   type-eyebrow     xs caps, wide tracking        kicker above headings
+   type-stat        4xl -> md 5xl                 big numbers
+   text-micro       11px                          date tags, tiny labels
+
+   Weight can still be changed with a normal class (e.g. type-h3
+   font-extrabold); single-purpose classes win over these role classes.
+----------------------------------------------------------------------------- */
+@theme {
+  --text-micro: 11px;
+  --tracking-eyebrow: 0.18em; /* .eyebrow kicker */
+  --tracking-label: 0.16em;   /* small caps labels and badges */
+}
+
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--text-4xl);
+  line-height: 1.05;
+  @variant sm { font-size: var(--text-5xl); }
+  @variant lg { font-size: var(--text-6xl); }
+}
+
+@utility type-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-4xl);
+  line-height: 1.05;
+  @variant md { font-size: var(--text-6xl); }
+}
+
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-3xl);
+  line-height: 1.1;
+  @variant md { font-size: var(--text-4xl); }
+  @variant lg { font-size: var(--text-5xl); }
+}
+
+@utility type-headline {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  @variant md { font-size: var(--text-5xl); }
+}
+
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl--line-height);
+  @variant md {
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
+  }
+}
+
+@utility type-title {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+}
+
+@utility type-title-sm {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+}
+
+@utility type-lead {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  @variant md { font-size: var(--text-lg); }
+}
+
+@utility type-lead-lg {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  @variant md { font-size: var(--text-xl); }
+}
+
+@utility type-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+@utility type-small {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+@utility type-eyebrow {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+}
+
+@utility type-stat {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
+  @variant md {
+    font-size: var(--text-5xl);
+    line-height: var(--text-5xl--line-height);
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. Layout
+   One page width: max-w-page (80rem, the old max-w-7xl / Container "wide").
+   Header, page body, shelves and the hero all line up on it.
+   max-w-reading (48rem, the old max-w-3xl / Container "narrow") is for
+   centred text blocks and heading columns, not a second page width.
+   Container "default" (max-w-6xl) is only used by PageHeader today; moving
+   it to max-w-page is planned as a separate, visible change.
+
+   Classes:
+     max-w-page, max-w-reading
+     px-gutter sm:px-gutter-wide     page side padding (was px-5 sm:px-8)
+     h-header                        fixed header height (was h-20)
+     scroll-mt-anchor                anchor offset under the header
+     section-y-tight / section-y / section-y-loose   Section padding
+     rounded-card, rounded-shelf, rounded-feature
+     shadow-shelf, hover:shadow-shelf-hover
+----------------------------------------------------------------------------- */
+@theme {
+  --container-page: 80rem;
+  --container-reading: 48rem;
+
+  --spacing-gutter: 1.25rem;     /* phones */
+  --spacing-gutter-wide: 2rem;   /* from sm (640px) up */
+  --spacing-header: 5rem;        /* 80px fixed header */
+  --spacing-anchor: 6rem;        /* header + 1rem breathing room */
+
+  --radius-card: 1rem;           /* = rounded-xl / rounded-2xl today */
+  --radius-shelf: 18px;          /* shelf cards */
+  --radius-feature: 28px;        /* large feature photo on About */
+
+  --shadow-shelf: 2px 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-shelf-hover: 2px 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+/* Vertical rhythm for <Section spacing="...">. */
+@utility section-y-tight {
+  padding-block: calc(var(--spacing) * 12);          /* py-12 */
+  @variant md { padding-block: calc(var(--spacing) * 16); } /* md:py-16 */
+}
+
+@utility section-y {
+  padding-block: calc(var(--spacing) * 16);          /* py-16 */
+  @variant md { padding-block: calc(var(--spacing) * 24); } /* md:py-24 */
+}
+
+@utility section-y-loose {
+  padding-block: calc(var(--spacing) * 20);          /* py-20 */
+  @variant md { padding-block: calc(var(--spacing) * 32); } /* md:py-32 */
+}
