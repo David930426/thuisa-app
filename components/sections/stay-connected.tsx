@@ -30,7 +30,7 @@ export function StayConnected() {
   return (
     <Section>
       <Container size="wide">
-        <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+        <h2 className="max-w-4xl type-headline">
           <span className="text-fg">Stay in the loop.</span>{" "}
           <span className="text-ink-500">
             Dates, posters, and last-minute changes go here first.

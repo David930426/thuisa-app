@@ -69,7 +69,7 @@ export function Shelf({
   return (
     <Section id={id} tone="muted" className={className}>
       <Container size="wide">
-        <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+        <h2 className="max-w-4xl type-headline">
           <span className="text-fg">{title}</span>
           {subtitle ? (
             <>

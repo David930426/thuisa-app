@@ -7,6 +7,9 @@
 @source not "../scripts";
 @source not "../docs";
 
+/* Dark mode is not used. This line stays on purpose: without it, Tailwind
+   would apply any dark: class (for example in a newly added shadcn component)
+   whenever the visitor's system is set to dark mode. */
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
@@ -37,12 +40,12 @@
 @layer components {
   /* Small uppercase kicker above a section heading */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
+    @apply inline-flex items-center gap-2 type-eyebrow text-brand-600;
   }
 
   /* Thin gold rule used under eyebrows in dark sections */
   .eyebrow-light {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300;
+    @apply inline-flex items-center gap-2 type-eyebrow text-gold-300;
   }
 }
 

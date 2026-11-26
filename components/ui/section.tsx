@@ -82,7 +82,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-3xl",
+        "max-w-reading",
         align === "center" && "mx-auto text-center",
         className
       )}
@@ -101,7 +101,7 @@ export function SectionHeading({
       ) : null}
       <Heading
         className={cn(
-          "mt-4 text-3xl font-bold leading-[1.1] md:text-4xl lg:text-5xl",
+          "mt-4 type-h2",
           light ? "text-fg-inverse" : "text-fg"
         )}
       >
@@ -110,7 +110,7 @@ export function SectionHeading({
       {lede ? (
         <p
           className={cn(
-            "mt-5 text-base leading-relaxed md:text-lg",
+            "mt-5 type-lead",
             light ? "text-white/80" : "text-fg-muted"
           )}
         >
@@ -145,18 +145,18 @@ export function PageHeader({
         className="pointer-events-none absolute inset-0 opacity-[0.07] bg-woven"
       />
       <Container className="relative">
-        <div className="max-w-3xl">
+        <div className="max-w-reading">
           {eyebrow ? (
             <p className="eyebrow-light">
               <span aria-hidden className="h-px w-6 bg-gold-300/70" />
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="mt-4 text-4xl font-bold leading-[1.05] md:text-6xl">
+          <h1 className="mt-4 type-h1">
             {title}
           </h1>
           {lede ? (
-            <p className="mt-6 text-lg leading-relaxed text-white/75 md:text-xl">
+            <p className="mt-6 type-lead-lg text-white/75">
               {lede}
             </p>
           ) : null}

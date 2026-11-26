@@ -72,11 +72,15 @@ All **open** unless marked.
 - `accent` means two things: the gold colour scale (`accent-50` to `accent-900`) and shadcn's grey surface (`bg-accent`).
   **Fixed:** the gold scale is now `gold-*` (token migration step 2).
 - Colours are written twice, once in `@theme` and again in `:root`. Error red is the same as brand red.
+  **Fixed:** every colour is defined once in [styles/tokens.css](../styles/tokens.css) (token migration step 1). Error red is still brand red.
 - A `dark` variant is declared but there are no dark-mode colours, and pages hard-code `bg-white`.
+  **Fixed:** dark mode removed (step 6) and pages use semantic colours such as `bg-surface` (step 3). The `dark` variant line stays as a guard.
 - Two heading styles: `SectionHeading` and a two-tone headline whose classes are copied into four files.
+  **Partly fixed:** both now use type roles (`type-h2`, `type-headline`, step 6). Merging them is a visible change, left for committee sign-off.
 - Several sections use a raw `<section>` instead of the `Section` component.
 - `shelfCardClass` is reused outside shelves and then partly undone with `hover:scale-100`.
 - Page widths and gutters are repeated as numbers in several files; the page header uses a narrower container than the page body.
+  **Partly fixed:** widths and gutters come from tokens (step 4). The page header is still narrower; widening it is a visible change.
 - Swiper is themed with many `!important` overrides in [app/globals.css](../app/globals.css).
 
 **Components and project**
@@ -84,6 +88,7 @@ All **open** unless marked.
 - Membership details and social channel descriptions are written in several places.
 - The Instagram URL is hard-coded in several files.
 - Apparently unused: `coming-soon.tsx`, `ui/dropdown-menu.tsx`, `ui/sonner.tsx`, the Geist Mono font, and the packages `@heroicons/react`, `@radix-ui/themes` and `next-themes`.
+  **Partly fixed:** `ui/sonner.tsx` and `next-themes` removed (step 6).
 - Two lockfiles: `package-lock.json` is out of date, while `packageManager` is pnpm.
 - The README's run commands look wrong (`node dist/server.js`).
 - **Fixed:** `npm run lint` failed because pnpm 10 no longer hoists ESLint plugins. [pnpm-workspace.yaml](../pnpm-workspace.yaml) now sets `publicHoistPattern`.

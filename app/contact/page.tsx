@@ -74,7 +74,7 @@ const tile = cn(shelfCardClass, "h-full p-7 hover:scale-100");
 /** Two-tone Apple-style section headline. */
 function Headline({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+    <h2 className="max-w-4xl type-headline">
       <span className="text-fg">{title}</span>{" "}
       <span className="text-fg-muted">{subtitle}</span>
     </h2>

@@ -57,7 +57,7 @@ export default function Page() {
       {/* Our story */}
       <Section>
         <Container size="wide">
-          <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+          <h2 className="max-w-4xl type-headline">
             <span className="text-fg">Our story.</span>{" "}
             <span className="text-ink-500">
               Nine years of Indonesian students at Tunghai, run by a new
