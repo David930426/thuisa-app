@@ -9,7 +9,7 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui/section";
-import { events, eventDateParts, getPastEvents, getUpcomingEvents } from "@/lib/events";
+import { events, eventDateParts, getPastEvents, isUpcoming } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "Our Events",
@@ -18,11 +18,13 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const upcoming = getUpcomingEvents();
-  const past = getPastEvents();
-
   // The academic year in order, for the rhythm strip.
   const rhythm = [...events].sort((a, b) => a.date.localeCompare(b.date));
+
+  // Only events still ahead. getUpcomingEvents() falls back to the whole list
+  // when everything has passed, which would show each event in both tabs.
+  const upcoming = rhythm.filter(isUpcoming);
+  const past = getPastEvents();
 
   return (
     <>
@@ -39,7 +41,7 @@ export default function Page() {
       {/* The year at a glance */}
       <Section tone="muted" spacing="tight">
         <Container size="wide">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-500">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-600">
             The year at a glance
           </h2>
           <ol className="mt-6 flex gap-3 overflow-x-auto pb-3">

@@ -7,7 +7,7 @@ export function PartnersStrip() {
     <Section tone="muted" spacing="tight">
       <Container size="wide">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          <p className="max-w-xs text-center text-sm font-semibold uppercase tracking-[0.16em] text-ink-500 md:text-left">
+          <p className="max-w-xs text-center text-sm font-semibold uppercase tracking-[0.16em] text-ink-600 md:text-left">
             Working alongside
           </p>
           <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:justify-end">

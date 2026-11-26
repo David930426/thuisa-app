@@ -4,6 +4,7 @@ import { PartnersStrip } from "@/components/sections/partners-strip";
 import { Pillars } from "@/components/sections/pillars";
 import { StatsBand } from "@/components/sections/stats-band";
 import { shelfCardClass } from "@/components/shelf-card";
+import { TextLink } from "@/components/text-link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -58,7 +59,7 @@ export default function Page() {
         <Container size="wide">
           <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
             <span className="text-ink-900">Our story.</span>{" "}
-            <span className="text-ink-400">
+            <span className="text-ink-500">
               Nine years of Indonesian students at Tunghai, run by a new
               committee every year.
             </span>
@@ -82,7 +83,7 @@ export default function Page() {
           </div>
 
           <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2 md:gap-16">
-            <p className="text-lg leading-relaxed text-ink-500 md:text-xl">
+            <p className="text-lg leading-relaxed text-ink-600 md:text-xl">
               <span className="font-semibold text-ink-900">
                 It started with a welcome night.
               </span>{" "}
@@ -92,13 +93,19 @@ export default function Page() {
               a sports tournament, and the Indonesia booth at International
               Week.
             </p>
-            <p className="text-lg leading-relaxed text-ink-500 md:text-xl">
-              <span className="font-semibold text-ink-900">
-                Every year, a new committee.
-              </span>{" "}
-              Each one keeps what worked, drops what did not, and writes it all
-              down in the accountability report for the next group to read.
-            </p>
+            <div>
+              <p className="text-lg leading-relaxed text-ink-600 md:text-xl">
+                <span className="font-semibold text-ink-900">
+                  Every year, a new committee.
+                </span>{" "}
+                Each one keeps what worked, drops what did not, and writes it
+                all down in the accountability report for the next group to
+                read.
+              </p>
+              <div className="mt-4">
+                <TextLink href="/report">Read our transparency reports</TextLink>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -114,20 +121,20 @@ export default function Page() {
               <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
                 Support, connect, and empower Indonesian students at Tunghai.
               </p>
-              <p className="mt-5 text-base leading-relaxed text-ink-500 md:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-ink-600 md:text-lg">
                 Practically, socially, and culturally, from the first week of
                 paperwork to graduation day.
               </p>
             </Card>
 
             <Card className={cn(shelfCardClass, "h-full p-8 hover:scale-100 md:p-12")}>
-              <h2 className="text-xs font-semibold uppercase tracking-wider text-accent-600">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-accent-700">
                 Our vision
               </h2>
               <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink-900 md:text-4xl">
                 A home away from home for every Indonesian student.
               </p>
-              <p className="mt-5 text-base leading-relaxed text-ink-500 md:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-ink-600 md:text-lg">
                 No matter which year they arrive in, or how long they stay.
               </p>
             </Card>
@@ -194,7 +201,7 @@ export default function Page() {
                     alt={member.name}
                     className="transition-transform duration-500 group-hover:scale-105"
                   />
-                  <AvatarFallback className="rounded-2xl bg-ink-100 font-display text-2xl font-bold text-ink-400">
+                  <AvatarFallback className="rounded-2xl bg-ink-100 font-display text-2xl font-bold text-ink-600">
                     {member.name.slice(0, 2).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
@@ -238,7 +245,7 @@ export default function Page() {
                         ))}
                       </ul>
                     ) : (
-                      <p className="mt-4 text-xs font-medium uppercase tracking-wider text-ink-400">
+                      <p className="mt-4 text-xs font-medium uppercase tracking-wider text-ink-600">
                         Members announced each term
                       </p>
                     )}

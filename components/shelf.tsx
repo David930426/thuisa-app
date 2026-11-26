@@ -75,7 +75,7 @@ export function Shelf({
           {subtitle ? (
             <>
               {" "}
-              <span className="text-ink-400">{subtitle}</span>
+              <span className="text-ink-500">{subtitle}</span>
             </>
           ) : null}
         </h2>

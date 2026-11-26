@@ -20,7 +20,7 @@ import {
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Report",
+  title: "Transparency",
   description:
     "THUISA accountability and transparency reports — annual reports, financial summaries, and event reports for members.",
 };

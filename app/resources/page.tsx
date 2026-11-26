@@ -10,10 +10,15 @@ import {
   PageHeader,
   Section,
 } from "@/components/ui/section";
-import { arrivalChecklist, resourceGroups } from "@/lib/resources";
+import {
+  arrivalChecklist,
+  emergencyNumbers,
+  foreignerHelpLine,
+  resourceGroups,
+} from "@/lib/resources";
 
 export const metadata: Metadata = {
-  title: "Resources",
+  title: "New Students",
   description:
     "A practical guide for Indonesian students arriving at Tunghai University — visas, ARC, dorms, health insurance, banking, scholarships, and emergency contacts.",
 };
@@ -26,7 +31,7 @@ export default function Page() {
   return (
     <>
       <PageHeader
-        eyebrow="Resources"
+        eyebrow="New Students"
         title="The guide we wish someone had given us"
         lede="Everything below is the practical side of studying at Tunghai as an Indonesian student — the paperwork, the deadlines, and the things nobody warns you about until it is already a problem."
       >
@@ -34,6 +39,63 @@ export default function Page() {
           <a href="#before-you-arrive">Start at the beginning</a>
         </Button>
       </PageHeader>
+
+      {/* Emergency numbers, first thing on the page */}
+      <Section tone="brand" spacing="tight">
+        <Container size="wide">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25">
+                <Phone className="size-6" aria-hidden />
+              </span>
+              <div>
+                <h2 className="font-display text-xl font-bold text-white">
+                  Emergency? Call now
+                </h2>
+                <p className="mt-1 text-sm text-white">
+                  Free from any phone. Save these numbers now, not later.
+                </p>
+              </div>
+            </div>
+
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {emergencyNumbers.map((item) => (
+                <li key={item.number}>
+                  <a
+                    href={item.href}
+                    className="flex items-center gap-4 rounded-xl bg-white px-5 py-3 text-brand-700 shadow-sm transition-colors hover:bg-brand-50"
+                  >
+                    <span className="font-display text-3xl font-extrabold tabular-nums">
+                      {item.number}
+                    </span>
+                    <span className="text-sm font-semibold text-ink-900">
+                      {item.label}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-3 border-t border-white/20 pt-5 text-sm text-white sm:flex-row sm:items-center sm:justify-between">
+            <a
+              href={foreignerHelpLine.href}
+              className="underline-offset-4 hover:underline"
+            >
+              <span className="font-semibold">
+                {foreignerHelpLine.number} – {foreignerHelpLine.label}
+              </span>{" "}
+              <span>({foreignerHelpLine.detail})</span>
+            </a>
+            <a
+              href="#help"
+              className="shrink-0 font-semibold underline-offset-4 hover:underline"
+            >
+              Full help list
+            </a>
+          </div>
+        </Container>
+      </Section>
 
       {/* Checklist */}
       <Section spacing="tight">
@@ -127,7 +189,7 @@ export default function Page() {
                         <span className="flex items-center gap-2 font-display text-base font-bold text-ink-900 transition-colors group-hover:text-brand-700">
                           {item.title}
                           {external ? (
-                            <ArrowUpRight className="size-4 shrink-0 text-ink-400 transition-colors group-hover:text-brand-600" />
+                            <ArrowUpRight className="size-4 shrink-0 text-ink-500 transition-colors group-hover:text-brand-600" />
                           ) : null}
                         </span>
                         <span className="mt-1.5 block text-sm leading-relaxed text-ink-600">
@@ -180,30 +242,6 @@ export default function Page() {
               <Link href="/contact">Report a broken link</Link>
             </Button>
           </Card>
-        </Container>
-      </Section>
-
-      {/* Emergency footer strip */}
-      <Section tone="brand" spacing="tight">
-        <Container size="wide">
-          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-start gap-4">
-              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25">
-                <Phone className="size-6" aria-hidden />
-              </span>
-              <div>
-                <h2 className="font-display text-xl font-bold text-white">
-                  Save these now, not later
-                </h2>
-                <p className="mt-1 text-sm text-white/80">
-                  110 police · 119 fire and ambulance · 1990 foreigner hotline
-                </p>
-              </div>
-            </div>
-            <Button asChild variant="onDark" size="default">
-              <a href="#help">Full emergency list</a>
-            </Button>
-          </div>
         </Container>
       </Section>
 

@@ -49,10 +49,10 @@ contact pages still show the ID and this text:
 
 ### Member counts
 
-- [ ] "400+": [lib/site.ts:67](lib/site.ts#L67)
-- [ ] "400": [app/about/page.tsx:49](app/about/page.tsx#L49)
-- [ ] "400": [app/page.tsx:57](app/page.tsx#L57)
-- [ ] "42" active members: [lib/site.ts:68](lib/site.ts#L68)
+- [ ] "400+": [lib/site.ts:73](lib/site.ts#L73)
+- [ ] "400": [app/about/page.tsx:50](app/about/page.tsx#L50)
+- [ ] "400": [app/page.tsx:59](app/page.tsx#L59)
+- [ ] "42" active members: [lib/site.ts:74](lib/site.ts#L74)
 - [ ] "42" committee and volunteers: [lib/reports.ts:84](lib/reports.ts#L84)
 
 ### Membership fee
@@ -99,14 +99,14 @@ contact pages still show the ID and this text:
 
 Get permission from the people shown before publishing any photo.
 
-- [ ] Home page slides: [lib/site.ts:126](lib/site.ts#L126),
-      [135](lib/site.ts#L135), [144](lib/site.ts#L144)
-- [ ] About and welcome photos: [lib/site.ts:153](lib/site.ts#L153) to
-      [155](lib/site.ts#L155)
-- [ ] Gallery, six photos: [lib/site.ts:157](lib/site.ts#L157) to
-      [162](lib/site.ts#L162)
-- [ ] "What we do" cards: [lib/site.ts:81](lib/site.ts#L81),
-      [88](lib/site.ts#L88), [95](lib/site.ts#L95), [102](lib/site.ts#L102)
+- [ ] Home page slides: [lib/site.ts:132](lib/site.ts#L132),
+      [141](lib/site.ts#L141), [150](lib/site.ts#L150)
+- [ ] About and welcome photos: [lib/site.ts:159](lib/site.ts#L159) to
+      [161](lib/site.ts#L161)
+- [ ] Gallery, six photos: [lib/site.ts:163](lib/site.ts#L163) to
+      [168](lib/site.ts#L168)
+- [ ] "What we do" cards: [lib/site.ts:87](lib/site.ts#L87),
+      [94](lib/site.ts#L94), [101](lib/site.ts#L101), [108](lib/site.ts#L108)
 - [ ] Event covers: [lib/events.ts:50](lib/events.ts#L50),
       [72](lib/events.ts#L72), [94](lib/events.ts#L94),
       [116](lib/events.ts#L116), [139](lib/events.ts#L139),
@@ -116,7 +116,7 @@ Get permission from the people shown before publishing any photo.
       [lib/team.ts:20](lib/team.ts#L20), [25](lib/team.ts#L25),
       [30](lib/team.ts#L30), [35](lib/team.ts#L35)
 - [ ] Tunghai University logo, with permission to use it:
-      [lib/site.ts:111](lib/site.ts#L111)
+      [lib/site.ts:117](lib/site.ts#L117)
 
 ## 7. Facts not yet checked
 
@@ -126,7 +126,6 @@ These are on the site but have not been verified against an official source.
 - [ ] Health insurance after six months: [lib/resources.ts:82](lib/resources.ts#L82)
 - [ ] Free bus distance in Taichung: [lib/resources.ts:100](lib/resources.ts#L100)
 - [ ] Student work permit and hour limit: [lib/resources.ts:181](lib/resources.ts#L181)
-- [ ] Hours for Indonesian-language support on 1990: [lib/resources.ts:220](lib/resources.ts#L220)
 - [ ] ARC wording: the linked National Immigration Agency page confirms the
       30-day deadline. It does not cover a Resident Visa issued inside Taiwan or
       the FS visitor visa, so keep the source for those two points on file:

@@ -32,13 +32,19 @@ export const site = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.693668951489!2d120.59997247606017!3d24.182473772050418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2sUniversitas%20Tunghai!5e0!3m2!1sid!2sid!4v1755167301397!5m2!1sid!2sid",
 };
 
+/** Header and mobile menu. */
 export const navigation = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Our Events", href: "/events" },
-  { label: "Resources", href: "/resources" },
-  { label: "Report", href: "/report" },
+  { label: "New Students", href: "/resources" },
   { label: "Contact Us", href: "/contact" },
+];
+
+/** Footer: the header links plus Transparency, which is kept out of the header. */
+export const footerNavigation = [
+  ...navigation,
+  { label: "Transparency", href: "/report" },
 ];
 
 export const socials = [
@@ -129,7 +135,7 @@ export const images = {
       title: "Your home away from home in Taichung",
       body: "The Indonesian student association at Tunghai University, run by students since 2017.",
       cta: { label: "Get to know us", href: "/about" },
-      secondaryCta: { label: "See our events", href: "/events" },
+      secondaryCta: { label: "New student guide", href: "/resources" },
     },
     {
       src: "/images/hero/hero-events.svg",
@@ -147,7 +153,7 @@ export const images = {
       title: "Our culture, in front of the whole campus",
       body: "Each spring we run the Indonesia booth at International Week and perform at the Gala Dinner with the Office of International Relations.",
       cta: { label: "What we do", href: "/about" },
-      secondaryCta: { label: "Guide for new students", href: "/resources" },
+      secondaryCta: { label: "New student guide", href: "/resources" },
     },
   ],
   aboutStory: "/images/about/about-story.svg",

@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Pause, Play } from "lucide-react";
+import type { Swiper as SwiperInstance } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from "swiper/modules";
 
@@ -14,9 +17,43 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 export default function Hero() {
+  const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
+  const [playing, setPlaying] = useState(true);
+
+  // People who ask their system for less motion start with the slideshow paused.
+  useEffect(() => {
+    if (!swiper) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      swiper.autoplay.stop();
+      setPlaying(false);
+    }
+  }, [swiper]);
+
+  const togglePlaying = () => {
+    if (!swiper) return;
+    if (playing) swiper.autoplay.stop();
+    else swiper.autoplay.start();
+    setPlaying(!playing);
+  };
+
   return (
     <section className="relative" aria-label="Welcome">
+      <button
+        type="button"
+        onClick={togglePlaying}
+        aria-pressed={!playing}
+        aria-label={playing ? "Pause slideshow" : "Play slideshow"}
+        className="absolute bottom-4 right-5 z-20 grid size-11 place-items-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-brand-600/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:bottom-8 lg:right-32"
+      >
+        {playing ? (
+          <Pause className="size-5" aria-hidden />
+        ) : (
+          <Play className="size-5" aria-hidden />
+        )}
+      </button>
+
       <Swiper
+        onSwiper={setSwiper}
         modules={[Navigation, Pagination, Autoplay, EffectFade, Keyboard]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
@@ -24,7 +61,11 @@ export default function Hero() {
         navigation
         keyboard={{ enabled: true }}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 6000, disableOnInteraction: false }}
+        autoplay={{
+          delay: 6000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
         loop
         className="hero-swiper h-[88vh] min-h-[560px] w-full"
       >

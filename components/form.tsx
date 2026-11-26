@@ -100,7 +100,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-relaxed text-ink-500">
+        <p className="text-xs leading-relaxed text-ink-600">
           Your message goes to the THUISA committee inbox. We usually reply
           within a few days.
         </p>

@@ -21,6 +21,8 @@ export default function Home() {
     <>
       <Hero />
 
+      <WhereToStart />
+
       {/* Welcome */}
       <Section id="welcome">
         <Container size="wide">
@@ -103,8 +105,6 @@ export default function Home() {
           </div>
         </Container>
       </Section>
-
-      <WhereToStart />
 
       <Gallery />
 

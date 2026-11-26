@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Container } from "@/components/ui/section";
-import { images, navigation, partners, site, socials } from "@/lib/site";
+import { footerNavigation, images, partners, site, socials } from "@/lib/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -59,7 +59,7 @@ export default function Footer() {
               Explore
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
-              {navigation.map((item) => (
+              {footerNavigation.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -130,7 +130,7 @@ export default function Footer() {
         </div>
 
         <Separator className="mt-14 bg-white/10" />
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-ink-500 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-ink-400 sm:flex-row">
           <p>
             © {year} <span className="font-semibold text-ink-300">{site.name}</span>.
             All rights reserved.

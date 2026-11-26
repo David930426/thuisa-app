@@ -102,7 +102,7 @@ export function EventCard({
             <div className="flex items-start gap-2.5">
               <dt className="sr-only">Date</dt>
               <CalendarDays
-                className="mt-0.5 size-4 shrink-0 text-ink-400"
+                className="mt-0.5 size-4 shrink-0 text-ink-500"
                 aria-hidden
               />
               <dd>{formatEventDate(event.date)}</dd>
@@ -110,7 +110,7 @@ export function EventCard({
             <div className="flex items-start gap-2.5">
               <dt className="sr-only">Location</dt>
               <MapPin
-                className="mt-0.5 size-4 shrink-0 text-ink-400"
+                className="mt-0.5 size-4 shrink-0 text-ink-500"
                 aria-hidden
               />
               <dd>{event.location}</dd>

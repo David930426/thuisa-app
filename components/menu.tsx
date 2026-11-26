@@ -96,7 +96,7 @@ export default function Menu() {
             <span
               className={cn(
                 "mt-1 block text-[11px] leading-tight",
-                solid ? "text-ink-500" : "text-white/70"
+                solid ? "text-ink-600" : "text-white/80"
               )}
             >
               Tunghai University

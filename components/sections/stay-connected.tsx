@@ -32,7 +32,7 @@ export function StayConnected() {
       <Container size="wide">
         <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
           <span className="text-ink-900">Stay in the loop.</span>{" "}
-          <span className="text-ink-400">
+          <span className="text-ink-500">
             Dates, posters, and last-minute changes go here first.
           </span>
         </h2>
@@ -93,7 +93,7 @@ export function StayConnected() {
               <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
                 {social.label}
               </h3>
-              <p className="mt-1 text-sm text-ink-500">{social.handle}</p>
+              <p className="mt-1 text-sm text-ink-600">{social.handle}</p>
               <p className="mt-3 text-sm leading-relaxed text-ink-600">
                 {socialNotes[social.label]}
               </p>
@@ -115,7 +115,7 @@ export function StayConnected() {
             <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
               Email
             </h3>
-            <p className="mt-1 break-all text-sm text-ink-500">{site.email}</p>
+            <p className="mt-1 break-all text-sm text-ink-600">{site.email}</p>
             <p className="mt-3 text-sm leading-relaxed text-ink-600">
               For anything official: partnerships, sponsorship, and letters.
             </p>
@@ -132,7 +132,7 @@ export function StayConnected() {
             <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
               Membership
             </h3>
-            <p className="mt-1 text-sm font-medium text-ink-500">
+            <p className="mt-1 text-sm font-medium text-ink-600">
               {site.membershipFee}
             </p>
             <p className="mt-3 text-sm leading-relaxed text-ink-600">

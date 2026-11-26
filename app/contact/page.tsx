@@ -44,8 +44,8 @@ const faqs = [
   },
   {
     q: "I am arriving next semester. What should I do first?",
-    a: "Read the Resources page before you fly, then message us. We will add you to the student group chat so you land already knowing a few people.",
-    link: { label: "Go to Resources", href: "/resources" },
+    a: "Read the New Students guide before you fly, then message us. We will add you to the student group chat so you land already knowing a few people.",
+    link: { label: "Go to the New Students guide", href: "/resources" },
   },
   {
     q: "Where do you post updates?",
@@ -76,7 +76,7 @@ function Headline({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <h2 className="max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
       <span className="text-ink-900">{title}</span>{" "}
-      <span className="text-ink-400">{subtitle}</span>
+      <span className="text-ink-600">{subtitle}</span>
     </h2>
   );
 }
@@ -112,7 +112,7 @@ export default function Page() {
                   <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
                     {social.label}
                   </h3>
-                  <p className="mt-1 text-sm text-ink-500">{social.handle}</p>
+                  <p className="mt-1 text-sm text-ink-600">{social.handle}</p>
                   <p className="mt-3 text-sm leading-relaxed text-ink-600">
                     {channelNotes[social.label]}
                   </p>
@@ -137,7 +137,7 @@ export default function Page() {
                 <h3 className="mt-6 font-display text-xl font-bold text-ink-900">
                   Email
                 </h3>
-                <p className="mt-1 break-all text-sm text-ink-500">
+                <p className="mt-1 break-all text-sm text-ink-600">
                   {site.email}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-600">
@@ -161,7 +161,7 @@ export default function Page() {
                 title="Write to the committee."
                 subtitle="Issues, concerns, suggestions, or proposals."
               />
-              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-500 md:text-lg">
+              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-600 md:text-lg">
                 This goes straight to the committee inbox. We usually reply
                 within a few days, and what you tell us stays with the
                 committee.
@@ -291,7 +291,7 @@ export default function Page() {
             ))}
           </Accordion>
 
-          <p className="mt-10 text-base text-ink-500">
+          <p className="mt-10 text-base text-ink-600">
             Not here?{" "}
             <a
               href={`mailto:${site.email}`}

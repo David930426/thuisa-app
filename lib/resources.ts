@@ -209,15 +209,21 @@ export const resourceGroups: ResourceGroup[] = [
     icon: "lifebuoy",
     items: [
       {
-        title: "Emergency: 110 (police) / 119 (fire and ambulance)",
+        title: "Emergency: 110 (police)",
         description:
           "Free from any phone. If you cannot explain in Mandarin, say your location clearly and stay on the line.",
         href: "tel:110",
       },
       {
+        title: "Emergency: 119 (fire and ambulance)",
+        description:
+          "Free from any phone. Call for a fire, an injury, or anyone who needs an ambulance. Say your location first.",
+        href: "tel:119",
+      },
+      {
         title: "Foreigners in Taiwan hotline: 1990",
         description:
-          "Government helpline with English and Indonesian support for visa, life, and legal questions.",
+          "Government help line for visa, life, and legal questions. 24 hours in English; Indonesian on weekdays 9:00–17:00. Not for emergencies.",
         // Source: https://www.immigration.gov.tw/5475/5478/6928/6940/204896/204917/cp_news
         href: "tel:1990",
       },
@@ -237,7 +243,21 @@ export const resourceGroups: ResourceGroup[] = [
   },
 ];
 
-/** Shown as the highlighted checklist at the top of the Resources page. */
+/** Tap-to-call numbers at the top of the New Students guide. */
+export const emergencyNumbers = [
+  { number: "110", label: "Police", href: "tel:110" },
+  { number: "119", label: "Fire and ambulance", href: "tel:119" },
+];
+
+/** Information line shown under the emergency numbers. Not an emergency number. */
+export const foreignerHelpLine = {
+  number: "1990",
+  label: "Foreigner help line",
+  detail: "24h in English; Indonesian on weekdays 9–17, not for emergencies",
+  href: "tel:1990",
+};
+
+/** Shown as the highlighted checklist near the top of the New Students guide. */
 export const arrivalChecklist = [
   "Apply for your resident visa before you fly",
   "Confirm your dorm place with OIR",
