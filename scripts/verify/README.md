@@ -53,6 +53,11 @@ The exit code is 0 when everything matches and 1 otherwise.
 - Tailwind's internal `--tw-*` variables are ignored when only one side sets
   them. Tailwind registers them with `inherits: false`, so they only affect
   the element itself, and that effect shows in the real properties compared.
+- Every element starts from Tailwind's preflight values (`margin: 0`,
+  `padding: 0`, `border: 0 solid`), so `p-0` or `border-0` matches having no
+  such class. Registered `--tw-*` variables resolve to their `@property`
+  initial values when nothing sets them, and zero lengths (`0px`, `0rem`)
+  compare equal to `0`.
 - Sizes are compared at a 16px root font. Values that only match at that size,
   such as `0.75rem + 4px` and `1rem`, are reported separately.
 

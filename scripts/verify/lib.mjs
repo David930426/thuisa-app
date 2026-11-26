@@ -71,6 +71,14 @@ export function indexCss(cssText) {
   const rules = new Map(); // class name -> list of { minW, key, prop, value } in stylesheet order
   const order = [];
   let seq = 0; // position in the stylesheet, for the cascade
+  // Initial values of registered properties (Tailwind's @property --tw-*),
+  // used when nothing sets the variable.
+  const initial = {};
+  root.walkAtRules("property", (at) => {
+    at.walkDecls("initial-value", (d) => {
+      initial[at.params.trim()] = d.value;
+    });
+  });
   root.walkRules((rule) => {
     const sel = rule.selector.trim();
     if (sel.includes(":root")) {
@@ -100,6 +108,7 @@ export function indexCss(cssText) {
     rules.set(cls, decls);
     order.push(cls);
   });
+  for (const [name, value] of Object.entries(initial)) if (!(name in vars)) vars[name] = value;
   return { vars, rules, order };
 }
 
@@ -118,6 +127,7 @@ const calc = (v) => v.replace(/calc\(([\d.]+)rem \* ([\d.]+)\)/g, (_, a, b) => `
 export const normalise = (v) =>
   calc(v)
     .toLowerCase()
+    .replace(/(?<![\w.-])0(?:px|rem)(?![\w.%])/g, "0")
     .replace(/\s+/g, " ")
     .replace(/#([0-9a-f])([0-9a-f])([0-9a-f])\b/g, "#$1$1$2$2$3$3")
     .replace(/\s*,\s*/g, ",")
@@ -170,9 +180,19 @@ function expand(prop, value) {
   return [[prop, value]];
 }
 
+// Tailwind's preflight gives every element `margin: 0; padding: 0;
+// border: 0 solid`. These are the starting values, so a class that sets one of
+// them to the same value (p-0, border-0) matches having no class at all.
+const PREFLIGHT = {
+  ...Object.fromEntries(["top", "right", "bottom", "left"].flatMap((side) => [[`margin-${side}`, "0"], [`padding-${side}`, "0"]])),
+  "border-width": "0",
+  "border-style": "solid",
+};
+
 /**
  * Effective declarations for an element carrying `classes` at viewport
- * `width`. Returns { styles: {key: value}, unknown: [classes with no CSS] }.
+ * `width`, starting from the preflight values above.
+ * Returns { styles: {key: value}, unknown: [classes with no CSS] }.
  */
 export function effectiveStyle(index, classes, width) {
   const list = [...new Set(classes)];
@@ -190,6 +210,7 @@ export function effectiveStyle(index, classes, width) {
     for (const o of Object.values(own)) if (o.prop.startsWith("--") && (o.ctx === "" || o.ctx === d.ctx)) local[o.prop] = o.value;
     styles[d.key] = normalise(resolveVars(d.value, local));
   }
+  for (const [prop, value] of Object.entries(PREFLIGHT)) styles[`|${prop}`] ??= value;
   return { styles, unknown: list.filter((c) => !index.rules.has(c)) };
 }
 
